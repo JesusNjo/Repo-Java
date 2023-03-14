@@ -15,7 +15,7 @@ public class EjercicioGuia1 {
 
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         int num1,num2;
         Scanner leer = new Scanner(System.in);
      System.out.println("Ingrese el primer digito");
