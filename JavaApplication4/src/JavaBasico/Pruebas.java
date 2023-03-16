@@ -5,8 +5,6 @@
  */
 package JavaBasico;
 
-import java.util.Scanner;
-
 /**
  *
  * @author JesusNjo
@@ -18,22 +16,18 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner leer = new Scanner(System.in);
-        
-        int n1;
-        int n2;
-        float res;
-        
-        System.out.println("Ingrese un numero");
-        n1= leer.nextInt();
-        
-        System.out.println("Ingrese otro numero");
-        n2= leer.nextInt();
-        
-        res = n1 + n2;
-        System.out.println(res);
-        
-        
+
+        int n = (int) (Math.random() * 10);
+        int num = 0;
+        int[] tamanoVector = new int[n];
+        int contador = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            n = i + 1;
+            System.out.println(tamanoVector[i]);
+        }
+
     }
-    
+
 }

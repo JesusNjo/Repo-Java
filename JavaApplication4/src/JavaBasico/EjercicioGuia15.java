@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package JavaBasico;
-
-import java.util.Scanner;
-
 /**
  *
  * @author JesusNjo
@@ -19,7 +16,7 @@ public class EjercicioGuia15 {
     public static void main(String[] args) {
        
         int[] vec = new int[100];
-        Scanner leer = new Scanner(System.in);
+       
         
         
         for(int i = 0; i<100; i++){
