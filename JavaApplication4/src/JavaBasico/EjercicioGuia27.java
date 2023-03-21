@@ -16,57 +16,45 @@ public class EjercicioGuia27 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+
         Scanner leer = new Scanner(System.in);
         int altos;
-        
+
         int bajos = 0;
         int aux = 0;
         int aux2 = 0;
-        int aux3 = 0;
-        int persona = 0;
         int personaB = 0;
+        int personaA = 0;
         int cantidad = 0;
-        
-        
-        
+
         System.out.println("Ingrese la cantidad de personas");
         cantidad = leer.nextInt();
-        
-        
-        
-        for(int i=0; i<cantidad;i++){
-            persona++;
+
+        for (int i = 0; i < cantidad; i++) {
             System.out.println("Ingrese las alturas");
             altos = leer.nextInt();
-            
-             if(altos>=1.6){
-            aux+= altos;
-            
-            
-            }else{
-              bajos = leer.nextInt();
-              aux2+= bajos;
-              personaB++;
 
-            
+            if (altos >= 160) {
+                aux += altos;
+                personaA++;
+
+            } else {
+
+                bajos = altos;
+                aux2 += bajos;
+                personaB++;
+
+            }
+
         }
-             aux3= aux + aux3;
-        }
-        
-        
-        
-        
-                System.out.println("La cantidad de personas de totales es: "+cantidad+" y el promedio total es" + (cantidad/aux3)*cantidad);
-                System.out.println("La cantidad de personas de 1.60 es: "+personaB+" y el promedio total es " + (personaB/aux2)*personaB);
-  
-        
-        
-        
+
+        System.out.println(personaA + ": Personas por encima de 1.60 " + " el promedio es: " + (aux / personaA));
+        System.out.println(personaB + ": Personas por debajo de 1.60 " + " el promedio es: " + (aux2 / personaB));
+
+        System.out.println("La cantidad de personas de totales es: " + cantidad + " y el promedio total es " + ((aux + aux2) / cantidad));
+
     }
 }
-
-
 
 // Scanner leer = new Scanner(System.in);
 //        System.out.println("Ingrese la altura de la persona: ");
