@@ -30,7 +30,7 @@ public class EjercicioGuia33 {
 
                 for (int f = 0; f < 10; f++) {
 
-                    if (f == 3) {
+                    if (3 == f) {
                         String nf = String.valueOf(f);
 
                         nf = "E";
