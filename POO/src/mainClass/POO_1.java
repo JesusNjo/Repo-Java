@@ -8,6 +8,7 @@ numero de páginas.
 package mainClass;
 
 import entidades.Mascota;
+import java.util.Date;
 
 /**
  *
@@ -34,7 +35,8 @@ public class POO_1 {
         p1.pasearVueltas(2);
         System.out.println(p1);
         
-        
+        Date fecha = new Date();
+        System.out.println(fecha);
     }
     
 }

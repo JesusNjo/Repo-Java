@@ -20,16 +20,15 @@ public class LibroMain {
     public static void main(String[] args) {
         
         Scanner input = new Scanner(System.in);
-        System.out.println("Ingrese el ISBN del libro");
-        System.out.println("Ingrese el nombre del libro");
-        System.out.println("Ingrese el autor del libro");
-        System.out.println("Ingrese la cantidad de paginas del libro");
+       
         
         
-        LibroClass libro1 = new LibroClass(input.nextLine(),input.nextLine(),input.nextLine(),input.nextLine());
+        System.out.println();
         System.out.println();
         System.out.println();
         System.out.println("-----------");
+        
+        LibroClass libro1 = new LibroClass();
         
         System.out.println(libro1);
         

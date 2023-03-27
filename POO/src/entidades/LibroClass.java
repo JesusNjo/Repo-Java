@@ -29,7 +29,9 @@ public class LibroClass {
         this.paginas = paginas;
         
     }
-
+    public void regresarInfo(String ISBN, String autor, String titulo, String paginas)    {
+        
+    }
     @Override
     public String toString() {
         return "Libro:" + "ISBN:" + ISBN + ", Titulo:" + titulo + ", Autor:" + autor + ", Paginas:" + paginas + '}';

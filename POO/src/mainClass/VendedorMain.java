@@ -5,17 +5,26 @@
  */
 package mainClass;
 
+import JavaService.VendedorService;
+import entidades.VendedorClass;
+
 /**
  *
  * @author JesusNjo
  */
-public class Banco {
+public class VendedorMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        VendedorService vs = new VendedorService();
+        VendedorClass v1 = vs.altaVendedor();
+        vs.Sueldo(v1);
+        vs.Vacaciones(v1);
+        
+        
     }
     
 }

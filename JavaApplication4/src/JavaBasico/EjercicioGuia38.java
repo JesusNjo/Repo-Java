@@ -39,10 +39,12 @@ public class EjercicioGuia38 {
                     contador++;
                     System.out.println("El numero: " + n + " no es primo");
                     break;
+                    
                 }
             }
         }
-        if (contador == 0) {
+        System.out.println(contador);
+        if (contador == 0 && n != 2) {
             System.out.println("El numero " + n + " ES primo");
         }
     }
