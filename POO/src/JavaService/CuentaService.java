@@ -1,5 +1,5 @@
 /*
-  Realizar una clase llamada Cuenta (bancaria) que debe tener como mínimo los atributos:
+Realizar una clase llamada Cuenta (bancaria) que debe tener como mínimo los atributos:
 numeroCuenta (entero), el DNI del cliente (entero largo) y el saldo actual (entero).
 Las operaciones asociadas a dicha clase son:
 a) Constructor por defecto y constructor con DNI, saldo, número de cuenta e interés.
@@ -29,8 +29,10 @@ public class CuentaService {
     
     
     
-    public CuentaClass crear(){
+    public CuentaClass crearCuenta(){
         CuentaClass cuenta = new CuentaClass();
+        System.out.println("Ingrese su nombre");
+        cuenta.setNombre(input.nextLine());
         System.out.println("Ingrese su DNI");
         cuenta.setDNI(input.nextLong());
         System.out.println("Ingrese su numero de cuenta");
@@ -73,6 +75,18 @@ public class CuentaService {
         }
     }
     
+    public void consultarSaldo(CuentaClass c){
+        
+        System.out.println("Su saldo es: "+c.getSaldoActual());
+        
+    }
+    public void consultarDatos(CuentaClass c){
+        
+        System.out.println("Nombre :"+c.getNombre());
+        System.out.println("DNI: "+c.getDNI());
+        System.out.println("Nº de cuenta: "+c.getNumeroCuenta());
+        
+    }
     
     
     

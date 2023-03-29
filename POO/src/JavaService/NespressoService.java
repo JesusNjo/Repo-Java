@@ -31,9 +31,9 @@ public class NespressoService {
 
     Scanner input = new Scanner(System.in);
 
-    NespressoClass n = new NespressoClass();
 
-    public NespressoClass llenarCafetera(NespressoClass cafe) {
+    public NespressoClass llenarCafetera() {
+    NespressoClass cafe = new NespressoClass();
 
         System.out.println("¿Cual es la capacidad maxima de la cafetera?");
         cafe.setCapacidadMaxima(input.nextInt());
@@ -43,12 +43,17 @@ public class NespressoService {
     }
 
     public int servirTaza(NespressoClass c) {
+        if(c.getCantidadActual() == 0){
+            System.out.println("Lo sentimos no hay cafe disponible en este momento.");
+        }else{
+            
         System.out.println("Ingrese el tamaño de su taza (VACIA)");
         int taza = input.nextInt();
-
+        
+        
         if (c.getCantidadActual() == taza) {
+            System.out.println("La cafetera quedo vacia y la taza fue llenada con "+c.getCantidadActual());
             c.setCantidadActual(0);
-            System.out.println("La cafetera quedo vacia");
         } else if (c.getCantidadActual() < taza) {
 
             System.out.println("El cafe no es suficiente, pero se llena con lo que tiene disponible");
@@ -59,9 +64,10 @@ public class NespressoService {
             System.out.println("Se lleno la taza y quedo disponible: "+c.getCantidadActual());
         }
 
-        return c.getCantidadActual();
     }
-    
+        return c.getCantidadActual();
+            }
+
     public int vaciarCafetera(NespressoClass c){
         
         c.setCantidadActual(0);
@@ -79,6 +85,8 @@ public class NespressoService {
             v.setCantidadActual(cap+ v.getCantidadActual());
             System.out.println("La cafetera tiene actualmente la cantidad de: "+ v.getCantidadActual());
         
+        }else{
+            System.out.println("Disculpe, la cafetera no tiene espacio para agregar esa cantidad");
         }
         
         return v.getCantidadActual();

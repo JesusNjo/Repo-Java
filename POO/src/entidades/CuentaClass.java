@@ -26,16 +26,16 @@ public class CuentaClass {
     private int numeroCuenta;
     private long DNI;
     private int saldoActual;
-    private double intereses;
+    private String nombre;
 
     public CuentaClass() {
     }
 
-    public CuentaClass(int numeroCuenta, long DNI, int saldoActual, double intereses) {
+    public CuentaClass(int numeroCuenta, long DNI, int saldoActual,String nombre) {
         this.numeroCuenta = numeroCuenta;
         this.DNI = DNI;
         this.saldoActual = saldoActual;
-        this.intereses = intereses;
+        this.nombre = nombre;
     }
     // GET AND SET 
 
@@ -63,17 +63,12 @@ public class CuentaClass {
         this.saldoActual = saldoActual;
     }
 
-  
-
-    public double getIntereses() {
-        return intereses;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setIntereses(int intereses) {
-        this.intereses = intereses;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
-    
-    
     
 }
