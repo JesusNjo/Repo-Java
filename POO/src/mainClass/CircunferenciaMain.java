@@ -10,8 +10,8 @@ e) Método perimetro(): para calcular el perímetro (Perimetro = 2 ∗ π ∗ ra
  */
 package mainClass;
 
+import JavaService.CircuferenciaService;
 import entidades.CircuferenciaClass;
-import java.util.Scanner;
 
 /**
  *
@@ -23,16 +23,14 @@ public class CircunferenciaMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CircuferenciaClass radio = new CircuferenciaClass();
+        CircuferenciaService radio = new CircuferenciaService();
+        CircuferenciaClass r = radio.crearCircunferencia();
+        
+        
+        System.out.println(radio.area(r));
+        System.out.println(radio.perimetro(r));
+       
 
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Ingrese los datos de su parametro");
-        radio.setRadio(input.nextDouble());
-
-        System.out.println(radio.crearCircunferencia());
-        System.out.println("El area de su parametro es: " + radio.area());
-        System.out.println("El perimetro de su parametro es: " + radio.perimetro());
-
+       
     }
 }

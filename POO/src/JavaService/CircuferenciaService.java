@@ -19,13 +19,31 @@ import java.util.Scanner;
  */
 public class CircuferenciaService {
     
-    
-    CircuferenciaClass radio = new CircuferenciaClass();
     Scanner input = new Scanner(System.in);
-   
-        
+     
+    
+    public CircuferenciaClass crearCircunferencia(){
+    CircuferenciaClass radio = new CircuferenciaClass();
+        System.out.println("Ingrese el tamaño de su radio");
+        radio.setRadio(input.nextDouble());
+
+        return radio;
+
     
     }
+    public double area(CircuferenciaClass a){
+        
+        a.setArea(Math.PI * (a.getRadio() * a.getRadio()));
+        
+        return a.getArea();
+ 
+    }
+    public double perimetro(CircuferenciaClass p){
+        p.setPerimetro(2 * Math.PI * p.getRadio());
+        
+        return p.getPerimetro();   
+    }
+   }
     
     
     

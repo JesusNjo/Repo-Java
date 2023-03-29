@@ -18,17 +18,45 @@ informa al usuario. Si no, se hace la división y se devuelve el resultado al ma
  */
 package mainClass;
 
+import JavaService.OperacionService;
+import entidades.OperacionClass;
+import java.util.Scanner;
+
 /**
  *
  * @author JesusNjo
  */
-public class OperacionClass {
+public class OperacionMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        OperacionService n = new OperacionService();
+        OperacionClass nV = n.crearOperacion();
+
+        System.out.println("Indique la operación que desea realizar");
+        System.out.println("SUMA: 1, RESTA: 2, MULTIPLICACION: 3, DIVISION: 4");
+        int n1 = input.nextInt();
+
+        if (n1 == 1) {
+
+            System.out.println(n.suma(nV));
+        }
+        if (n1 == 2) {
+            System.out.println(n.resta(nV));
+
+        }
+        if (n1 == 3) {
+
+            System.out.println(n.multi(nV));
+
+        }
+        if (n1 == 4) {
+            System.out.println(n.divi(nV));
+        }
+
     }
-    
+
 }

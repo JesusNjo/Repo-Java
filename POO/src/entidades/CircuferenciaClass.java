@@ -10,8 +10,6 @@ e) Método perimetro(): para calcular el perímetro (Perimetro = 2 ∗ π ∗ ra
  */
 package entidades;
 
-import java.util.Scanner;
-
 /**
  *
  * @author JesusNjo
@@ -19,13 +17,35 @@ import java.util.Scanner;
 public class CircuferenciaClass {
     
     private double radio;
+    private double area;
+    private double perimetro;
 
     public CircuferenciaClass() {
     }
 
-    public CircuferenciaClass(double radio) {
+    public CircuferenciaClass(double radio, double area, double perimetro) {
         this.radio = radio;
+        this.area = area;
+        this.perimetro = perimetro;
     }
+//GET AND SET
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+    }
+
+    public double getPerimetro() {
+        return perimetro;
+    }
+
+    public void setPerimetro(double perimetro) {
+        this.perimetro = perimetro;
+    }
+
+    
 
     
 
@@ -38,23 +58,5 @@ public class CircuferenciaClass {
     }
     
     
-    public double crearCircunferencia(){
-        
-        return this.radio;
-    }
-    
-    public double area(){
-        
-        double Area = Math.PI * (this.radio*this.radio);
-        return Area;
-    }
-    
-    public double perimetro (){
-        
-        double Perimetro = 2 * Math.PI * this.radio;
-        return Perimetro;
-    }
-
    
-    
 }
