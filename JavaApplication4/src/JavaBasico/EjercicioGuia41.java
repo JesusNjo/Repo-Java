@@ -19,7 +19,7 @@ public class EjercicioGuia41 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int n;
-        System.out.println("Ingrese el tamaño los vectors");
+        System.out.println("Ingrese el tamaño los vectores");
         n = input.nextInt();
         int[] vec1 = new int[n];
         int[] vec2 = new int[n];
@@ -29,13 +29,17 @@ public class EjercicioGuia41 {
             vec1[i] = input.nextInt();
             vec2[i] = input.nextInt();
 
+            if (vec1[i] != vec2[i]) {
+                break;
+            }
         }
         for (int i = 0; i < n; i++) {
             if (vec1[i] == vec2[i]) {
 
-                System.out.println("Son iguales");
-            } else {
-                System.out.println("Se encontró un elemento diferente");
+                System.out.println("Son iguales: " + vec1[i] + "-" + vec2[i]);
+            }
+            if (vec1[i] != vec2[i]) {
+                System.out.println("Los elementos son diferentes: " + vec1[i] + "-" + vec2[i]);
                 break;
             }
         }
