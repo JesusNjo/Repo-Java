@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaService;
+package practicemtf;
+
+import java.util.Scanner;
 
 /**
  *
  * @author JesusNjo
  */
-public class MascotasService {
+public class Pruebas {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
+        Scanner input = new Scanner(System.in);
+      
     }
     
 }

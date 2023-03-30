@@ -46,9 +46,10 @@ public class NespressoMain {
             System.out.println("1: Servir la taza");
             System.out.println("2: Vaciar la cafetera");
             System.out.println("3: Agregar cafe");
-
-            System.out.println("6: Salir");
+            System.out.println("4: Salir");
+            
             op = input.nextInt();
+            
             switch (op) {
 
                 case 1:

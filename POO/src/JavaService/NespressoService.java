@@ -37,7 +37,6 @@ public class NespressoService {
 
         System.out.println("¿Cual es la capacidad maxima de la cafetera?");
         cafe.setCapacidadMaxima(input.nextInt());
-
         cafe.setCantidadActual(cafe.getCapacidadMaxima());
         return cafe;
     }
