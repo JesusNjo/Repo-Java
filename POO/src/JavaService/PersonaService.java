@@ -65,11 +65,11 @@ public class PersonaService {
 
     public double calcularIMC(PersonaClass c) {
 
-        double peso = c.getPeso() / Math.pow(c.getAltura(), 2);
+        double imc = c.getPeso() / Math.pow(c.getAltura(), 2);
 
-        if (peso < 20) {
+        if (imc < 20) {
             return -1;
-        } else if (peso > 20 && peso <= 25) {
+        } else if (imc >= 20 && imc <= 25) {
 
             return 0;
         } else {

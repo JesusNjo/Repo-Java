@@ -41,44 +41,45 @@ import entidades.PersonaClass;
  */
 public class PersonaMain {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         PersonaService persona = new PersonaService();
-        PersonaClass p1 = persona.crearPersona();
-        PersonaClass p2 = persona.crearPersona();
-        PersonaClass p3 = persona.crearPersona();
-        PersonaClass p4 = persona.crearPersona();
-        
-        System.out.println(persona.calcularIMC(p1));
-        
-        int menorDeEdad=0, esMayorDeEdad=0;
-        int pesoIdeal=0, pesoBajo=0, pesoAlto=0;
-        for(int i = 0; i<1;i++){
-           
-            if(persona.calcularIMC(p1) == -1 || persona.calcularIMC(p2) == -1 ||persona.calcularIMC(p3) == -1 || persona.calcularIMC(p4) == -1){
+        PersonaClass[] ArrayPersonas = new PersonaClass[4];
+
+        for (int i = 0; i < ArrayPersonas.length; i++) {
+            ArrayPersonas[i] = persona.crearPersona();
+        }
+
+        int menorDeEdad = 0, esMayorDeEdad = 0;
+        int pesoIdeal = 0, pesoBajo = 0, pesoAlto = 0;
+        for (int i = 0; i < ArrayPersonas.length; i++) {
+
+            if (persona.calcularIMC(ArrayPersonas[i]) == -1) {
                 pesoBajo++;
-            }else if(persona.calcularIMC(p1) == 0 || persona.calcularIMC(p2) == 0 || persona.calcularIMC(p3) == 0 || persona.calcularIMC(p4) == 0){
+            } else if (persona.calcularIMC(ArrayPersonas[i]) == 0) {
                 pesoIdeal++;
-            }else{
+            } else {
                 pesoAlto++;
             }
-            
-            if(persona.esMayorDeEdad(p1)==true || persona.esMayorDeEdad(p2)==true || persona.esMayorDeEdad(p3)==true || persona.esMayorDeEdad(p4)==true){
+
+            if (persona.esMayorDeEdad(ArrayPersonas[i])) {
                 esMayorDeEdad++;
-            }else{
+            } else {
                 menorDeEdad++;
             }
-            
         }
-        System.out.println("Personas con deficid te peso: "+pesoBajo);
-        System.out.println("Personas con peso ideal: "+pesoIdeal);
-        System.out.println("Personas con sobre peso: "+pesoAlto);
+
+        System.out.println("Personas con deficid te peso: " + pesoBajo);
+        System.out.println("Personas con peso ideal: " + pesoIdeal);
+        System.out.println("Personas con sobre peso: " + pesoAlto);
         System.out.println("----------");
-        System.out.println("Personas mayores de edad: "+esMayorDeEdad);
-        System.out.println("Personas menores de edad: "+menorDeEdad);
+        System.out.println("Personas mayores de edad: " + esMayorDeEdad);
+        System.out.println("Personas menores de edad: " + menorDeEdad);
+
+        System.out.println();
+        System.out.println("-----------------------------------");
+        System.out.println("El porcentaje de personas personas con deficid de peso es: " + pesoBajo * 100 / ArrayPersonas.length + "%");
+        System.out.println("El porcentaje de personas personas con peso ideal es: " + pesoIdeal * 100 / ArrayPersonas.length + "%");
+        System.out.println("El porcentaje de personas personas con sobre peso es: " + pesoAlto * 100 / ArrayPersonas.length + "%");
     }
-    
-    
+
 }
