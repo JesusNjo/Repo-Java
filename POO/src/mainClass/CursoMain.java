@@ -23,6 +23,9 @@ se repite el encuentro.
  */
 package mainClass;
 
+import JavaService.CursoService;
+import entidades.CursoClass;
+
 /**
  *
  * @author JesusNjo
@@ -33,7 +36,12 @@ public class CursoMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        CursoService newCurs = new CursoService();
+        CursoClass curso1 = newCurs.crearCurso();
+
+        newCurs.mostrarInfo(curso1);
+        System.out.println();
+        newCurs.calcularGananciaSemanal(curso1);
     }
-    
+
 }

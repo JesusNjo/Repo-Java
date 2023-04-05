@@ -28,17 +28,18 @@ package entidades;
  * @author JesusNjo
  */
 public class CursoClass {
+
     private String nombreCurso;
     private int cantidadHorasPorDia;
     private int cantidadDiasPorSemana;
-    private boolean turno;
-    private double precioPorHora;
-    private String[] alumnos;
+    private String turno;
+    private int precioPorHora;
+    private String[] alumnos = new String[5];
 
     public CursoClass() {
     }
 
-    public CursoClass(String nombreCurso, int cantidadHorasPorDia, int cantidadDiasPorSemana, boolean turno, double precioPorHora, String[] alumnos) {
+    public CursoClass(String nombreCurso, int cantidadHorasPorDia, int cantidadDiasPorSemana, String turno, int precioPorHora, String[] alumnos) {
         this.nombreCurso = nombreCurso;
         this.cantidadHorasPorDia = cantidadHorasPorDia;
         this.cantidadDiasPorSemana = cantidadDiasPorSemana;
@@ -46,10 +47,8 @@ public class CursoClass {
         this.precioPorHora = precioPorHora;
         this.alumnos = alumnos;
     }
-    
-    
-    //GET AND SET
 
+    //GET AND SET
     public String getNombreCurso() {
         return nombreCurso;
     }
@@ -74,19 +73,19 @@ public class CursoClass {
         this.cantidadDiasPorSemana = cantidadDiasPorSemana;
     }
 
-    public boolean isTurno() {
+    public String getTurno() {
         return turno;
     }
 
-    public void setTurno(boolean turno) {
+    public void setTurno(String turno) {
         this.turno = turno;
     }
 
-    public double getPrecioPorHora() {
+    public int getPrecioPorHora() {
         return precioPorHora;
     }
 
-    public void setPrecioPorHora(double precioPorHora) {
+    public void setPrecioPorHora(int precioPorHora) {
         this.precioPorHora = precioPorHora;
     }
 
@@ -97,6 +96,10 @@ public class CursoClass {
     public void setAlumnos(String[] alumnos) {
         this.alumnos = alumnos;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Nombre del curso: " + nombreCurso + "\nCantidad de horas por dia: " + cantidadHorasPorDia + " Hrs\nCantidad de dias por semana: " + cantidadDiasPorSemana + " Días\nTurno:" + turno + "\nPrecio por hora: " + precioPorHora + "$";
+    }
+
 }

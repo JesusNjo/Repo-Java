@@ -81,7 +81,7 @@ public class MovilClass {
 
     @Override
     public String toString() {
-        return "marca=" + marca + ", modelo=" + modelo + ", memoriaRam=" + memoriaRam + ", almacenamiento=" + almacenamiento;
+        return "Marca: " + marca + "\nModelo: " + modelo + "\nMemoriaRam: " + memoriaRam + "GB\nAlmacenamiento:" + almacenamiento+"GB\n\n";
     }
     
     

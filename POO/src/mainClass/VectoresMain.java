@@ -27,7 +27,7 @@ public class VectoresMain {
         vs.llenarArreglo(arreglos);
         System.out.println("------------------");
         vs.ordenarArreglo(arreglos);
-                System.out.println("------------------");
+        System.out.println("------------------");
 
         vs.llenarArregloChicoConGrande(arreglos);
     }

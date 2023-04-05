@@ -1,5 +1,5 @@
 /*
- Un profesor particular está dando cursos para grupos de cinco alumnos y necesita un
+  Un profesor particular está dando cursos para grupos de cinco alumnos y necesita un
 programa para organizar la información de cada curso. Para ello, crearemos una clase
 entidad llamada Curso, cuyos atributos serán: nombreCurso, cantidadHorasPorDia,
 cantidadDiasPorSemana, turno (mañana o tarde), precioPorHora y alumnos. Donde
@@ -23,10 +23,75 @@ se repite el encuentro.
  */
 package JavaService;
 
+import entidades.CursoClass;
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  *
  * @author JesusNjo
  */
 public class CursoService {
-    
+
+    Scanner input = new Scanner(System.in).useDelimiter("\n");
+
+    public CursoClass crearCurso() {
+        CursoClass curso = new CursoClass();
+        System.out.println("Ingrese el nombre del curso");
+        curso.setNombreCurso(input.next());
+        System.out.println("Ingrese la cantidad de horas cursadas por dia");
+        curso.setCantidadHorasPorDia(input.nextInt());
+        System.out.println("Ingrese la cantidad de dias cursadas por semana");
+        curso.setCantidadDiasPorSemana(input.nextInt());
+        int turno;
+
+        do {
+            System.out.println("¿Que turno se realizará el curso? 1: Mañana / 2: Tarde");
+            turno = input.nextInt();
+            if (turno == 1) {
+                curso.setTurno("Mañana");
+            } else if (turno == 2) {
+                curso.setTurno("Tarde");
+            } else {
+                System.out.println("El turno que indico no se encuentra disponible para el curso");
+            }
+        } while (turno != 1 && turno != 2);
+
+        System.out.println("Ingrese el costo del curso por hora");
+        curso.setPrecioPorHora(input.nextInt());
+        System.out.println("Ingrese los alumnos a cursar");
+        cargarAlumnos(curso);
+        return curso;
+
+    }
+
+    public String[] cargarAlumnos(CursoClass alum) {
+        String[] nombresAlumnos = new String[5];
+
+        for (int i = 0; i < nombresAlumnos.length; i++) {
+            System.out.println("Por favor ingrese el nombre del alumno " + (i + 1));
+            nombresAlumnos[i] = input.next();
+
+        }
+        alum.setAlumnos(nombresAlumnos);
+
+        return alum.getAlumnos();
+
+    }
+
+    public void calcularGananciaSemanal(CursoClass g) {
+        int gananciaDiaria = g.getCantidadHorasPorDia() * g.getPrecioPorHora();
+        int gananciaSemanal = gananciaDiaria * g.getCantidadDiasPorSemana();
+        int total = gananciaSemanal * g.getAlumnos().length;
+        System.out.println("Su ganancia semanal será: " + total + "$");
+    }
+
+    public void mostrarInfo(CursoClass curso) {
+        System.out.println();
+        System.out.println("   ------Información del curso------    ");
+        System.out.println();
+        System.out.println(curso.toString());
+        System.out.println("Alumnos: " + Arrays.toString(curso.getAlumnos()));
+    }
+
 }
