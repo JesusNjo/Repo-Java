@@ -80,6 +80,12 @@ public class PersonaMain {
         System.out.println("El porcentaje de personas personas con deficid de peso es: " + pesoBajo * 100 / ArrayPersonas.length + "%");
         System.out.println("El porcentaje de personas personas con peso ideal es: " + pesoIdeal * 100 / ArrayPersonas.length + "%");
         System.out.println("El porcentaje de personas personas con sobre peso es: " + pesoAlto * 100 / ArrayPersonas.length + "%");
+
+        System.out.println("-----------------------------------");
+        
+        System.out.println("El porcentaje de personas mayores son: "+esMayorDeEdad * 100 / ArrayPersonas.length+ "%");
+        System.out.println("El porcentaje de personas mayores son: "+menorDeEdad * 100 / ArrayPersonas.length+ "%");
+
     }
 
 }
