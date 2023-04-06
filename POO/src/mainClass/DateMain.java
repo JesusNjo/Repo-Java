@@ -34,11 +34,9 @@ public class DateMain {
         System.out.println("Ingrese el año");
         f.setAnio(input.nextInt());
 
-        int dia = f.getDia();
-        int mes = f.getMes();
-        int anio = f.getAnio();
+        
 
-        Date fecha = new Date(anio - 1900, mes - 1, dia);
+        Date fecha = new Date(f.getAnio() - 1900, f.getMes() - 1, f.getDia());
         Date hoy = new Date();
 
         int antiguedad = hoy.getYear() - fecha.getYear();

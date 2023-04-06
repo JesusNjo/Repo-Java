@@ -68,7 +68,7 @@ public class MatematicaService {
                 return Math.sqrt(r.getNum1());
             }else{
                 
-            return Math.sqrt(r.getNum1());
+            return Math.sqrt(r.getNum2());
             }
         }
     }

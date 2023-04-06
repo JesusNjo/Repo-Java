@@ -17,7 +17,7 @@ anterior.
  */
 package entidades;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -26,12 +26,12 @@ import java.util.Date;
 public class Persona2Class {
     
     private String nombre;
-    private Date fechaDeNacimiento;
+    private LocalDate fechaDeNacimiento;
 
     public Persona2Class() {
     }
 
-    public Persona2Class(String nombre, Date fechaDeNacimiento) {
+    public Persona2Class(String nombre, LocalDate fechaDeNacimiento) {
         this.nombre = nombre;
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
@@ -46,17 +46,17 @@ public class Persona2Class {
         this.nombre = nombre;
     }
 
-    public Date getFechaDeNacimiento() {
+    public LocalDate getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", fechaDeNacimiento=" + fechaDeNacimiento;
+        return "\nNombre: " + nombre + "\nFecha de nacimiento: " + fechaDeNacimiento;
     }
     
     

@@ -20,13 +20,12 @@ public class Persona2Main {
     public static void main(String[] args) {
         Persona2Service persona = new Persona2Service();
         Persona2Class p1 = persona.crearPersona();
-        
-        
+
         System.out.print("Su edad es: ");
-        System.out.println(persona.calcularEdad(p1));
+        persona.calcularEdad(p1);
         System.out.println(persona.menorQue(p1));
         System.out.println(persona.mostrarPersona(p1));
-        
+
     }
-    
+
 }

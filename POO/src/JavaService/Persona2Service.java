@@ -18,7 +18,9 @@ anterior.
 package JavaService;
 
 import entidades.Persona2Class;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Scanner;
 
 public class Persona2Service {
@@ -34,29 +36,33 @@ public class Persona2Service {
         int dia = input.nextInt();
         int mes = input.nextInt();
         int anio = input.nextInt();
-        Date fechaN = new Date(anio - 1900, mes - 1, dia);
+        LocalDate fechaN = LocalDate.of(anio, mes, dia);
 
         p.setFechaDeNacimiento(fechaN);
         return p;
 
     }
 
-    public int calcularEdad(Persona2Class c) {
+    public void calcularEdad(Persona2Class c) {
 
-        Date hoy = new Date();
-        int edad = (hoy.getYear() - c.getFechaDeNacimiento().getYear());
-
-        return edad;
+        LocalDate hoy = LocalDate.of(LocalDateTime.now().getYear(),LocalDateTime.now().getMonth(),LocalDateTime.now().getDayOfMonth());
+        
+        Period edad = Period.between(c.getFechaDeNacimiento(), hoy);
+        
+        System.out.println(edad.getYears());
+        
     }
 
     public boolean menorQue(Persona2Class e) {
 
         System.out.println("Que edad tiene la nueva persona");
         int edad = input.nextInt();
+        System.out.print("¿La nueva persona es menor que "+e.getNombre()+"? ");
         
-        System.out.print("¿La nueva persona es menor "+e.getNombre()+"? ");
-        return calcularEdad(e) > edad;
+        return LocalDateTime.now().getYear()-e.getFechaDeNacimiento().getYear()>edad;
     }
+    
+    
     
     public String mostrarPersona(Persona2Class p){
         

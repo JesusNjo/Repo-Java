@@ -47,7 +47,4 @@ public class MatematicaClass {
     public void setNum2(double num2) {
         this.num2 = num2;
     }
-    
-    
-    
 }

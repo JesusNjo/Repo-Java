@@ -1,5 +1,5 @@
 /*
- Pongamos de lado un momento el concepto de POO, ahora vamos a trabajar solo con la
+Pongamos de lado un momento el concepto de POO, ahora vamos a trabajar solo con la
 clase Date. En este ejercicio deberemos instanciar en el main, una fecha usando la clase
 Date, para esto vamos a tener que crear 3 variables, dia, mes y anio que se le pedirán al
 usuario para poner el constructor del objeto Date. Una vez creada la fecha de tipo Date,
