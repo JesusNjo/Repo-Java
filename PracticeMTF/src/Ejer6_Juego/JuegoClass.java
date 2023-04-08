@@ -59,7 +59,7 @@ Longitud de la palabra: 6
 Mensaje: La letra no pertenece a la palabra
 Mensaje: Lo sentimos, no hay más oportunidades
  */
-package entidades;
+package Ejer6_Juego;
 
 /**
  *

@@ -3,25 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaService;
+package Practicas;
 
-import entidades.JuegoClass;
 import java.util.Scanner;
 
 /**
  *
  * @author JesusNjo
  */
-public class JuegoService {
-    
-    
-    public void crearJuego(JuegoClass juego){
+public class Pruebas {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Ingrese la cantidad la palabra");
-        String[] vec = new String[5];
-        juego.setBuscar(vec);
-        
-        
-        
+      
     }
+    
 }

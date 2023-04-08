@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicemtf;
+package Ejer6_Juego;
 
+import Ejer6_Juego.JuegoClass;
 import java.util.Scanner;
 
 /**
  *
  * @author JesusNjo
  */
-public class Pruebas {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-      
-    }
+public class JuegoService {
     
+    
+    public void crearJuego(JuegoClass juego){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Ingrese la cantidad la palabra");
+        String[] vec = new String[5];
+        juego.setBuscar(vec);
+        
+        
+        
+    }
 }
