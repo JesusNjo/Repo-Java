@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author JesusNjo
  */
 //SE CREA LA CLASE
-public class OperacionService {
+public class OperacionService extends OperacionClass {
 
     // DE INICIA EL SCANNER PARA PEDIR DATOS
     Scanner input = new Scanner(System.in);

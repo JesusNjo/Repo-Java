@@ -21,7 +21,11 @@ en una semana por curso. Para ello, se deben multiplicar la cantidad de horas po
 día, el precio por hora, la cantidad de alumnos y la cantidad de días a la semana que
 se repite el encuentro.
  */
-package entidades;
+package Practicas;
+
+import java.lang.reflect.Array;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,17 +33,16 @@ package entidades;
  */
 public class CursoClass {
 
+    Scanner input = new Scanner(System.in).useDelimiter("\n");
+
     private String nombreCurso;
-    private int cantidadHorasPorDia;
-    private int cantidadDiasPorSemana;
+    private byte cantidadHorasPorDia;
+    private byte cantidadDiasPorSemana;
     private String turno;
     private int precioPorHora;
     private String[] alumnos;
 
-    public CursoClass() {
-    }
-
-    public CursoClass(String nombreCurso, int cantidadHorasPorDia, int cantidadDiasPorSemana, String turno, int precioPorHora, String[] alumnos) {
+    public CursoClass(String nombreCurso, byte cantidadHorasPorDia, byte cantidadDiasPorSemana, String turno, int precioPorHora, String[] alumnos) {
         this.nombreCurso = nombreCurso;
         this.cantidadHorasPorDia = cantidadHorasPorDia;
         this.cantidadDiasPorSemana = cantidadDiasPorSemana;
@@ -48,7 +51,9 @@ public class CursoClass {
         this.alumnos = alumnos;
     }
 
-    //GET AND SET
+    public CursoClass() {
+    }
+
     public String getNombreCurso() {
         return nombreCurso;
     }
@@ -57,19 +62,19 @@ public class CursoClass {
         this.nombreCurso = nombreCurso;
     }
 
-    public int getCantidadHorasPorDia() {
+    public byte getCantidadHorasPorDia() {
         return cantidadHorasPorDia;
     }
 
-    public void setCantidadHorasPorDia(int cantidadHorasPorDia) {
+    public void setCantidadHorasPorDia(byte cantidadHorasPorDia) {
         this.cantidadHorasPorDia = cantidadHorasPorDia;
     }
 
-    public int getCantidadDiasPorSemana() {
+    public byte getCantidadDiasPorSemana() {
         return cantidadDiasPorSemana;
     }
 
-    public void setCantidadDiasPorSemana(int cantidadDiasPorSemana) {
+    public void setCantidadDiasPorSemana(byte cantidadDiasPorSemana) {
         this.cantidadDiasPorSemana = cantidadDiasPorSemana;
     }
 
@@ -97,9 +102,48 @@ public class CursoClass {
         this.alumnos = alumnos;
     }
 
-    @Override
-    public String toString() {
-        return "Nombre del curso: " + nombreCurso + "\nCantidad de horas por dia: " + cantidadHorasPorDia + " Hrs\nCantidad de dias por semana: " + cantidadDiasPorSemana + " Días\nTurno:" + turno + "\nPrecio por hora: " + precioPorHora + "$";
+   
+
+
+
+    public CursoClass crearCurso() {
+        CursoClass cur = new CursoClass();
+        System.out.println("Ingrese el nombre del curso");
+        cur.setNombreCurso(input.next());
+        System.out.println("Ingrese la cantidad de horas a cursar por dia");
+        cur.setCantidadHorasPorDia(input.nextByte());
+        System.out.println("Ingrese la cantidad de dias a cursar por semana");
+        cur.setCantidadDiasPorSemana(input.nextByte());
+        System.out.println("¿Que turno desea crear este curso?");
+        String[] opciones = {"Mañana", "Tarde", "Noche"};
+        int opcionSeleccionada = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Mañana, tarde, noche", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
+        System.out.println(opcionSeleccionada);
+
+        if (opcionSeleccionada == 0) {
+            cur.setTurno(opciones[0]);
+            System.out.println(cur.getTurno());
+        } else if (opcionSeleccionada == 1) {
+            cur.setTurno(opciones[1]);
+        } else if (opcionSeleccionada == 2) {
+            cur.setTurno(opciones[2]);
+        }
+        System.out.println("Ingrese el costo del curso por hora");
+        cur.setPrecioPorHora(input.nextInt());
+        
+        int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de alumnos a cursar")); //Para crear prompt en JAVA
+        System.out.println(num);
+        System.out.println("Ingrese los alumnos a cursar: ");
+        String[] alum = new String[num];
+        for(int i = 0; i<alum.length;i++){
+            alum[i] = input.next();
+        }
+        cur.setAlumnos(alum);
+        return cur;
+    }
+    
+    public void mostrarInfo(){
+        CursoClass p1 = new CursoClass();
+        System.out.println("Nombre" + p1.getNombreCurso());
     }
 
 }

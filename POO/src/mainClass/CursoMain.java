@@ -40,7 +40,7 @@ public class CursoMain {
         CursoClass curso1 = newCurs.crearCurso();
 
         newCurs.mostrarInfo(curso1);
-        System.out.println();
+       
         newCurs.calcularGananciaSemanal(curso1);
     }
 

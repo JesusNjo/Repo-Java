@@ -21,6 +21,7 @@ package entidades;
  */
 public class MovilClass {
     private String marca;
+    private int precio;
     private String modelo;
     private int memoriaRam;
     private int almacenamiento;
@@ -29,12 +30,13 @@ public class MovilClass {
     public MovilClass() {
     }
 
-    public MovilClass(String marca, String modelo, int memoriaRam, int almacenamiento, int[] codigo) {
+    public MovilClass(String marca,int precio, String modelo, int memoriaRam, int almacenamiento, int[] codigo) {
         this.marca = marca;
         this.modelo = modelo;
         this.memoriaRam = memoriaRam;
         this.almacenamiento = almacenamiento;
         this.codigo = codigo;
+        this.precio = precio;
     }
     
     //GET AND SET
@@ -47,6 +49,15 @@ public class MovilClass {
         this.marca = marca;
     }
 
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+    
+    
     public String getModelo() {
         return modelo;
     }
@@ -81,7 +92,7 @@ public class MovilClass {
 
     @Override
     public String toString() {
-        return "Marca: " + marca + "\nModelo: " + modelo + "\nMemoriaRam: " + memoriaRam + "GB\nAlmacenamiento:" + almacenamiento+"GB\n\n";
+        return "Marca: " + marca +"\nPrecio: " + precio + "$\nModelo: " + modelo + "\nMemoriaRam: " + memoriaRam + "GB\nAlmacenamiento:" + almacenamiento+"GB\n\n";
     }
     
     

@@ -5,20 +5,23 @@
  */
 package Practicas;
 
-import java.util.Scanner;
-
 /**
  *
  * @author JesusNjo
  */
-public class Pruebas {
+public class ProductosMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-      
+        // TODO code application logic here
+        
+        ProductosService prod = new ProductosService();
+        Productos p1 = prod.almacenarComidaS();
+        
+        
+       prod.calcularElPrecio(p1);
     }
     
 }

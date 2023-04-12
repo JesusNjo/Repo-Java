@@ -16,6 +16,7 @@ números de un celular. Para ello, puede utilizarse un bucle repetitivo
 package JavaService;
 
 import entidades.MovilClass;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -23,13 +24,15 @@ import java.util.Scanner;
  * @author JesusNjo
  */
 public class MovilService {
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
     
     
     public MovilClass cargarCelular(){
         MovilClass tlf = new MovilClass();
         System.out.println("Ingrese la marca de su equipo");
         tlf.setMarca(input.next());
+        System.out.println("Ingrese el costo de su equipo");
+        tlf.setPrecio(input.nextInt());
         System.out.println("Ingrese el modelo de su equipo");
         tlf.setModelo(input.next());
         System.out.println("Ingrese la memoria RAM del equipo");

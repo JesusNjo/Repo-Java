@@ -20,7 +20,7 @@ public class PuntosMain {
         PuntoService pointS = new PuntoService();
         PuntosClass punto = pointS.crearPuntos();
         
-        
+      
         pointS.calcular(punto);
         System.out.println("La distancia entre los dos puntos es: " + pointS.calcular(punto));
     }

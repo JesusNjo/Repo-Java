@@ -45,6 +45,9 @@ public class NIFService {
 
         int resto = (int) (letra.getDNI() % 23);
         letra.setLetra(letraV[resto]);
+        System.out.println(resto);
+        System.out.println(letra.getLetra());
+        
 
     }
 
