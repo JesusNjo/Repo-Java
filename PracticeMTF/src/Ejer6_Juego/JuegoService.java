@@ -24,76 +24,85 @@ se quede sin intentos. Este método se llamará en el main.
  */
 package Ejer6_Juego;
 
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.Arrays;
 
 /**
  *
-
+ *
  */
 public class JuegoService {
 
-    Scanner leer = new Scanner(System.in);
+    Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+
     JuegoClass juego = new JuegoClass();
 
     public JuegoClass crearJuego() {
-        String[] palabras = {"Objetos", "Arrays", "POO", "Java", "JavaScript"};
-        juego.setCantLetras(0);
-        System.out.println("Ingrese una palabra");
-        juego.setBuscar(palabras[(int) Math.random() * 5].split(""));
+        String[] palabras = {"objetos", "arrays", "poo", "java", "javascript","milenio","react","html","longitud","dinero"};
+        juego.setBuscar(palabras[(int) (Math.random() * 10)].split(""));
         return juego;
     }
 
     public void longitudVec(JuegoClass juego) {
-        System.out.println("La longitud de la palabra es " + juego.getBuscar().length
-                + "\nTiene un intento por letra!");
-
+        System.out.println("La longitud de la palabra es: " + juego.getBuscar().length);
+        juego.setJugadasMax(juego.getBuscar().length);
     }
 
-    public void buscar(JuegoClass b) {
-        String[] palabraCompleta = new String[b.getBuscar().length];
-        String letra;
-        int x;
-        System.out.println("Ingrese una letra");
-        letra = leer.next();
-        x = 0;
-        for (int i = 0; i < b.getBuscar().length; i++) {
-            if (letra.equalsIgnoreCase(b.getBuscar()[i])) {
-                
-                if(letra.equals(b.getBuscar()[i].substring(i+1))){
-                    x++;
-                }
-                
-                
-            }
-        }
+    public void buscar(JuegoClass c) {
 
-        if (x > 0) {
-            System.out.println("La letra esta: "+x+"veces");
-            System.out.println("La letra si se encuentra en la palabra");
+        int intentos = c.getJugadasMax();
+        String[] vectorAx = new String[c.getBuscar().length];
+        Arrays.setAll(vectorAx, i->"_");
+       boolean sonIguales = false;
 
-        } else {
-            System.out.println("La letra no se encuentra en la palabra.");
-
-        }
-    }
-
-    public boolean encontradas(JuegoClass b) {
-        int x;
-        int intentos= b.getBuscar().length;
-        intentos--;
-        
-        int longitud = b.getBuscar().length;
-        buscar(b);
         do {
-            if (intentos == longitud) {
-                System.out.println("Se terminaron sus intentos, no lo completó");
-                return true;
-            } else {
-                System.out.println("");
-                return false;
+            System.out.println("Ingrese una letra para el juego");
+            String letra = input.next();
+            int cont = 0;
+            for (int i = 0; i < c.getBuscar().length; i++) {
+                if (letra.equalsIgnoreCase(c.getBuscar()[i])) {
+                    cont++;
+
+                }
             }
-        } while (intentos < longitud);
+            if (cont > 0) {
 
+                for (int i = 0; i < c.getBuscar().length; i++) {
+                    if (c.getBuscar()[i].equals(letra)) {
+                        vectorAx[i] = letra;
+                        System.out.println(Arrays.toString(vectorAx));
+                    }
+                }
+                System.out.println("La letra " + letra + " esta está " + cont + " veces");
+
+            } else {
+                System.out.println("Letra " + letra + " no encontrada");
+                intentos--;
+                System.out.println("Le quedan " + intentos + " intentos");
+            }
+
+            if (Arrays.equals(c.getBuscar(), vectorAx)) {
+                sonIguales = true;
+                System.out.println(Arrays.toString(vectorAx));
+                System.out.println(Arrays.toString(c.getBuscar()));
+
+            }
+
+        } while (sonIguales == false && intentos != 0);
+        if (sonIguales == true) {
+            System.out.println("\nFelicidades. Completo el juego!");
+        } else {
+            System.out.println("\nAcabaron sus intentos! HA PERDIDO");
+        }
     }
-
+    
+    public void juego(JuegoClass c){
+        crearJuego();
+        longitudVec(c);
+        buscar(c);
+    }
 }
+
+
+    

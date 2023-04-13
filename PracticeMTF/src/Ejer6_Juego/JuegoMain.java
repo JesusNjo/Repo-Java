@@ -45,9 +45,11 @@ import java.util.Arrays;
         
         JuegoService iniciar = new JuegoService ();
         JuegoClass objeto = iniciar.crearJuego();
-        System.out.println(Arrays.toString(objeto.getBuscar())); 
-        iniciar.longitudVec(objeto);
-        iniciar.buscar(objeto);
+        
+        iniciar.juego(objeto);
+        //System.out.println(Arrays.toString(objeto.getBuscar())); 
+        //iniciar.longitudVec(objeto);
+        //iniciar.buscar(objeto);
         
         
     }}
