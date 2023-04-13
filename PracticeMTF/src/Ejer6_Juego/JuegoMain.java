@@ -21,50 +21,35 @@ busque una letra que no esté, se le restará uno a sus oportunidades.
  Método juego(): el método juego se encargará de llamar todos los métodos
 previamente mencionados e informará cuando el usuario descubra toda la palabra o
 se quede sin intentos. Este método se llamará en el main.
-*/
-
+ */
 package Ejer6_Juego;
 
+import java.util.Arrays;
 
+/**
+ *
+ * @author JesusNjo
+ */
+public class JuegoMain {
 
-public class JuegoClass {
+    /**
+  package ej6extrapoo;
+import ej6extrapoo.serviceahorcado;
+import java.util.Arrays;
 
-    private String[] buscar;
-    private int cantLetras;
-    private int jugadasMax;
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        JuegoService iniciar = new JuegoService ();
+        JuegoClass objeto = iniciar.crearJuego();
+        System.out.println(Arrays.toString(objeto.getBuscar())); 
+        iniciar.longitudVec(objeto);
+        iniciar.buscar(objeto);
+        
+        
+    }}
+    
 
-    public JuegoClass() {
-    }
-
-   
-    public JuegoClass(String[] buscar, int cantLetras, int jugadasMax) {
-        this.buscar = buscar;
-        this.cantLetras = cantLetras;
-        this.jugadasMax = jugadasMax;
-    }
-
-    public void setBuscar(String[] buscar) {
-        this.buscar = buscar;
-    }
-
-    public void setCantLetras(int cantLetras) {
-        this.cantLetras = cantLetras;
-    }
-
-    public void setJugadasMax(int jugadasMax) {
-        this.jugadasMax = jugadasMax;
-    }
-
-    public String[] getBuscar() {
-        return buscar;
-    }
-
-    public int getCantLetras() {
-        return cantLetras;
-    }
-
-    public int getJugadasMax() {
-        return jugadasMax;
-    }
-
-}

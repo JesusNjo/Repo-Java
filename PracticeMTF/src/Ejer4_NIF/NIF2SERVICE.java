@@ -13,46 +13,43 @@ funciona de la siguiente manera: Para calcular la letra se toma el resto de divi
 número de DNI por 23 (el resultado debe ser un número entre 0 y 22). El método debe
 buscar en un array (vector) de caracteres la posición que corresponda al resto de la
 división para obtener la letra correspondiente
-}
  */
+ 
 package Ejer4_NIF;
 
-import java.lang.reflect.Array;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
  *
  * @author JesusNjo
  */
-public class NIFService {
-
-    public NIFClass crearNif() {
-        NIFClass n = new NIFClass();
-        Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Ingrese su DNI");
-        n.setDNI(input.nextLong());
-        
-        return n;
-    }
-
-    public void calcularLetra(NIFClass letra) {
+public class NIF2SERVICE {
+    Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+    
+    public NIF2CLASS crearNif(){
+        NIF2CLASS nif = new NIF2CLASS();
+        System.out.println("Ingrese su DNI correspondiente.");
+        nif.setDni(input.nextLong());
+        String letras="TRWAGMYFPDXBNJZSQVHLCKE";
         String[] letraV = new String[23];
-        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-        for (int i = 0; i < letraV.length; i++) {
-            letraV[i] = letras.substring(i, i + 1);
+        
+        for(int i =0; i<letraV.length;i++){
+            letraV[i]= letras.substring(i, i+1);
         }
-
-        int resto = (int) (letra.getDNI() % 23);
-        letra.setLetra(letraV[resto]);
+        int resto = (int) (nif.getDni()%23);
         System.out.println(resto);
-        System.out.println(letra.getLetra());
-
+        nif.setLetra(letraV[resto]);
+        
+        
+        return nif;
     }
-
-    public void mostrar(NIFClass m) {
-        calcularLetra(m);
-
-        System.out.println(m.getDNI() + "-" + m.getLetra());
+    public void mostrar(NIF2CLASS c){
+        System.out.println(c.getDni());
+        System.out.println(c.getLetra());
+        System.out.println(c.getDni()+"-"+c.getLetra());
     }
+    
+    
+    
 }

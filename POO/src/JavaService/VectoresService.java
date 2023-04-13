@@ -21,7 +21,7 @@ public class VectoresService {
     public VectoresClass crearVector() {
         VectoresClass arr = new VectoresClass();
 
-        return new VectoresClass();
+        return arr;
     }
 
     public void llenarArreglo(VectoresClass a) {

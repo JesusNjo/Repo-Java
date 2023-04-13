@@ -13,46 +13,41 @@ funciona de la siguiente manera: Para calcular la letra se toma el resto de divi
 número de DNI por 23 (el resultado debe ser un número entre 0 y 22). El método debe
 buscar en un array (vector) de caracteres la posición que corresponda al resto de la
 división para obtener la letra correspondiente
-}
  */
+ 
 package Ejer4_NIF;
-
-import java.lang.reflect.Array;
-import java.util.Scanner;
 
 /**
  *
  * @author JesusNjo
  */
-public class NIFService {
+public class NIF2CLASS {
+    private long dni;
+    private String letra;
 
-    public NIFClass crearNif() {
-        NIFClass n = new NIFClass();
-        Scanner input = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("Ingrese su DNI");
-        n.setDNI(input.nextLong());
-        
-        return n;
+    public NIF2CLASS(long dni, String letra) {
+        this.dni = dni;
+        this.letra = letra;
     }
 
-    public void calcularLetra(NIFClass letra) {
-        String[] letraV = new String[23];
-        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-        for (int i = 0; i < letraV.length; i++) {
-            letraV[i] = letras.substring(i, i + 1);
-        }
-
-        int resto = (int) (letra.getDNI() % 23);
-        letra.setLetra(letraV[resto]);
-        System.out.println(resto);
-        System.out.println(letra.getLetra());
-
+    public NIF2CLASS() {
     }
 
-    public void mostrar(NIFClass m) {
-        calcularLetra(m);
-
-        System.out.println(m.getDNI() + "-" + m.getLetra());
+    public long getDni() {
+        return dni;
     }
+
+    public void setDni(long dni) {
+        this.dni = dni;
+    }
+
+    public String getLetra() {
+        return letra;
+    }
+
+    public void setLetra(String letra) {
+        this.letra = letra;
+    }
+    
+    
 }

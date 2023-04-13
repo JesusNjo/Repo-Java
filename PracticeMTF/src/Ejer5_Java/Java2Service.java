@@ -18,37 +18,25 @@ import java.util.Scanner;
  *
  * @author JesusNjo
  */
-public class JavaService {
+public class Java2Service {
 
-    Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+    public Java2Class crearMes() {
+        Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+        Java2Class mes = new Java2Class();
+        String[] meses = {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
+        mes.setMeses(meses);
+        mes.setMesSecreto(mes.getMeses()[0]);
+        System.out.println("Ingrese el mes que crea es el secreto");
 
-    public JavaClass crearMes() {
-        JavaClass mes = new JavaClass();
-        String[] opciones = {"enero", "febrero", "marzo", "abril", "mayo", "junio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
-        mes.setMeses(opciones);
-
-        return mes;
-    }
-
-    public void mesSecreto(JavaClass m) {
-        m.setMesSecreto(m.getMeses()[0]);
-        String mesS= null;
-        
-        
+        String mesSecreto = null;
         do {
-            System.out.println("Ingrese el mes que cree que sea el SECRETO");
-            mesS = input.next();
-            
-           
-            if (m.getMesSecreto().equals(mesS)) {
+            mesSecreto = input.next();
+            if (mes.getMesSecreto().equals(mesSecreto)) {
                 System.out.println("¡Ha acertado!");
-                
-            
             } else {
-                System.out.println("No es el mes, vuelva a intentarlo");
+                System.out.println("Mes equivocado, intentelo de nuevo");
             }
-
-        } while (!m.getMesSecreto().equals(mesS));
-
+        } while (!mes.getMesSecreto().equals(mesSecreto));
+        return mes;
     }
 }
