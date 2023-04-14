@@ -21,11 +21,8 @@ busque una letra que no esté, se le restará uno a sus oportunidades.
  Método juego(): el método juego se encargará de llamar todos los métodos
 previamente mencionados e informará cuando el usuario descubra toda la palabra o
 se quede sin intentos. Este método se llamará en el main.
-*/
-
+ */
 package Ejer6_Juego;
-
-
 
 public class JuegoClass {
 
@@ -36,7 +33,6 @@ public class JuegoClass {
     public JuegoClass() {
     }
 
-   
     public JuegoClass(String[] buscar, int cantLetras, int jugadasMax) {
         this.buscar = buscar;
         this.cantLetras = cantLetras;

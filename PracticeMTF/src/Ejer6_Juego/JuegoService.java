@@ -39,12 +39,13 @@ public class JuegoService {
     JuegoClass juego = new JuegoClass();
 
     public JuegoClass crearJuego() {
-        String[] palabras = {"objetos", "arrays", "poo", "java", "javascript","milenio","react","html","longitud","dinero"};
+        String[] palabras = {"objetos", "arrays", "poo", "java", "javascript", "milenio", "react", "html", "longitud", "dinero","programacion","monitoreo"};
         juego.setBuscar(palabras[(int) (Math.random() * 10)].split(""));
         return juego;
     }
 
     public void longitudVec(JuegoClass juego) {
+        System.out.println("La longitud de la palabra equivale a sus numeros de intentos.");
         System.out.println("La longitud de la palabra es: " + juego.getBuscar().length);
         juego.setJugadasMax(juego.getBuscar().length);
     }
@@ -53,11 +54,11 @@ public class JuegoService {
 
         int intentos = c.getJugadasMax();
         String[] vectorAx = new String[c.getBuscar().length];
-        Arrays.setAll(vectorAx, i->"_");
-       boolean sonIguales = false;
+        Arrays.setAll(vectorAx, i -> "_");
+        boolean sonIguales = false;
 
         do {
-            System.out.println("Ingrese una letra para el juego");
+            System.out.println("Ingrese una letra");
             String letra = input.next();
             int cont = 0;
             for (int i = 0; i < c.getBuscar().length; i++) {
@@ -74,35 +75,35 @@ public class JuegoService {
                         System.out.println(Arrays.toString(vectorAx));
                     }
                 }
-                System.out.println("La letra " + letra + " esta está " + cont + " veces");
-
+                
+                System.out.println("La letra ("+letra+") está "+cont+" veces");
             } else {
-                System.out.println("Letra " + letra + " no encontrada");
+                System.out.println("La letra (" + letra + ") no pertenece a la palabra");
                 intentos--;
                 System.out.println("Le quedan " + intentos + " intentos");
             }
 
             if (Arrays.equals(c.getBuscar(), vectorAx)) {
                 sonIguales = true;
-                System.out.println(Arrays.toString(vectorAx));
-                System.out.println(Arrays.toString(c.getBuscar()));
-
+                
+                System.out.print("\n\nPalabra encontrada: "+Arrays.toString(vectorAx)+" -------> ");
+                
+                for(int i = 0; i<c.getBuscar().length;i++){
+                    System.out.print(vectorAx[i].toUpperCase()+" ");
+                }
             }
 
         } while (sonIguales == false && intentos != 0);
         if (sonIguales == true) {
-            System.out.println("\nFelicidades. Completo el juego!");
+            System.out.println("\nFelicidades. Completó el juego!");
         } else {
             System.out.println("\nAcabaron sus intentos! HA PERDIDO");
         }
     }
-    
-    public void juego(JuegoClass c){
+
+    public void juego(JuegoClass c) {
         crearJuego();
         longitudVec(c);
         buscar(c);
     }
 }
-
-
-    

@@ -33,25 +33,20 @@ import java.util.Arrays;
 public class JuegoMain {
 
     /**
-  package ej6extrapoo;
-import ej6extrapoo.serviceahorcado;
-import java.util.Arrays;
-
-    /**
+     * package ej6extrapoo; import ej6extrapoo.serviceahorcado; import
+     * java.util.Arrays;
+     *
+     * /
+     *
+     **
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        JuegoService iniciar = new JuegoService ();
-        JuegoClass objeto = iniciar.crearJuego();
-        
-        iniciar.juego(objeto);
-        //System.out.println(Arrays.toString(objeto.getBuscar())); 
-        //iniciar.longitudVec(objeto);
-        //iniciar.buscar(objeto);
-        
-        
-    }}
-    
 
+        JuegoService iniciar = new JuegoService();
+        JuegoClass objeto = iniciar.crearJuego();
+
+        iniciar.juego(objeto);
+    }
+}
