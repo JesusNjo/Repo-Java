@@ -31,7 +31,9 @@ public class JavaService {
     }
 
     public void mesSecreto(JavaClass m) {
-        m.setMesSecreto(m.getMeses()[0]);
+        int mesAlt= (int) (Math.random()*10);
+        m.setMesSecreto(m.getMeses()[mesAlt]);
+        System.out.println(mesAlt);
         String mesS= null;
         
         
