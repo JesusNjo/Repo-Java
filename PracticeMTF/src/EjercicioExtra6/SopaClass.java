@@ -9,25 +9,23 @@ posición de la matriz inicia la palabra.
 ● Que el usuario pueda reemplazar una palabra especifica de la matriz ya pre -cargada (Es
 decir, por ejemplo, que si en posición 0.0 estaba perro, cambiarla a polo). Para realizar esta
 gestión, el método recibirá la palabra a buscar y a reemplazar sus datos
-● Imprimir la sopa de letras, invertida (es decir, filas por columnas
+● Imprimir la sopa de letras, invertida (es decir, filas por columnas)
  */
 package EjercicioExtra6;
-
 /**
  *
  * @author JesusNjo
  */
 public class SopaClass {
-    
-    char[][] matriz;
+    private char[][] matriz;
     private String palabra;
+
+    public SopaClass() {
+    }
 
     public SopaClass(char[][] matriz, String palabra) {
         this.matriz = matriz;
         this.palabra = palabra;
-    }
-
-    public SopaClass() {
     }
 
     public char[][] getMatriz() {
@@ -48,7 +46,7 @@ public class SopaClass {
     
     
 
-    
+ 
     
     
     
