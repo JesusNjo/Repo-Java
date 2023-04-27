@@ -21,10 +21,13 @@ public class TrianguloMain {
     public static void main(String[] args) {
         TrianguloClass[] triangulos = new TrianguloClass[]{
             new TrianguloClass(Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100)),
+            new TrianguloClass(Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100)),
+            new TrianguloClass(Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100)),
             new TrianguloClass(Math.round(Math.random() * 100), Math.round(Math.random() * 100), Math.round(Math.random() * 100))};
 
         TrianguloClass trianguloMayorArea = new TrianguloService().mayorArea(triangulos);
         TrianguloService area = new TrianguloService();
+        
         System.out.println("Triángulo con mayor área:");
         System.out.println("Base: " + trianguloMayorArea.getBase());
         System.out.println("Altura: " + trianguloMayorArea.getAltura());

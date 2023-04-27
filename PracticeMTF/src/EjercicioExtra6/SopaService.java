@@ -47,7 +47,7 @@ public class SopaService {
             if (sopa1.getPalabra().length() > 5) {
                 System.out.println("Palabra no valida.");
             }
-        } while (sopa1.getPalabra().length() > 5);
+        } while (sopa1.getPalabra().length() > 5 );
 
         return sopa1;
 
@@ -70,7 +70,6 @@ public class SopaService {
     }
 
     public void imprimir(SopaClass b) {
-        //System.out.println(Arrays.deepToString(b.getMatriz()));
 
         for (int i = 0; i < b.getMatriz().length; i++) {
             System.out.print("|");

@@ -34,6 +34,8 @@ public class TrianguloService {
     public TrianguloClass mayorArea(TrianguloClass[] triangulos) {
         TrianguloClass maxTriangulo = null;
         double maxArea = -1;
+        
+        
         for (TrianguloClass triangulo : triangulos) {
             double area = calcularArea(triangulo);
             
