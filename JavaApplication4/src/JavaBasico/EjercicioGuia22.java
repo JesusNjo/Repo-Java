@@ -24,7 +24,7 @@ public class EjercicioGuia22 {
         while(time>0){
             if(time >= 1440){
                 dias += 1;
-                System.out.println();
+                
                 time -= 1440;
             }else if(time >= 60){
                 horas += 1;

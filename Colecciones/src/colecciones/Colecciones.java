@@ -104,10 +104,13 @@ public class Colecciones {
     queremos añadir un elemento a las listas o conjuntos vamos a tener que utilizar la función add(T).
     Sólo en el caso de los mapas vamos a utilizar la función put(llave,valor).*/
     
-    ArrayList<Integer> numeroA = new ArrayList(); //Lista de tipo Integer
-    int n = 20;
-    //numeroA.add(n);
     
+    public void Crear(){
+    ArrayList<Integer> numeroA = new ArrayList(); //Lista de tipo Integer
+    Integer n = 20;
+    numeroA.add(n);
+        
+    }
     HashSet<Integer> numeroB = new HashSet(); 
     Integer y = 20;
     //numeroB.add(y);
