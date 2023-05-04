@@ -11,43 +11,41 @@ final y se lo busca en la lista de Alumnos. Si está en la lista, se llama al m�
 del método se usará la lista notas para calcular el promedio final de alumno. Siendo este
 promedio final, devuelto por el método y mostrado en el main.
  */
-package Ejercicio_3;
+package Ejercicios_Prueba;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author JesusNjo
  */
-public class AlumnosClass {
-    
+public class PruebaClass {
     
     private String nombre;
-    private List<Integer> nota;
+    private List<Integer> notas;
 
-    public AlumnosClass(String nombre, List<Integer> nota) {
+    public PruebaClass() {
+    }
+    
+    public PruebaClass(String nombre,List<Integer> notas){
         this.nombre = nombre;
-        this.nota = nota;
+        this.notas = notas;
     }
-
-    public AlumnosClass() {
+    
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
     }
-
-    public String getNombre() {
+    public String getNombre(){
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public List<Integer> getNotas() {
+        return notas;
     }
 
-    public List<Integer> getNota() {
-        return nota;
-    }
-
-    public void setNota(List<Integer> nota) {
-        this.nota = nota;
+    public void setNotas(List<Integer> notas) {
+        this.notas = notas;
     }
     
     

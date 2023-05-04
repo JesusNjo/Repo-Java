@@ -73,7 +73,7 @@ public class AlumnosService {
     }
     
     
-    public boolean validarEntrada(String entrada) {
+    public void validarEntrada(String entrada) {
     entrada = entrada.toLowerCase();
     
     while (!op.equals("s") && !op.equals("s") && !op.equals("n")) {
@@ -82,7 +82,7 @@ public class AlumnosService {
         
     }
     
-    return entrada.equals("sí") || entrada.equals("si");
+    
 }
 
     public void notaFinal(List<AlumnosClass> x) {
