@@ -39,8 +39,8 @@ public class CineMain {
 
         x.mostrarPelis(d);
         x.mayorHora(d);
-        x.ordenMaMe(d);
         x.ordenMeMa(d);
+        x.ordenMaMe(d);
         x.tituloOrden(d);
         x.directorOrden(d);
     }

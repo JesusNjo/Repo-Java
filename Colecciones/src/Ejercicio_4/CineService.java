@@ -47,18 +47,19 @@ public class CineService {
 
         String op = "";
         do {
-            System.out.println("Ingrese el nombre de su pelicula");
+            System.out.print("Ingrese el nombre de su pelicula: ");
             String titulo = input.next();
             peliculaT.add(titulo);
             peli.setTitulo(peliculaT);
+            
             //-----------------------------------------------
-            System.out.println("Ingrese el director de la pelicula");
+            System.out.print("Ingrese el director de la pelicula: ");
             String director = input.next();
             peliculaD.add(director);
             peli.setDirector(peliculaD);
             //-----------------------------------------------
 
-            System.out.println("Ingrese la duración de la pelicula en horas y minutos");
+            System.out.print("Ingrese la duración de la pelicula en minutos y segundos: ");
             double duracion = input.nextDouble();
             peliculaH.add(duracion);
             peli.setDuracion(peliculaH);
@@ -74,7 +75,8 @@ public class CineService {
     }
 
     public void mostrarPelis(ArrayList<CineClass> x) {
-
+        System.out.println("Imprimiendo información... Porfavor espere..\n");
+        segundo();
         System.out.println("Peliculas en cartelera: ");
         for (int i = 0; i < x.size(); i++) {
 
@@ -87,47 +89,56 @@ public class CineService {
         System.out.println("-- Peliculas con duración mayor a 1 hora-- ");
 
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getDuracion().get(i) >= 1) {
+            if (h.get(i).getDuracion().get(i) >= 60) {
                 System.out.println(h.get(i).getDuracion().get(i));
             }
         }
     }
 
-    public void ordenMaMe(ArrayList<CineClass> o) {
+    public void ordenMeMa(ArrayList<CineClass> o) {
         System.out.println("\n");
-        System.out.println("-- Peliculas ordenadas de mayor a menor-- ");
+        System.out.println("-- Peliculas ordenadas de menor a mayor duración-- ");
         for (int i = 0; i < o.size(); i++) {
-            Collections.sort(o.get(i).getDuracion());
+        Collections.sort(o.get(i).getDuracion());
 
             System.out.println(o.get(i).getDuracion().get(i));
         }
     }
 
-    public void ordenMeMa(ArrayList<CineClass> o) {
-        
-       
+    public void ordenMaMe(ArrayList<CineClass> o) {
+
         System.out.println("\n");
-        System.out.println("-- Peliculas ordenadas de mayor a menor-- ");
-        Collections.sort(o, (CineClass c1, CineClass c2) -> c2.getDuracion().get(0).compareTo(c1.getDuracion().get(0)));
-        
-        for (CineClass cine : o) {
-            System.out.println(cine.getDuracion());
+        System.out.println("-- Peliculas ordenadas de mayor a menor duración-- ");
+
+
+        for (int i = 0; i < o.size(); i++) {
+        Collections.sort(o.get(i).getDuracion(), Comparator.reverseOrder());
+
+            System.out.println(o.get(i).getDuracion().get(i));
         }
+
     }
-    
-    
-    public void tituloOrden(ArrayList<CineClass> t){
+
+    public void tituloOrden(ArrayList<CineClass> t) {
         System.out.println("\n");
         System.out.println("-- Peliculas ordenadas de titulo-- ");
         Collections.sort(t.get(0).getTitulo());
-        
+
         System.out.println(t.get(0).getTitulo());
     }
-    public void directorOrden(ArrayList<CineClass> d){
+
+    public void directorOrden(ArrayList<CineClass> d) {
         System.out.println("\n");
         System.out.println("-- Peliculas ordenadas por nombre alfabetico del directo-- ");
         Collections.sort(d.get(0).getDirector());
-        
+
         System.out.println(d.get(0).getDirector());
+    }
+
+    private static void segundo() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+        }
     }
 }
