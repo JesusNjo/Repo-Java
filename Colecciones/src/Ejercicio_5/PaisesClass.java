@@ -12,20 +12,46 @@ usuario y se mostrará el conjunto. Si el país no se encuentra en el conjunto s
 al usuario.
  */
 package Ejercicio_5;
-import java.util.*; // Para importar todas las clases del paquete
+import java.util.*;
+
 /**
  *
  * @author JesusNjo
  */
-public class PaisesMain {
+public class PaisesClass {
+    
+    private String paises;
+    private Set<String> paisR = new HashSet();
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        PaisesService x = new PaisesService();
-        
-        x.ingresarPais();
+    public PaisesClass(String paises) {
+        this.paises = paises;
+    }
+
+    public PaisesClass() {
+    }
+
+    public String getPaises() {
+        return paises;
+    }
+
+    public void setPaises(String paises) {
+        this.paises = paises;
+    }
+
+    public Set<String> getPaisR() {
+        return paisR;
+    }
+
+    public void setPaisR(Set<String> paisR) {
+        this.paisR = paisR;
+    }
+    
+    
+    
+    
+    @Override
+    public String toString() {
+        return "\nPais: " +paises;
     }
     
 }

@@ -5,29 +5,19 @@
  */
 package Practica1;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author JesusNjo
  */
-public class PracticaMain{
+public class PracticeMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        PracticaService masc = new PracticaService();
-        
-        PracticaClass hola = masc.crearMascota();
-        
-        
-        
-        List<PracticaClass> mascotas = new ArrayList();
-        
-        
-        
+       PracticeService cl1 = new PracticeService();
+       
+       cl1.crearCliente();
     }
     
 }

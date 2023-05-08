@@ -131,7 +131,6 @@ public class CineService {
         System.out.println("\n");
         System.out.println("-- Peliculas ordenadas por nombre alfabetico del directo-- ");
         Collections.sort(d.get(0).getDirector());
-
         System.out.println(d.get(0).getDirector());
     }
 
