@@ -21,7 +21,7 @@ import java.util.*;
 public class PaisesClass {
     
     private String paises;
-    private Set<String> paisR = new HashSet();
+    private Set<String> paisR = new TreeSet();
 
     public PaisesClass(String paises) {
         this.paises = paises;

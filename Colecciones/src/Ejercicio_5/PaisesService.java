@@ -32,8 +32,8 @@ public class PaisesService {
 
         do {
             System.out.println("Ingrese un pais");
-            String pa = input.next();
-            p.setPaises(pa);
+
+            p.setPaises(input.next());
 
             System.out.println("Desea agregar otro pais? S/N");
 
