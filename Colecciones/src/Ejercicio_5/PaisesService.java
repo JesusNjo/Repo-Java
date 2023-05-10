@@ -54,6 +54,8 @@ public class PaisesService {
 
         System.out.println("----Lista actualizada----");
         p.getPaisR().forEach((x) -> System.out.println(x));
+        
+       
 
         return p;
     }
@@ -73,6 +75,7 @@ public class PaisesService {
                 confirm = false;
             }
         }
+        
         if (confirm) {
             System.out.println("Ese pais no se encuentra en la base de datos D:");
         }

@@ -9,10 +9,39 @@ Realizar un menú para lograr todas las acciones previamente mencionadas.
  */
 package Ejercicio_6;
 
+
+
 /**
  *
  * @author JesusNjo
  */
 public class TiendaClass {
-    
+
+    String nombre;
+    Double codigo;
+
+    public TiendaClass(String nombre, Double codigo) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+    }
+
+    public TiendaClass() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Double getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Double codigo) {
+        this.codigo = codigo;
+    }
+
 }
