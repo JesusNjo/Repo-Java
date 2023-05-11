@@ -26,16 +26,17 @@ public class TiendaService {
         System.out.println("Ingrese una opción");
 
         do {
-        System.out.println("1: Agregar un producto");
-        System.out.println("2: Modificar un producto");
-        System.out.println("3: Eliminar un producto");
-        System.out.println("4: Mostrar los productos");
-        System.out.println("5: Salir");
-          op = input.nextInt();  
+            System.out.println("1: Agregar un producto");
+            System.out.println("2: Modificar un producto");
+            System.out.println("3: Eliminar un producto");
+            System.out.println("4: Mostrar los productos");
+            System.out.println("5: Salir");
+            op = input.nextInt();
             switch (op) {
                 case 1:
-                    
-                    agregarP(mapa);break;
+
+                    agregarP(mapa);
+                    break;
                 case 2:
                     modificarP(mapa);
                     break;
@@ -48,10 +49,10 @@ public class TiendaService {
                 case 5:
                     System.out.println("Saliendo del menú...");
                     break;
-                default:break;
+                default:
+                    break;
             }
-            
-            
+
         } while (op != 5);
         segundo(1000);
         System.out.println("Ha salido del menú!");
@@ -59,70 +60,73 @@ public class TiendaService {
 
     public void agregarP(Map<String, Double> agg) {
         TiendaClass ob = new TiendaClass();
-        System.out.print("Ingrese el nombre del producto: ");   
+        System.out.print("Ingrese el nombre del producto: ");
         ob.setNombre(input.next());
         System.out.print("Ingrese el precio del producto: ");
         ob.setCodigo(input.nextDouble());
-        
+
         agg.put(ob.getNombre(), ob.getCodigo());
-       
+
         System.out.println("\nSi desea agregar otro producto marca 1 en el siguiente menú...\n");
     }
-    
-    
-    public void modificarP(Map<String,Double> mod){
-        
+
+    public void modificarP(Map<String, Double> mod) {
+
         System.out.println("Ingrese el nombre del producto que desea modificar: ");
         String nombre = input.next();
-        
+        boolean it = true;
         for (Map.Entry<String, Double> entry : mod.entrySet()) {
             String key = entry.getKey();
             Double value = entry.getValue();
-            
-            if(nombre.equalsIgnoreCase(key)){
+
+            if (nombre.equalsIgnoreCase(key)) {
                 System.out.print("Ingrese el nuevo precio del producto: ");
                 entry.setValue(input.nextDouble());
-                
-                
-                System.out.println(key + " " + value);
+                it = false;
+
             }
+
+        }
+
+        if (it) {
+            System.out.println("Producto no disponible!");
         }
     }
-    
-    public void eliminarP(Map<String,Double> elim){
-        
+
+    public void eliminarP(Map<String, Double> elim) {
+
         System.out.print("Ingrese el nombre del producto que desea eliminar: ");
         String nombre = input.next();
         boolean it = true;
         for (Map.Entry<String, Double> entry : elim.entrySet()) {
             String key = entry.getKey();
-            
-            if(nombre.equalsIgnoreCase(key)){
+
+            if (nombre.equalsIgnoreCase(key)) {
                 elim.remove(key);
                 System.out.println("Producto eliminado!");
                 it = false;
                 break;
             }
         }
-        if(it){
+        if (it) {
             System.out.println("El producto no se encuentra en su tienda..");
         }
     }
-    
-    public void mostrarP(Map<String,Double> mos){
-        
+
+    public void mostrarP(Map<String, Double> mos) {
+
         for (Map.Entry<String, Double> entry : mos.entrySet()) {
             String key = entry.getKey();
             Double value = entry.getValue();
-            
-            
-            System.out.println("[Producto: "+key +",Precio: "+value+"$]");
+
+            System.out.println("[Producto: " + key + " | Precio: " + value + "$]");
         }
     }
-    
-    private static void segundo(int time){
-        try{
+
+    private static void segundo(int time) {
+        try {
             Thread.sleep(time);
-        }catch(InterruptedException e){}        
+        } catch (InterruptedException e) {
+        }
     }
 }
