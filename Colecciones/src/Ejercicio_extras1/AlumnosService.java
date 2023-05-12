@@ -33,6 +33,9 @@ import java.util.*;
 public class AlumnosService {
 
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+    int contV = 0;
+    int contA = 0;
+    int contC = 0;
 
     public List<AlumnosClass> crearAlumnos() {
         List<AlumnosClass> list = new ArrayList();
@@ -76,7 +79,7 @@ public class AlumnosService {
         n.set(2014, Calendar.AUGUST, 29);
         list.add(new AlumnosClass("Leopoldo", "Perez", "Argentina", n));
         n.set(1984, Calendar.SEPTEMBER, 10);
-        list.add(new AlumnosClass("Hugo", "Chavez", "Venezolana", n));
+        list.add(new AlumnosClass("Hugo", "Lhavez", "Venezolana", n));
         n.set(1977, Calendar.DECEMBER, 12);
         list.add(new AlumnosClass("Uni", "Macri", "Argentina", n));
         n.set(2001, Calendar.SEPTEMBER, 15);
@@ -85,20 +88,21 @@ public class AlumnosService {
         list.add(new AlumnosClass("Julian", "Rodriguez", "Chilena", n));
         n.set(2008, Calendar.JANUARY, 17);
 
-        System.out.println(list.size());
-        mostrarAs(list);
-        System.out.println("\n---------------------");
         mostrarDes(list);
         System.out.println("\n---------------------");
+        mostrarAs(list);
+        System.out.println("\n---------------------");
         mostrarEd(list);
-         System.out.println("\n---------------------");
-         nacionalidad(list);
+        System.out.println("\n---------------------");
+        nacionalidad(list);
+        System.out.println("\n---------------------");
+        reporteFinal(list);
         return list;
     }
 
-    public void mostrarDes(List<AlumnosClass> list) {
+    public void mostrarAs(List<AlumnosClass> list) {
         Collections.sort(list, ordenar);
-        System.out.println("Orden decendente");
+        System.out.println("Orden acendente");
 
         for (int i = 0; i < list.size(); i++) {
 
@@ -111,9 +115,9 @@ public class AlumnosService {
         }
     }
 
-    public void mostrarAs(List<AlumnosClass> list) {
+    public void mostrarDes(List<AlumnosClass> list) {
         System.out.println("");
-        System.out.println("Orden acendente");
+        System.out.println("Orden decendente");
         Collections.sort(list, ordenar.reversed());
         for (int i = 0; i < list.size(); i++) {
 
@@ -126,7 +130,6 @@ public class AlumnosService {
         }
     }
 
-
     public void mostrarEd(List<AlumnosClass> mostrar) {
         System.out.println("\nIngrese el nombre del alumno que desea saber la edad");
         String nombre = input.next();
@@ -136,62 +139,99 @@ public class AlumnosService {
         int anio = fechaActual.get(Calendar.YEAR);
         int mes = fechaActual.get(Calendar.MONTH) + 1;
 
-        System.out.println(mes);
         for (int i = 0; i < mostrar.size(); i++) {
 
             if (nombre.equalsIgnoreCase(mostrar.get(i).getNombre())) {
                 int fec = mostrar.get(i).getFechaN().get(Calendar.YEAR);
-                int me = mostrar.get(i).getFechaN().get(Calendar.MONTH);
+                int mesB = mostrar.get(i).getFechaN().get(Calendar.MONTH);
                 int edad = anio - fec;
                 conf = false;
-                if (mes < me) {
+                if (mes < mesB) {
                     edad--;
                 }
                 System.out.println(nombre + " tiene: " + edad);
             }
-        }if(conf){
+        }
+        if (conf) {
             System.out.println("Usuario no encontrado.....");
         }
     }
 
-    public void nacionalidad(List<AlumnosClass> naci){
-        int contV = 0;
-        int contA = 0;
-        int contC = 0;
-        
+    public void nacionalidad(List<AlumnosClass> naci) {
+
         System.out.println("\nVenezolanos: ");
         System.out.println("****");
-        for (int i = 0; i <naci.size(); i++) {
-            
-            if("venezolana".equalsIgnoreCase(naci.get(i).getNacionalidad())){
-                System.out.println("["+naci.get(i).getNombre() + " "+naci.get(i).getApellido()+"]");
+        for (int i = 0; i < naci.size(); i++) {
+
+            if ("venezolana".equalsIgnoreCase(naci.get(i).getNacionalidad())) {
+                System.out.println("[" + naci.get(i).getNombre() + " " + naci.get(i).getApellido() + "]");
                 contV++;
             }
         }
-        
+
         System.out.println("\nChilenos: ");
         System.out.println("****");
-        for (int i = 0; i <naci.size(); i++) {
-            if("chilena".equalsIgnoreCase(naci.get(i).getNacionalidad())){
-                System.out.println("["+naci.get(i).getNombre() + " "+naci.get(i).getApellido()+"]");
+        for (int i = 0; i < naci.size(); i++) {
+            if ("chilena".equalsIgnoreCase(naci.get(i).getNacionalidad())) {
+                System.out.println("[" + naci.get(i).getNombre() + " " + naci.get(i).getApellido() + "]");
                 contC++;
             }
         }
         System.out.println("\nArgentinos: ");
         System.out.println("****");
-        for (int i = 0; i <naci.size(); i++) {
-            if("argentina".equalsIgnoreCase(naci.get(i).getNacionalidad())){
-                System.out.println("["+naci.get(i).getNombre() + " "+naci.get(i).getApellido()+"]");
+        for (int i = 0; i < naci.size(); i++) {
+            if ("argentina".equalsIgnoreCase(naci.get(i).getNacionalidad())) {
+                System.out.println("[" + naci.get(i).getNombre() + " " + naci.get(i).getApellido() + "]");
                 contA++;
             }
         }
-        
-        
-        System.out.println("---Venezolanos totales: "+contV+"---");
-        System.out.println("---Chilenos totales: "+contC+"---");
-        System.out.println("---Argentinos totales: "+contA+"---");
+
     }
-    
+
     public static Comparator<AlumnosClass> ordenar = (AlumnosClass t, AlumnosClass t1) -> t.getNombre().compareTo(t1.getNombre());
 
+    /* Realizar un reporte final de datos que informe:
+    o Cuantos alumnos son mayores de 25 años.
+o Cuantos alumnos tiene su apellido que comienzan con letra L o P
+o Cuantos alumnos hay de nacionalidad ARGENTINA – CHILENA –*/
+    public void reporteFinal(List<AlumnosClass> reporte) {
+        System.out.println("\n-----Reporte Final-----");
+        int contP = 0;
+        int contL = 0;
+        Calendar fechaActual = Calendar.getInstance();
+
+        int anio = fechaActual.get(Calendar.YEAR);
+        int mes = fechaActual.get(Calendar.MONTH) + 1;
+        for (int i = 0; i < reporte.size(); i++) {
+
+            if (anio - reporte.get(i).getFechaN().getTime().getYear() > 25) {
+                int fec = reporte.get(i).getFechaN().get(Calendar.YEAR);
+                int mesB = reporte.get(i).getFechaN().get(Calendar.MONTH);
+                int edad = anio - fec;
+                if (mes < mesB) {
+                    edad--;
+                }
+
+                if (edad > 25) {
+                    System.out.println(reporte.get(i).getNombre() + " " + reporte.get(i).getApellido() + " :" + edad);
+                }
+
+                if ((reporte.get(i).getApellido().charAt(0) == 'L')) {
+
+                    contL++;
+                } else if (reporte.get(i).getApellido().charAt(0) == 'P') {
+                    contP++;
+
+                }
+            }
+
+        }
+        System.out.println("La cantidad de personas con apellidos por (L) son: " + contL);
+        System.out.println("La cantidad de personas con apellidos por (P) son: " + contP);
+        System.out.println("------------------------");
+        System.out.println("---Venezolanos totales: " + contV + "---");
+        System.out.println("---Chilenos totales: " + contC + "---");
+        System.out.println("---Argentinos totales: " + contA + "---");
+
+    }
 }
