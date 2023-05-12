@@ -39,21 +39,19 @@ public class AlumnosService {
 
     public List<AlumnosClass> crearAlumnos() {
         List<AlumnosClass> list = new ArrayList();
-        AlumnosClass x = new AlumnosClass();
-        System.out.println("Alumnos ingresados");
+
+        System.out.println("----------Alumnos ingresados----------");
 
         Calendar n = Calendar.getInstance();
-
-        n.set(1994, Calendar.FEBRUARY, 4);
 
         n.set(1994, Calendar.JANUARY, 4);
         list.add(new AlumnosClass("Francisco", "Naranjo", "Venezolana", n));
         n.set(1995, Calendar.FEBRUARY, 4);
         list.add(new AlumnosClass("Jesus", "Noguera", "Argentina", n));
         n.set(1995, Calendar.FEBRUARY, 4);
-        list.add(new AlumnosClass("Pedro", "Pascal", "Chilena", n));
+        list.add(new AlumnosClass("Pipe", "Pascal", "Chilena", n));
         n.set(2000, Calendar.FEBRUARY, 6);
-        list.add(new AlumnosClass("Leonardo", "Di Caprio", "Venezolana", n));
+        list.add(new AlumnosClass("Leonardo", "Li Caprio", "Venezolana", n));
         n.set(1992, Calendar.MARCH, 16);
         list.add(new AlumnosClass("Arturo", "Vidal", "Chilena", n));
         n.set(2000, Calendar.FEBRUARY, 6);
@@ -88,6 +86,25 @@ public class AlumnosService {
         list.add(new AlumnosClass("Julian", "Rodriguez", "Chilena", n));
         n.set(2008, Calendar.JANUARY, 17);
 
+        String op = null;
+        System.out.println("¿Desea agregar un alumno nuevo? S/N");
+        op = input.next();
+        if ("s".equalsIgnoreCase(op)) {
+
+            alta(list, new AlumnosClass());
+        }
+       
+        System.out.println("¿Desea elimar un alumno nuevo? S/N");
+        op = input.next();
+        if ("s".equalsIgnoreCase(op)) {
+            baja(list, new AlumnosClass());
+        }
+        System.out.println("¿Desea modificar un alumno nuevo? S/N");
+        op = input.next();
+        if ("s".equalsIgnoreCase(op)) {
+            modificacion(list, new AlumnosClass());
+        }
+
         mostrarDes(list);
         System.out.println("\n---------------------");
         mostrarAs(list);
@@ -97,12 +114,92 @@ public class AlumnosService {
         nacionalidad(list);
         System.out.println("\n---------------------");
         reporteFinal(list);
+
         return list;
     }
 
+    public void alta(List<AlumnosClass> lista, AlumnosClass nuevoA) {
+        System.out.println("--Ingrese los datos del nuevo alumno--");
+        Calendar n = Calendar.getInstance();
+        System.out.print("Ingrese el nombre del nuevo alumno: ");
+        String nombre = input.next();
+        System.out.print("Ingrese el apellido del nuevo alumno: ");
+        String apellido = input.next();
+        System.out.println("Indique su nacionalidad:\n 1: Venezolano, \n2: Argentino, \n3:Chileno");
+                String datoNa= null;
+                int op = input.nextInt();
+                switch(op){
+                    case 1: datoNa = "Venezolana";break;
+                    case 2: datoNa= "Argentina";break;
+                    case 3: datoNa= "Chilena";break;
+                }
+        
+        System.out.println("Ingrese su fecha de nacimiento: YYYY/MM/DD");
+        n.set(input.nextInt(), input.nextInt(), input.nextInt() - 1);
+
+        nuevoA = new AlumnosClass(nombre, apellido, datoNa, n);
+        lista.add(nuevoA);
+    }
+
+    public void baja(List<AlumnosClass> lista, AlumnosClass alumno) {
+        System.out.println("Ingrese el nombre del alumno que desea eliminar");
+        String nombre = input.next();
+        boolean it = true;
+        for (int i = 0; i < lista.size(); i++) {
+            if (nombre.equalsIgnoreCase(lista.get(i).getNombre())) {
+
+                lista.remove(lista.remove(i));
+                System.out.println("Estudiante eliminado :)");
+                it = false;
+            }
+        }
+        if (it) {
+            System.out.println("Estudiante no encontrado...");
+        }
+
+    }
+
+    public void modificacion(List<AlumnosClass> lista, AlumnosClass alumnoNuevo) {
+        //NOTA: Queda así por ahora pero hay que hacerle modificaciones!!!!!!!
+        System.out.println("Indique el nombre del alumno que desea moficicar: ");
+        String nombre = input.next();
+ Calendar n = Calendar.getInstance();
+        for (int i = 0; i < lista.size(); i++) {
+            if (nombre.equalsIgnoreCase(lista.get(i).getNombre())) {
+                lista.remove(i);
+                
+                System.out.println("Usuario encontrado....");
+                System.out.println("Porfavor, indique los nuevos datos del usuario");
+
+                System.out.print("Nombre: ");
+                String datoN = input.next();
+                System.out.print("Apellido: ");
+                String datoA = input.next();
+                System.out.print("Nacionalidad: ");
+                System.out.println("Indique su nacionalidad:\n 1: Venezolano, \n2: Argentino, \n3:Chileno");
+                String datoNa= null;
+                int op = input.nextInt();
+                switch(op){
+                    case 1: datoNa = "Venezolana";break;
+                    case 2: datoNa= "Argentina";break;
+                    case 3: datoNa= "Chilena";break;
+                }
+                System.out.println("Ingrese su fecha de nacimiento: YYYY/MM/DD");
+                n.set(input.nextInt(), input.nextInt(), input.nextInt() - 1);
+
+        alumnoNuevo = new AlumnosClass(datoN, datoA, datoNa, n);
+                System.out.println("Alumno modificado :)");
+        break;
+            }
+        }
+        lista.add(alumnoNuevo);
+        
+
+    }
+
     public void mostrarAs(List<AlumnosClass> list) {
-        Collections.sort(list, ordenar);
-        System.out.println("Orden acendente");
+        Collections.sort(list, ordenarN);
+        System.out.println("Orden acendente por nombre");
 
         for (int i = 0; i < list.size(); i++) {
 
@@ -117,8 +214,8 @@ public class AlumnosService {
 
     public void mostrarDes(List<AlumnosClass> list) {
         System.out.println("");
-        System.out.println("Orden decendente");
-        Collections.sort(list, ordenar.reversed());
+        System.out.println("Orden decendente por apellido");
+        Collections.sort(list, ordenarA.reversed());
         for (int i = 0; i < list.size(); i++) {
 
             System.out.println(list.get(i).getNombre() + " " + list.get(i).getApellido() + " -"
@@ -188,18 +285,12 @@ public class AlumnosService {
 
     }
 
-    public static Comparator<AlumnosClass> ordenar = (AlumnosClass t, AlumnosClass t1) -> t.getNombre().compareTo(t1.getNombre());
-
-    /* Realizar un reporte final de datos que informe:
-    o Cuantos alumnos son mayores de 25 años.
-o Cuantos alumnos tiene su apellido que comienzan con letra L o P
-o Cuantos alumnos hay de nacionalidad ARGENTINA – CHILENA –*/
     public void reporteFinal(List<AlumnosClass> reporte) {
         System.out.println("\n-----Reporte Final-----");
         int contP = 0;
         int contL = 0;
         Calendar fechaActual = Calendar.getInstance();
-
+        System.out.println("\nMayores de 25");
         int anio = fechaActual.get(Calendar.YEAR);
         int mes = fechaActual.get(Calendar.MONTH) + 1;
         for (int i = 0; i < reporte.size(); i++) {
@@ -234,4 +325,7 @@ o Cuantos alumnos hay de nacionalidad ARGENTINA – CHILENA –*/
         System.out.println("---Argentinos totales: " + contA + "---");
 
     }
+    public static Comparator<AlumnosClass> ordenarN = (AlumnosClass t, AlumnosClass t1) -> t.getNombre().compareTo(t1.getNombre());
+    public static Comparator<AlumnosClass> ordenarA = (AlumnosClass t, AlumnosClass t1) -> t.getApellido().compareTo(t1.getApellido());
+
 }

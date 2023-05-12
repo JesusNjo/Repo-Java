@@ -31,12 +31,11 @@ import java.util.*;
  * @author JesusNjo
  */
 public class AlumnosClass {
-    
+
     private String nombre;
     private String apellido;
     private String nacionalidad;
     private Calendar fechaN;
-   // private List<AlumnosClass> arrayL = new ArrayList();
 
     public AlumnosClass(String nombre, String apellido, String nacionalidad, Calendar fechaN) {
         this.nombre = nombre;
@@ -80,18 +79,4 @@ public class AlumnosClass {
         this.fechaN = fechaN;
     }
 
-    /*public List<AlumnosClass> getArrayL() {
-        return arrayL;
-    }
-
-    public void setArrayL(List<AlumnosClass> arrayL) {
-        this.arrayL = arrayL;
-    }
-    */
-
-  
-   
-    
-    
-    
 }
