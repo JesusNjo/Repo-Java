@@ -86,34 +86,59 @@ public class AlumnosService {
         list.add(new AlumnosClass("Julian", "Rodriguez", "Chilena", n));
         n.set(2008, Calendar.JANUARY, 17);
 
-        String op = null;
-        System.out.println("¿Desea agregar un alumno nuevo? S/N");
-        op = input.next();
-        if ("s".equalsIgnoreCase(op)) {
+        int st = (int) Math.random();
+        do {
+            System.out.println("\nMenú");
+            System.out.println("1:Mostrar todos los alumnos\n2:Mostrar nombres de forma descendente\n3:Mostrar apellidos de forma ascendente\n4:Buscar la edad de un alumno\n5:Mostrar las nacionalidades"
+                    + "\n6:Reporte final\n7:Agregar un estudiante\n8:Eliminar un estudiante\n9:Modificar un estudiante\n0:Salir");
 
-            alta(list, new AlumnosClass());
-        }
-       
-        System.out.println("¿Desea elimar un alumno nuevo? S/N");
-        op = input.next();
-        if ("s".equalsIgnoreCase(op)) {
-            baja(list, new AlumnosClass());
-        }
-        System.out.println("¿Desea modificar un alumno nuevo? S/N");
-        op = input.next();
-        if ("s".equalsIgnoreCase(op)) {
-            modificacion(list, new AlumnosClass());
-        }
+            st = input.nextInt();
 
-        mostrarDes(list);
-        System.out.println("\n---------------------");
-        mostrarAs(list);
-        System.out.println("\n---------------------");
-        mostrarEd(list);
-        System.out.println("\n---------------------");
-        nacionalidad(list);
-        System.out.println("\n---------------------");
-        reporteFinal(list);
+            switch (st) {
+                case 1:
+                    list.forEach((x) -> System.out.println(x.getNombre() + " " + x.getApellido() + " -[" + x.getNacionalidad() + "-["+x.getFechaN().getTime().getDate()+"/"+(x.getFechaN().getTime().getMonth()+1)+"/"+(x.getFechaN().getTime().getYear()+1900)+"]"));
+                    break;
+                case 2:
+                    mostrarAs(list);
+                    System.out.println("\n---------------------");
+                    break;
+                case 3:
+                    mostrarDes(list);
+
+                    System.out.println("\n---------------------");
+                    break;
+                case 4:
+                    mostrarEd(list);
+                    System.out.println("\n---------------------");
+                    break;
+
+                case 5:
+                    nacionalidad(list);
+                    System.out.println("\n---------------------");
+
+                    break;
+                case 6:
+                    reporteFinal(list);
+
+                    break;
+                case 7:
+                    alta(list, new AlumnosClass());
+
+                    break;
+                case 8:
+                    baja(list, new AlumnosClass());
+
+                    break;
+                case 9:
+                    modificacion(list, new AlumnosClass());
+                    break;
+                case 0:
+                    System.out.println("Saliendo de la aplicación..........");
+                    break;
+                default:
+                    System.out.println("Opción invalida, repita porfavor..");
+            }
+        } while (st != 0);
 
         return list;
     }
@@ -126,14 +151,20 @@ public class AlumnosService {
         System.out.print("Ingrese el apellido del nuevo alumno: ");
         String apellido = input.next();
         System.out.println("Indique su nacionalidad:\n 1: Venezolano, \n2: Argentino, \n3:Chileno");
-                String datoNa= null;
-                int op = input.nextInt();
-                switch(op){
-                    case 1: datoNa = "Venezolana";break;
-                    case 2: datoNa= "Argentina";break;
-                    case 3: datoNa= "Chilena";break;
-                }
-        
+        String datoNa = null;
+        int op = input.nextInt();
+        switch (op) {
+            case 1:
+                datoNa = "Venezolana";
+                break;
+            case 2:
+                datoNa = "Argentina";
+                break;
+            case 3:
+                datoNa = "Chilena";
+                break;
+        }
+
         System.out.println("Ingrese su fecha de nacimiento: YYYY/MM/DD");
         n.set(input.nextInt(), input.nextInt(), input.nextInt() - 1);
 
@@ -160,40 +191,64 @@ public class AlumnosService {
     }
 
     public void modificacion(List<AlumnosClass> lista, AlumnosClass alumnoNuevo) {
-        //NOTA: Queda así por ahora pero hay que hacerle modificaciones!!!!!!!
+
         System.out.println("Indique el nombre del alumno que desea moficicar: ");
+        String[] vector = new String[2];
         String nombre = input.next();
- Calendar n = Calendar.getInstance();
+        System.out.println("Indique el apellido del alumno que desea moficicar: ");
+        String apellido = input.next();
+        boolean fl = true;
+        vector[0] = nombre;
+        vector[1] = apellido;
+
+        Calendar n = Calendar.getInstance();
         for (int i = 0; i < lista.size(); i++) {
-            if (nombre.equalsIgnoreCase(lista.get(i).getNombre())) {
-                lista.remove(i);
-                
+            if (vector[0].equalsIgnoreCase(lista.get(i).getNombre()) || vector[1].equalsIgnoreCase(lista.get(i).getApellido())) {
+
                 System.out.println("Usuario encontrado....");
-                System.out.println("Porfavor, indique los nuevos datos del usuario");
+                System.out.println("Porfavor, indique indique que dato desea modificar: ");
+                System.out.println("1:Nombre\n2:Apellido\n3:Nacionalidad\n4:Fecha de nacimiento");
+                int men = input.nextInt();
+                fl = false;
+                switch (men) {
+                    case 1:
+                        System.out.print("Porfavor ingrese el nuevo nombre: ");
+                        lista.get(i).setNombre(input.next());
+                        break;
+                    case 2:
+                        System.out.print("Porfavor ingrese el nuevo nombre: ");
+                        lista.get(i).setApellido(input.next());
+                        break;
+                    case 3:
+                        System.out.println("Indique su nacionalidad:\n1:Venezolano\n2:Argentino\n3:Chileno");
 
-                System.out.print("Nombre: ");
-                String datoN = input.next();
-                System.out.print("Apellido: ");
-                String datoA = input.next();
-                System.out.print("Nacionalidad: ");
-                System.out.println("Indique su nacionalidad:\n 1: Venezolano, \n2: Argentino, \n3:Chileno");
-                String datoNa= null;
-                int op = input.nextInt();
-                switch(op){
-                    case 1: datoNa = "Venezolana";break;
-                    case 2: datoNa= "Argentina";break;
-                    case 3: datoNa= "Chilena";break;
+                        int op = input.nextInt();
+                        switch (op) {
+                            case 1:
+                                lista.get(i).setNacionalidad("Venezolana");
+                                break;
+                            case 2:
+                                lista.get(i).setNacionalidad("Argentina");
+                                break;
+                            case 3:
+                                lista.get(i).setNacionalidad("Chilena");
+                                break;
+                            case 4:
+                                System.out.println("Ingrese su fecha de nacimiento: YYYY/MM/DD");
+                                n.set(input.nextInt(), input.nextInt(), input.nextInt() - 1);
+                        }
+
                 }
-                System.out.println("Ingrese su fecha de nacimiento: YYYY/MM/DD");
-                n.set(input.nextInt(), input.nextInt(), input.nextInt() - 1);
 
-        alumnoNuevo = new AlumnosClass(datoN, datoA, datoNa, n);
+                alumnoNuevo = new AlumnosClass(lista.get(i).getNombre(), lista.get(i).getApellido(), lista.get(i).getNacionalidad(), n);
+
                 System.out.println("Alumno modificado :)");
-        break;
+
             }
         }
-        lista.add(alumnoNuevo);
-        
+        if (fl) {
+            System.out.println("Usuario no encontrado...");
+        }
 
     }
 
@@ -204,25 +259,19 @@ public class AlumnosService {
         for (int i = 0; i < list.size(); i++) {
 
             System.out.println(list.get(i).getNombre() + " " + list.get(i).getApellido() + " -"
-                    + list.get(i).getNacionalidad() + " ["
-                    + (list.get(i).getFechaN().getTime().getYear() + 1900) + "/"
-                    + (list.get(i).getFechaN().getTime().getMonth() + 1) + "/"
-                    + list.get(i).getFechaN().getTime().getDate() + "]");
+                    + list.get(i).getNacionalidad());
 
         }
     }
 
     public void mostrarDes(List<AlumnosClass> list) {
         System.out.println("");
-        System.out.println("Orden decendente por apellido");
+        System.out.println("Orden descendente por apellido");
         Collections.sort(list, ordenarA.reversed());
         for (int i = 0; i < list.size(); i++) {
 
             System.out.println(list.get(i).getNombre() + " " + list.get(i).getApellido() + " -"
-                    + list.get(i).getNacionalidad() + " ["
-                    + (list.get(i).getFechaN().getTime().getYear() + 1900) + "/"
-                    + (list.get(i).getFechaN().getTime().getMonth() + 1) + "/"
-                    + list.get(i).getFechaN().getTime().getDate() + "]");
+                    + list.get(i).getNacionalidad());
 
         }
     }

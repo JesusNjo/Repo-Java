@@ -79,4 +79,9 @@ public class AlumnosClass {
         this.fechaN = fechaN;
     }
 
+    @Override
+    public String toString() {
+        return fechaN + "";
+    }
+
 }
