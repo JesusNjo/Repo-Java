@@ -8,24 +8,31 @@ Una vez que la Persona elige el Perro se le asigna, al final deberemos mostrar t
 personas con sus respectivos perros.
  */
 package Ejercicio_4;
-import java.util.ArrayList;
+
 /**
  *
  * @author JesusNjo
  */
 public class Persona {
-    String nombre;
-    String apellido;
-    int dni;
-    ArrayList<Perro> persona = new ArrayList();
+    private String nombre;
+    private String apellido;
+    private int edad;
+    private int documento;
+    
 
-    public Persona() {
-    }
-
-    public Persona(String nombre, String apellido,int dni) {
+    public Persona(String nombre, String apellido, int edad, int documento) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
+        this.edad = edad;
+        this.documento = documento;
+        
+    }
+  
+
+    
+    
+
+    public Persona() {
     }
 
     public String getNombre() {
@@ -44,27 +51,28 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public ArrayList<Perro> getPersona() {
-        return persona;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setPersona(ArrayList<Perro> persona) {
-        this.persona = persona;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public int getDni() {
-        return dni;
+    public int getDocumento() {
+        return documento;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setDocumento(int documento) {
+        this.documento = documento;
     }
+
+    
 
     @Override
     public String toString() {
-        return "\nNombre:" + nombre + "\nApellido: " + apellido + "\nDNI: " + dni;
+        return "Nombre: " + nombre + "\nApellido: " + apellido + "\nEdad: " + edad + "\nDocumento: " + documento; //perro.getNombre()+"/"+perro.getRaza()+"\n";
     }
-
     
    
 
