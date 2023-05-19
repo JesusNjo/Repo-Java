@@ -35,7 +35,7 @@ Pensar la lógica necesaria para realizar esto, usando los atributos de la clase
  */
 package Ejercicio_2;
 
-import javax.naming.spi.Resolver;
+import java.util.*;
 
 /**
  *
@@ -47,10 +47,10 @@ public class RuletaRusa {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Revolver x = new Revolver();
         
-       x.llenarRevolver();
-      x.siguienteChorro();
+        Juego juego = new Juego();
+       
+        juego.ronda();
+
     }
-    
 }
