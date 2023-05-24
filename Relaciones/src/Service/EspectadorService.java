@@ -37,28 +37,36 @@ import java.util.*;
  * @author JesusNjo
  */
 public class EspectadorService {
+
     ArrayList<Espectador> newSpc = new ArrayList();
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
 
     public Espectador crearEspec() {
-        Espectador espec = new Espectador("Francisco", 12, 12);
-        Espectador espec2 = new Espectador("Juan", 16, 26);
-        Espectador espec3 = new Espectador("Maria",11, 48);
-        Espectador espec4 = new Espectador("Jose", 10, 21);
-        Espectador espec5 = new Espectador("Rafael", 16, 32);
-        Espectador espec6 = new Espectador("Pedro", 21, 9);
-        
-        newSpc.add(espec);
-        newSpc.add(espec2);
-        newSpc.add(espec3);
-        newSpc.add(espec4);
-        newSpc.add(espec5);
-        newSpc.add(espec6);
+        Espectador espec = new Espectador();
+        Espectador[] espectadores = {
+            new Espectador("Francisco", 12, 12),
+            new Espectador("Juan", 16, 26),
+            new Espectador("Maria", 11, 48),
+            new Espectador("Jose", 10, 21),
+            new Espectador("Rafael", 16, 32),
+            new Espectador("Pedro", 21, 9),};
+
+        for (Espectador espectadoresA : espectadores) {
+            
+            newSpc.add(espectadoresA);
+            espec.setEspectador(newSpc);
+        }
 
         
-        espec.setEspectador(newSpc);
-        return espec;
+        for (Espectador espectador : newSpc) {
+            System.out.println(espectador.toString());
+        }
+      
+        System.out.println("Indentifique su nombre");
+        int po = input.nextInt();
+      
+        System.out.println("Bienvenido señor "+espectadores[po-1]);
+        return espectadores[po-1];
     }
 
 }
-

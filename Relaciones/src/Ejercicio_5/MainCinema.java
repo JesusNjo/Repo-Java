@@ -20,17 +20,21 @@ public class MainCinema {
      */
     public static void main(String[] args) {
 
-        EspectadorService espc = new EspectadorService();
-        Espectador espectador1 = espc.crearEspec();
-        CineService x = new CineService();
-        Cine cine = x.cineMax();
-        PeliculaService peli = new PeliculaService();
-        Peliculas peliNue= peli.crearPeliculas();
-        
-        
-        x.asiento(espectador1, peliNue, cine);
-        
-        
+        EspectadorService espect = new EspectadorService();
+        Espectador espec1 = espect.crearEspec();
+
+        PeliculaService pelicula = new PeliculaService();
+        Peliculas peli = pelicula.crearPeliculas();
+
+        CineService cine = new CineService();
+        Cine cinema = new Cine();
+
+       
+        if(cine.asiento(espec1, peli, cinema)==true){
+            
+        cine.cineMax();
+        }
+
     }
 
 }

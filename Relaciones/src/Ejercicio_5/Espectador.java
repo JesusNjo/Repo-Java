@@ -83,8 +83,10 @@ public class Espectador {
 
     @Override
     public String toString() {
-        return "Espectador{" + "nombre=" + nombre + ", edad=" + edad + ", dineroD=" + dineroD + ", espectador=" + espectador + '}';
+    return "[Nombre: " + nombre + "| Edad: " + edad + "| Dinero disponible: " + dineroD+"]";
     }
+    
+    
     
     
 }

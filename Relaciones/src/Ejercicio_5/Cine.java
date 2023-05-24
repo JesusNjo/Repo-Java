@@ -83,6 +83,11 @@ public class Cine {
         this.precio = precio;
     }
 
+    @Override
+    public String toString() {
+        return "Cine{" + "input=" + input + ", pelicula=" + pelicula + ", sala=" + sala + ", precio=" + precio + '}';
+    }
+
    
     
    

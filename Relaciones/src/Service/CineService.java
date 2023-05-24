@@ -24,7 +24,9 @@ public class CineService {
         String[][] sala = new String[8][6];
         int ocu = (int) Math.round(Math.random() * 5);
 
+        System.out.println("\nPorfavor seleccione el asiento que desea ocupar\n");
         System.out.println("Los asientos marcados con una X están ocupados");
+       
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
                 sala[i][j] = " ";
@@ -56,31 +58,15 @@ public class CineService {
     }
 
     public boolean asiento(Espectador espec, Peliculas peli, Cine x) {
-        System.out.println("Muestre su carnet de identidad");
-        String idn = input.next();
-        String pelic = null;
-        for (int i = 0; i < espec.getEspectador().size(); i++) {
 
-            if (idn.equalsIgnoreCase(espec.getEspectador().get(i).getNombre())) {
-                System.out.println("Indentifique la pelicula que quiere ver: ");
-                
-                for (Object object : peli.getPeliculas()) {
-                    System.out.println(object.toString());
-                    
-                    pelic= input.next();
-                    break;
-                }
-                
-                if (espec.getEspectador().get(i).getDineroD() < x.getPrecio() || espec.getEspectador().get(i).getEdad() < peli.getEdadM()) {
-                    System.out.println("Usted no cumple con los requisitos");
-                    return false;
-                } else {
-                    System.out.println("Bienvenido");
-                    return true;
-                }
-            }
+        
+        if (espec.getDineroD() < x.getPrecio() || espec.getEdad() < peli.getEdadM()) {
+            System.out.println("Usted no cumple con los requisitos");
+            return false;
+        } else {
+            System.out.println("Bienvenido");
+            return true;
         }
-      
-        return false;
     }
+
 }
