@@ -28,6 +28,8 @@ cada asiento o solo las X y espacios vacíos.
  */
 package Ejercicio_5;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author JesusNjo
@@ -38,5 +40,65 @@ public class Peliculas {
     private double duracion;
     private int edadM;
     private String director;
+    private ArrayList <Peliculas> peliculas= new ArrayList();
+
+    public Peliculas(String titulo, double duracion, int edadM, String director) {
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.edadM = edadM;
+        this.director = director;
+    }
+
+    public Peliculas() {
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public double getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(double duracion) {
+        this.duracion = duracion;
+    }
+
+    public int getEdadM() {
+        return edadM;
+    }
+
+    public void setEdadM(int edadM) {
+        this.edadM = edadM;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public ArrayList getPeliculas() {
+        return peliculas;
+    }
+
+    public void setPeliculas(ArrayList peliculas) {
+        this.peliculas = peliculas;
+    }
+
+    
+    @Override
+    public String toString() {
+        return "\nTitulo: " + titulo + "\nDuracion: " + duracion + "\nEdad minima: " + edadM + "\nDirector: " + director;
+    }
+    
+    
+    
     
 }

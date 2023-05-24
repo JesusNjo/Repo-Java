@@ -28,19 +28,20 @@ cada asiento o solo las X y espacios vacíos.
  */
 package Ejercicio_5;
 
-import Service.EspectadorService;
 import java.util.*;
+
 /**
  *
  * @author JesusNjo
  */
 public class Cine {
+
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
-    private String pelicula;
+    private Peliculas pelicula;
     private String[][] sala;
     private int precio;
 
-    public Cine(String pelicula, String[][]sala, int precio) {
+    public Cine(Peliculas pelicula, String[][] sala, int precio) {
         this.pelicula = pelicula;
         this.sala = sala;
         this.precio = precio;
@@ -49,11 +50,20 @@ public class Cine {
     public Cine() {
     }
 
-    public String getPelicula() {
+    
+    public Scanner getInput() {
+        return input;
+    }
+
+    public void setInput(Scanner input) {
+        this.input = input;
+    }
+
+    public Peliculas getPelicula() {
         return pelicula;
     }
 
-    public void setPelicula(String pelicula) {
+    public void setPelicula(Peliculas pelicula) {
         this.pelicula = pelicula;
     }
 
@@ -72,23 +82,8 @@ public class Cine {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
+   
     
-    
-    public void cineMax(){
-        String[] pelis = {"1: Titanic","2: Revenant","3: Jurassic Park","4: Rapidos y furiosos","5: Mario Bross"};
-        EspectadorService espec = new EspectadorService();
-        
-        System.out.println("Peliculas disponibles: ");
-        for (int i = 0; i <pelis.length; i++) {
-            System.out.println(pelis[i]);
-        }
-        System.out.println("Elija una pelicula ");
-        int elc= input.nextInt();
-        System.out.println("Usted eligió: "+pelis[elc-1]);
-       
-        
-        espec.crearEspec();
-        
-    }
-    
+   
 }

@@ -5,7 +5,9 @@
  */
 package Ejercicio_5;
 
+import Service.CineService;
 import Service.EspectadorService;
+import Service.PeliculaService;
 
 /**
  *
@@ -17,12 +19,18 @@ public class MainCinema {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        EspectadorService x = new EspectadorService();
-        Cine y = new Cine();
+
+        EspectadorService espc = new EspectadorService();
+        Espectador espectador1 = espc.crearEspec();
+        CineService x = new CineService();
+        Cine cine = x.cineMax();
+        PeliculaService peli = new PeliculaService();
+        Peliculas peliNue= peli.crearPeliculas();
         
-        y.cineMax();
+        
+        x.asiento(espectador1, peliNue, cine);
         
         
     }
-    
+
 }

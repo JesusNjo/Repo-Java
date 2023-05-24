@@ -28,6 +28,8 @@ cada asiento o solo las X y espacios vacíos.
  */
 package Ejercicio_5;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author JesusNjo
@@ -37,7 +39,7 @@ public class Espectador {
     private String nombre;
     private int edad;
     private int dineroD;
-
+    private ArrayList<Espectador> espectador = new ArrayList();
     public Espectador() {
     }
 
@@ -69,6 +71,19 @@ public class Espectador {
 
     public void setDineroD(int dineroD) {
         this.dineroD = dineroD;
+    }
+
+    public ArrayList<Espectador> getEspectador() {
+        return espectador;
+    }
+
+    public void setEspectador(ArrayList<Espectador> espectador) {
+        this.espectador = espectador;
+    }
+
+    @Override
+    public String toString() {
+        return "Espectador{" + "nombre=" + nombre + ", edad=" + edad + ", dineroD=" + dineroD + ", espectador=" + espectador + '}';
     }
     
     

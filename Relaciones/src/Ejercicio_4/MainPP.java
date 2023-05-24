@@ -76,7 +76,7 @@ public class MainPP {
                     boolean perroEncontrado = false;
                     System.out.print("Por favor indique el nombre del perro que desea adoptar: ");
                     String nombrePerro = input.next();
-                    for (int j = 0; j < perrosList.size(); j++) {
+                    for (int j = i; j < perrosList.size(); j++) {
                         if (nombrePerro.equalsIgnoreCase(perrosList.get(j).getNombreP())) {
                             System.out.println("Excelente, ha optado por: " + perrosList.get(j).getNombreP());
                             System.out.println("--------");
@@ -87,7 +87,7 @@ public class MainPP {
                             String adoptar = input.next();
                             if ("S".equalsIgnoreCase(adoptar)) {
                                 System.out.println("Ahora " + perrosList.get(j).getNombreP() + " tiene una nueva familia, hasta luego!");
-                                Personas personaAd = new Personas(personasList.get(i).getNombre(), personasList.get(i).getApellido(), personasList.get(i).getEdad(), personasList.get(i).getDocumento(), perrosList.get(j));
+                                Personas personaAd = new Personas(personasList.get(i).getNombre(), personasList.get(i).getApellido(), personasList.get(i).getEdad(), personasList.get(i).getDocumento(), perrosList.get(i));
                                 
                                 
                                 personaAd.setPerro(objP);

@@ -136,7 +136,7 @@ public class Barajas {
             for (Cartas cartas : monton) {
                 System.out.println(cartas);
             }
-            System.out.println("Cartas añadida a su baraja");
+            System.out.println("Cartas añadida al montón");
         }
 
     }

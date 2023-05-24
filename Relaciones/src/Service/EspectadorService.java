@@ -37,51 +37,28 @@ import java.util.*;
  * @author JesusNjo
  */
 public class EspectadorService {
-
+    ArrayList<Espectador> newSpc = new ArrayList();
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
 
-    public void crearEspec() {
-        Espectador espec = new Espectador();
-        Cine x = new Cine();
-        String[][] mat = new String[8][6];
-        int ocu = (int) Math.round(Math.random() * 5);
-        System.out.println(ocu);
-        System.out.println("Ingrese su nombre porfavor");
-        espec.setNombre(input.next());
-        System.out.println("¿Que edad tiene? ");
-        espec.setEdad(input.nextInt());
-        System.out.println("Dinero disponible");
-        espec.setDineroD(input.nextInt());
+    public Espectador crearEspec() {
+        Espectador espec = new Espectador("Francisco", 12, 12);
+        Espectador espec2 = new Espectador("Juan", 16, 26);
+        Espectador espec3 = new Espectador("Maria",11, 48);
+        Espectador espec4 = new Espectador("Jose", 10, 21);
+        Espectador espec5 = new Espectador("Rafael", 16, 32);
+        Espectador espec6 = new Espectador("Pedro", 21, 9);
+        
+        newSpc.add(espec);
+        newSpc.add(espec2);
+        newSpc.add(espec3);
+        newSpc.add(espec4);
+        newSpc.add(espec5);
+        newSpc.add(espec6);
 
         
-        System.out.println("Eliga su acciento, los que están marcados con X están ocupado!");
-        
-        System.out.println();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 6; j++) {
-                mat[i][j] = " ";
-            }
-
-        }
-
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 6; j++) {
-                if (ocu == 1 || ocu == 3) {
-                    mat[i][j] = "X";
-                    if (i == 2 || i == 3) {
-                        break;
-                    }
-                }
-            }
-
-        }
-        for (int i = 7; i >= 0; i--) {
-            for (int j = 0; j < 6; j++) {
-                System.out.print((i + 1) + " " + (char) ('A' + j) + " " + mat[i][j] + " | ");
-            }
-            System.out.println();
-        }
-        x.setSala(mat);
-
+        espec.setEspectador(newSpc);
+        return espec;
     }
+
 }
+

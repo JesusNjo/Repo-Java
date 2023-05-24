@@ -102,7 +102,7 @@ public class PerrPerMain {
                         mapa.put(arrayPersona.get(pos), arrayPerro.get(i));
                         arrayPerro.remove(i);
                         arrayPersona.remove(pos);
-                        i--;
+                        i--;  
                     }
                 }
             }
