@@ -1,19 +1,26 @@
 /*
-Realizar una clase llamada Cuenta (bancaria) que debe tener como mínimo los atributos:
-numeroCuenta (entero), el DNI del cliente (entero largo) y el saldo actual (entero).
-Las operaciones asociadas a dicha clase son:
-a) Constructor por defecto y constructor con DNI, saldo, número de cuenta e interés.
-b) Agregar los métodos getters y setters correspondientes
-c) Metodo para crear un objeto Cuenta, pidiéndole los datos al usuario.
-d) Método ingresar(double ingreso): el método recibe una cantidad de dinero a ingresar
-y se la sumara a saldo actual.
-e) Método retirar(double retiro): el método recibe una cantidad de dinero a retirar y se
-la restará al saldo actual. Si la cuenta no tiene la cantidad de dinero a retirar, se
-pondrá el saldo actual en 0.
-f) Método extraccionRapida(): le permitirá sacar solo un 20% de su saldo. Validar que el
-usuario no saque más del 20%.
-g) Método consultarSaldo(): permitirá consultar el saldo disponible en la cuenta.
-h) Método consultarDatos(): permitirá mostrar todos los datos de la cuenta
+Realizar una clase llamada Cadena que tenga como atributos una frase (de tipo de
+String) y su longitud. En el main se creará el objeto y se le pedirá al usuario que ingrese
+una frase que puede ser una palabra o varias palabras separadas por un espacio en
+blanco y a través de los métodos set, se guardará la frase y la longitud de manera
+automática según la longitud de la frase ingresada. Deberá además implementar los
+siguientes métodos:
+a) Método mostrarVocales(), deberá contabilizar la cantidad de vocales que tiene la
+frase ingresada.
+b) Método invertirFrase(), deberá invertir la frase ingresada y mostrarla por pantalla. Por
+ejemplo: Entrada: "casa blanca", Salida: "acnalb asac".
+c) Método vecesRepetido(String letra), recibirá un carácter ingresado por el usuario y
+contabilizar cuántas veces se repite el carácter en la frase, por ejemplo:
+d) Entrada: frase = "casa blanca". Salida: El carácter 'a' se repite 4 veces.
+e) Método compararLongitud(String frase), deberá comparar la longitud de la frase que
+compone la clase con otra nueva frase ingresada por el usuario.
+f) Método unirFrases(String frase), deberá unir la frase contenida en la clase Cadena
+con una nueva frase ingresada por el usuario y mostrar la frase resultante.
+g) Método reemplazar(String letra), deberá reemplazar todas las letras “a” que se
+encuentren en la frase, por algún otro carácter seleccionado por el usuario y mostrar
+la frase resultante.
+h) Método contiene(String letra), deberá comprobar si la frase contiene una letra que
+ingresa el usuario y devuelve verdadero si la contiene y falso si no.
  */
 package Ejercicio_P1.Cosas;
 
@@ -27,81 +34,84 @@ public class Service {
 
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
 
-    public Entidad crearCuenta() {
-        Entidad cuent = new Entidad();
-        System.out.println("Porfavor ingrese sus datos...");
-        System.out.print("Ingrese su nombre: ");
-        String nombre = input.next();
-        System.out.println("Ingrese su numero de cuenta");
-        cuent.setNumC(input.nextInt());
-        System.out.println("Ingrese su DNI");
-        cuent.setDni(input.nextInt());
-        System.out.println("Ingrese su saldo");
-        cuent.setSaldoAc(input.nextInt());
-        int op =0;
-        do{
-            
-        System.out.println("Indique la operación que desea realizar");
-            System.out.println("\n1:Ingresar dinero\n2:Retirar dinero\n3:Metodo rapido\n4:Consultar saldo\n5:Consultar datos\n0:Salir");
-            op = input.nextInt();
-            
-            
-            switch(op){
-                case 1:ingresar(cuent);break;
-                case 2:retirar(cuent);break;
-                case 3:metodoRa(cuent);break;
-                case 4:consultarS(cuent);break;
-                case 5:consultarD(cuent);break;
-                case 0:System.out.println("Hasta luego");break;
-                default: System.out.println("Opcion invalida");
+    public void mostrarVocales(Entidad obj) {
+        int cont = 0;
+        obj.setLongitud(obj.getFrase().length());
+        for (int i = 0; i < obj.getFrase().length(); i++) {
+            if ("a".equals(obj.getFrase().substring(i, (i + 1))) || "e".equals(obj.getFrase().substring(i, (i + 1))) || "i".equals(obj.getFrase().substring(i, (i + 1))) || "e".equals(obj.getFrase().substring(i, (i + 1))) || "o".equals(obj.getFrase().substring(i, (i + 1))) || "u".equals(obj.getFrase().substring(i, (i + 1)))) {
+                cont++;
+
             }
-        }while(op!=0);
-      
-        
-        
-        return cuent;
-    }
-
-    public double ingresar(Entidad ing) {
-        System.out.println("Indique la cantidad que desea agregar a su cuenta");
-        double cantidad = input.nextDouble();
-        ing.setSaldoAc((int) (cantidad + ing.getSaldoAc()));
-        return cantidad + ing.getSaldoAc();
-    }
-
-    public double retirar(Entidad reti) {
-        System.out.println("Ingrese la cantidad que desea retirar");
-        double cantidad = input.nextInt();
-        if (cantidad <= reti.getSaldoAc()) {
-            reti.setSaldoAc((int) (reti.getSaldoAc()-cantidad));
-            System.out.println("Operación exitosa!, saldo actual: " + reti.getSaldoAc());
-        } else {
-            System.out.println("Usted no tiene suficente dinero para sacar esa cantidad, lo sentimos.");
         }
-        return cantidad;
+
+        System.out.println("La palabra tiene (" + cont + ") vocales");
     }
 
-    public void metodoRa(Entidad retR) {
-        System.out.println("Bienvenido a retiro rapido, solo puede sacar un maximo de 20% de su saldo");
-        System.out.println("Indique la cantidad que desea retirar");
-        double cantidad = input.nextInt();
+    public void invertirFrase(Entidad obj) {
 
-        if (cantidad > retR.getSaldoAc() * 0.20) {
-            System.out.println("Lo sentimos, no podemos darle mas del 20% de su saldo");
-        } else {
+        String invertida = "";
 
-            retR.setSaldoAc((int) (retR.getSaldoAc()-cantidad));
-            System.out.println("Operación exitosa!, saldo actual: " + retR.getSaldoAc());
+        obj.setLongitud(obj.getFrase().length());
+        for (int i = obj.getLongitud() - 1; i >= 0; i--) {
+
+            invertida += obj.getFrase().substring(i, (i + 1));
 
         }
+
+        System.out.println("La frase invertida es: " + invertida);
     }
-    
-    public void consultarS(Entidad cons){
-        System.out.println("Su saldo actual es: "+cons.getSaldoAc());
+
+    public void vecesRepetidor(String letra, Entidad obj) {
+        System.out.println("Ingrese el caracter que desea saber cuanto se repite");
+
+        int cont = 0;
+
+        for (int i = 0; i < obj.getLongitud(); i++) {
+
+            if (obj.getFrase().substring(i, (i + 1)).equalsIgnoreCase(letra)) {
+                cont++;
+            }
+        }
+        System.out.println("Letra consiguida (" + cont + ") vez/es");
+
     }
-    public void consultarD(Entidad conD){
-        System.out.println("Su datos son: ");
-        System.out.println("\n"+conD.getNumC()+"\n"+conD.getDni()+"\n"+conD.getSaldoAc());
-        
+
+    public void compararLong(String frase, Entidad obj) {
+
+        if (frase.length() == obj.getLongitud()) {
+            System.out.println("Misma longitud: (" + obj.getLongitud() + ") caracteres");
+        } else {
+            System.out.println("Distintas longitudes: ");
+            System.out.println("Frase nueva: " + frase.length());
+            System.out.println("Frase vieja: " + obj.getLongitud());
+        }
+    }
+
+    public void unirFrase(String frase, Entidad obj) {
+
+        System.out.println("Frases unidas: ");
+
+        System.out.println(frase + "/" + obj.getFrase());
+    }
+
+    public void reemplazar(Entidad obj) {
+        System.out.println("Indique la letra que desea reemplazar ");
+        String letr = input.next();
+
+        String cambio = obj.getFrase().replace(letr, "#");
+
+        System.out.println(cambio);
+    }
+
+    public boolean contieneLetra(Entidad bol) {
+        System.out.println("Verificar letra, Ingrese la letra");
+        String letr = input.next();
+        for (int i = 0; i < bol.getLongitud(); i++) {
+            if (bol.getFrase().substring(i, (i + 1)).equalsIgnoreCase(letr)) {
+                return true;
+            }
+        }
+        return false;
+
     }
 }

@@ -22,11 +22,12 @@ public class CineService {
     public Cine cineMax() {
         Cine x = new Cine();
         String[][] sala = new String[8][6];
-        int ocu = (int) Math.round(Math.random() * 5);
+       
 
         System.out.println("\nPorfavor seleccione el asiento que desea ocupar\n");
         System.out.println("Los asientos marcados con una X están ocupados");
-       
+        int puesto= (int) (Math.random()*7)+1;
+        System.out.println(puesto);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
                 sala[i][j] = " ";
@@ -36,12 +37,13 @@ public class CineService {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 6; j++) {
-                if (ocu == 1 || ocu == 3) {
+
+                sala[i][j] = " ";
+                if(puesto == i){
                     sala[i][j] = "X";
-                    if (i == 2 || i == 3) {
-                        break;
-                    }
+                    break;
                 }
+                
             }
 
         }
@@ -59,8 +61,7 @@ public class CineService {
 
     public boolean asiento(Espectador espec, Peliculas peli, Cine x) {
 
-        
-        if (espec.getDineroD() < x.getPrecio() || espec.getEdad() < peli.getEdadM()) {
+        if (espec.getDineroD() < x.getPrecio() && espec.getEdad() < peli.getEdadM()) {
             System.out.println("Usted no cumple con los requisitos");
             return false;
         } else {

@@ -20,6 +20,9 @@ public class MainCinema {
      */
     public static void main(String[] args) {
 
+        
+        
+        
         EspectadorService espect = new EspectadorService();
         Espectador espec1 = espect.crearEspec();
 
@@ -32,6 +35,8 @@ public class MainCinema {
        
         if(cine.asiento(espec1, peli, cinema)==true){
             
+            
+        
         cine.cineMax();
         }
 
