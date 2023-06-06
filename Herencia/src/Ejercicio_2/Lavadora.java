@@ -45,8 +45,13 @@ public class Lavadora extends Electrodomestico {
     // metodos
     public void crearLavadora(){
         crearElectrodomestico();
+        System.out.println("Ingrese la carga de la lavadora");
+        this.carga = input.nextInt();
         
-        System.out.println(this.precio);
+        if(this.carga>30){
+            this.precio += 500;
+        }
+        System.out.println("El precio de la lavadora es: "+this.precio+"\n Su color es: "+this.color+"\nLa carga es: "+this.carga);
     }
     
 }

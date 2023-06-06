@@ -136,30 +136,29 @@ public class Electrodomestico {
         System.out.println("\n1:Blanco\n2:Negro\n3:Rojo\n4:Azul\n5:Gris");
         int op = input.nextInt();
         String letra;
+        
         switch (op) {
             case 1:
                 letra = "Blanco";
-                this.precio += 1000;
                 break;
             case 2:
                 letra = "Negro";
-                this.precio += 1000;
                 break;
             case 3:
                 letra = "Rojo";
-                this.precio += 1000;
                 break;
             case 4:
                 letra = "Azul";
-                this.precio += 1000;
                 break;
             case 5:
                 letra = "Gris";
-                this.precio += 1000;
+
                 break;
             default:
                 letra = "Blanco";
         }
+        
+        this.color = letra;
         System.out.println("Porfavor indique el consumo de su producto ");
         System.out.println("\n1:A\n2:B\n3:C\n4:D\n5:E\n6:F");
         int op2 = input.nextInt();
@@ -201,6 +200,7 @@ public class Electrodomestico {
 
     public void precioFinal() {
 
+        
         crearElectrodomestico();
     }
 }

@@ -3,23 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ejercicio_2;
+package Ejercicio_4;
 
 /**
  *
  * @author JesusNjo
  */
-public class ElectroMain {
+public class CrearFormas {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
        
-        Lavadora lav = new Lavadora();
-        Televisor tv = new Televisor();
-        //lav.crearLavadora();
-        tv.crearTv();
+        Circulo circulo = new Circulo();
+        circulo.crearObjeto();
+        
+        System.out.println("------------------------");
+        Rectangulo rectangulo = new Rectangulo();
+        rectangulo.crearObjeto();
     }
     
 }
