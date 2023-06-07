@@ -28,5 +28,24 @@ import java.time.LocalDate;
  */
 class BarcoMotor extends Barcos {
 
+    protected int potenciaCV;
+
+    public BarcoMotor() {
+    }
+
+    public BarcoMotor(int potenciaCV, long matricula, int eslora, int aFabricacion) {
+        super(matricula, eslora, aFabricacion);
+        this.potenciaCV = potenciaCV;
+    }
+    
+    
+    @Override
+    public double moduloCal(){
+        
+        return super.moduloCal() + potenciaCV;
+    }
    
+    public String toString() {
+        return "\nBarco: Barco Motor\nMatricula:  " + matricula + "\nEslora: " + eslora + "\naFabricacion :" + aFabricacion + "\nCV: "+potenciaCV;
+    }
 }

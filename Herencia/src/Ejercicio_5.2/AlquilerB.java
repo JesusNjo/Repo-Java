@@ -21,8 +21,114 @@ precio final de su alquiler.
  */
 package Ejercicio_5;
 
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
-class AlquilerB {
+public class AlquilerB {
+    Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+    private String nombreCliente;
+    private long documentoCliente;
+    private LocalDate fechaAlquiler;
+    private LocalDate fechaRetorno;
+    private int posicionAmarra;
+    private Barcos nombreBarco;
 
-   
+    public AlquilerB(String nombreCliente, long documentoCliente, LocalDate fechaAlquiler, LocalDate fechaRetorno, int posicionAmarra, Barcos nombreBarco) {
+        this.nombreCliente = nombreCliente;
+        this.documentoCliente = documentoCliente;
+        this.fechaAlquiler = fechaAlquiler;
+        this.fechaRetorno = fechaRetorno;
+        this.posicionAmarra = posicionAmarra;
+        this.nombreBarco = nombreBarco;
+    }
+
+    public AlquilerB() {
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    //Getters and setters;
+    
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public long getDocumentoCliente() {
+        return documentoCliente;
+    }
+
+    public void setDocumentoCliente(long documentoCliente) {
+        this.documentoCliente = documentoCliente;
+    }
+
+    public LocalDate getFechaAlquiler() {
+        return fechaAlquiler;
+    }
+
+    public void setFechaAlquiler(LocalDate fechaAlquiler) {
+        this.fechaAlquiler = fechaAlquiler;
+    }
+
+    public LocalDate getFechaRetorno() {
+        return fechaRetorno;
+    }
+
+    public void setFechaRetorno(LocalDate fechaRetorno) {
+        this.fechaRetorno = fechaRetorno;
+    }
+
+    public int getPosicionAmarra() {
+        return posicionAmarra;
+    }
+
+    public void setPosicionAmarra(int posicionAmarra) {
+        this.posicionAmarra = posicionAmarra;
+    }
+
+    public Barcos getNombreBarco() {
+        return nombreBarco;
+    }
+
+    public void setNombreBarco(Barcos nombreBarco) {
+        this.nombreBarco = nombreBarco;
+    }
+    
+    
+    
+    public double calcularPrecio(){
+       
+        System.out.println("Indique el dia de alquiler");
+        System.out.print("Dia: ");
+        int dia = input.nextInt();
+        System.out.print("Mes: ");
+        int mes = input.nextInt();
+        System.out.print("Año: ");
+        int anio = input.nextInt();
+        
+        this.fechaAlquiler = LocalDate.of(anio,mes,dia);
+        System.out.println("Indique el dia de retorno");
+        System.out.print("Dia: ");
+        int diaR = input.nextInt();
+        System.out.print("Mes: ");
+        int mesR = input.nextInt();
+        System.out.print("Año: ");
+        int anioR = input.nextInt();
+        this.fechaRetorno = LocalDate.of(anioR,mesR,diaR);
+        double diasOcu= ChronoUnit.DAYS.between(fechaAlquiler, fechaRetorno);
+        
+      
+        return diasOcu * nombreBarco.moduloCal();
+    }
+
+    @Override
+    public String toString() {
+        return "NombreCliente: " + nombreCliente + "\nDocumentoCliente: " + documentoCliente + "\nfechaAlquiler: " + fechaAlquiler + "\nfechaRetorno: " + fechaRetorno + "\nPosicionAmarre:" + posicionAmarra;
+    }
+    
+    
+    
 }

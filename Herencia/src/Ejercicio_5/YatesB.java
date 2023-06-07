@@ -28,7 +28,7 @@ package Ejercicio_5;
  */
 class Yate extends BarcoAMotor {
 
-    private int numCamarotes;
+    private final int numCamarotes;
 
     public Yate(String matricula, double eslora, int anioFabricacion, int potenciaCV, int numCamarotes) {
         super(matricula, eslora, anioFabricacion, potenciaCV);

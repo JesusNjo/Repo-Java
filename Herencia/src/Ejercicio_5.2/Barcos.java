@@ -20,18 +20,61 @@ precio final de su alquiler.
  */
 package Ejercicio_5;
 
-
-
-/**
- *
- * @author JesusNjo
- */
-
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.Random;
 
-class Barcos {
+
+public class Barcos {
+   protected long matricula;
+   protected int eslora;
+   protected int aFabricacion;
+
+    public Barcos(long matricula, int eslora, int aFabricacion) {
+        this.matricula = matricula;
+        this.eslora = eslora;
+        this.aFabricacion = aFabricacion;
+    }
+
+    public Barcos() {
+    }
+
+    public long getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(long matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getEslora() {
+        return eslora;
+    }
+
+    public void setEslora(int eslora) {
+        this.eslora = eslora;
+    }
+
+    public int getaFabricacion() {
+        return aFabricacion;
+    }
+
+    public void setaFabricacion(int aFabricacion) {
+        this.aFabricacion = aFabricacion;
+    }
    
+    
+    public double moduloCal(){
+      
+        
+        
+        
+        return eslora * 10;
+    }
+
+    @Override
+    public String toString() {
+        return "Barco: " + matricula + ", eslora=" + eslora + ", aFabricacion :" + aFabricacion;
+    }
 }
 
 

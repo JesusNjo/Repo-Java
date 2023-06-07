@@ -24,9 +24,51 @@ package Ejercicio_5;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class BarcoMain {
 
-  
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
+        List<Barcos> barcos = new ArrayList();
+        AlquilerB alquiler = new AlquilerB();
+        barcos.add(new Veleros(8, 548145, 40, 1994));
+        barcos.add(new BarcoMotor(50, 718412, 50, 1998));
+        barcos.add(new YatesB(12, 60, 84568, 45, 2002));
+
+        System.out.println("Barcos disponibles: ");
+
+        System.out.print("Indique su nombre: ");
+        alquiler.setNombreCliente(input.next());
+        System.out.print("Indique su documento: ");
+        alquiler.setDocumentoCliente(input.nextInt());
+        System.out.print("Indique la posicion de amarre: ");
+        alquiler.setPosicionAmarra(input.nextInt());
+        barcos.forEach((x) -> System.out.println(x.toString()));
+
+        System.out.println("Indique cual desea rentar");
+        System.out.println("1:Velero\n2:Barco a motor\n3:Yate");
+        int op = input.nextInt();
+        
+        switch (op) {
+            case 1:
+
+                AlquilerB alquilerVelero = new AlquilerB(alquiler.getNombreCliente(), alquiler.getDocumentoCliente(), alquiler.getFechaAlquiler(), alquiler.getFechaRetorno(), alquiler.getPosicionAmarra(), barcos.get(op-1));
+                double precioFinal = alquilerVelero.calcularPrecio();
+                System.out.println("El precio del alquiler es: $" + precioFinal);
+                break;
+            case 2:
+                AlquilerB alquilerMotor = new AlquilerB(alquiler.getNombreCliente(), alquiler.getDocumentoCliente(), alquiler.getFechaAlquiler(), alquiler.getFechaRetorno(), alquiler.getPosicionAmarra(), barcos.get(op-1));
+                double precioFinalM = alquilerMotor.calcularPrecio();
+                System.out.println("El precio del alquiler es: $" + precioFinalM);
+                break;
+            case 3:
+                AlquilerB alquilerY = new AlquilerB(alquiler.getNombreCliente(), alquiler.getDocumentoCliente(), alquiler.getFechaAlquiler(), alquiler.getFechaRetorno(), alquiler.getPosicionAmarra(), barcos.get(op-1));
+                double precioFinalY = alquilerY.calcularPrecio();
+                System.out.println("El precio del alquiler es: $" + precioFinalY);
+                break;
+            default: ;
+        }
+
+    }
 }

@@ -26,5 +26,22 @@ class Veleros extends Barcos {
 
     private int numMastiles;
 
-  
+    public Veleros() {
+    }
+
+    public Veleros(int numMastiles, long matricula, int eslora,int aFabricacion) {
+        super(matricula, eslora, aFabricacion);
+        this.numMastiles = numMastiles;
+    }
+
+    @Override
+    public double moduloCal(){
+      
+        return super.moduloCal() + numMastiles;
+    }
+    
+    @Override
+    public String toString() {
+        return "\nBarco: Velero\nMatricula:  " + matricula + "\nEslora: " + eslora + "\naFabricacion :" + aFabricacion;
+    }
 }
