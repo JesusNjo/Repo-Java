@@ -18,34 +18,33 @@ Utilizando la herencia de forma apropiada, deberemos programar en Java, las clas
 métodos necesarios que permitan al usuario elegir el barco que quiera alquilar y mostrarle el
 precio final de su alquiler.
  */
-package Ejercicio_5;
+package Ejercicio_5_2;
 
 import java.time.LocalDate;
+
+
 
 /**
  *
  * @author JesusNjo
  */
-class BarcoMotor extends Barcos {
+class YatesB extends BarcoMotor {
 
-    protected int potenciaCV;
+    private int numCamarotes;
 
-    public BarcoMotor() {
+    public YatesB(int numCamarotes, int potenciaCV, long matricula, int eslora, int aFabricacion) {
+        super(potenciaCV, matricula, eslora, aFabricacion);
+        this.numCamarotes = numCamarotes;
     }
 
-    public BarcoMotor(int potenciaCV, long matricula, int eslora, int aFabricacion) {
-        super(matricula, eslora, aFabricacion);
-        this.potenciaCV = potenciaCV;
+    public YatesB() {
     }
-    
     
     @Override
     public double moduloCal(){
-        
-        return super.moduloCal() + potenciaCV;
+        return super.moduloCal() + numCamarotes;
     }
-   
-    public String toString() {
-        return "\nBarco: Barco Motor\nMatricula:  " + matricula + "\nEslora: " + eslora + "\naFabricacion :" + aFabricacion + "\nCV: "+potenciaCV;
+ public String toString() {
+        return "\nBarco: Yate\nMatricula:  " + matricula + "\nEslora: " + eslora + "\naFabricacion :" + aFabricacion+"\nCV: "+potenciaCV+"\nNº Camarotes: "+numCamarotes;
     }
 }

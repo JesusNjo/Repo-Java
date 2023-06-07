@@ -35,67 +35,69 @@ Pensar la lógica necesaria para realizar esto, usando los atributos de la clase
  */
 package Ejercicio_2;
 
-import java.util.*;
-
 /**
  *
  * @author JesusNjo
  */
-public class Juego {
-    private List<Jugador> jugadores;
-    private Revolver revolver;
+public final class Revolver {
 
-    public Juego(List<Jugador> jugadores, Revolver revolver) {
-        this.jugadores = jugadores;
-        this.revolver = revolver;
-    }
+    private int posicionActual;
+    private int posicionAgua;
 
-    public Juego() {
+    public Revolver(int posicionActual, int posicionAgua) {
+        this.posicionActual = posicionActual;
+        this.posicionAgua = posicionAgua;
     }
 
-    public List<Jugador> getJugadores() {
-        return jugadores;
+    public Revolver() {
+        llenarRevolver();
     }
 
-    public void setJugadores(List<Jugador> jugadores) {
-        this.jugadores = jugadores;
+    public int getPosicionActual() {
+        return posicionActual;
     }
 
-    public Revolver getRevolver() {
-        return revolver;
+    public void setPosicionActual(int posicionActual) {
+        this.posicionActual = posicionActual;
     }
 
-    public void setRevolver(Revolver revolver) {
-        this.revolver = revolver;
+    public int getPosicionAgua() {
+        return posicionAgua;
     }
-    
-    
-    
-    
-    public void llenarJuego(ArrayList<Jugador>jugadores, Revolver r){
-       
-        
-        
-        jugadores.forEach((x)->System.out.println(x.getNombre())) ;
+
+    public void setPosicionAgua(int posicionAgua) {
+        this.posicionAgua = posicionAgua;
     }
-    
-    public void ronda(){
-      boolean juegoTerminado = false;
-      
-      while(!juegoTerminado){
-          for (Jugador jugador : jugadores) {
-              System.out.println(jugador.getNombre()+" aprieta el gatillo....");
-              revolver.siguienteChorro();
-              System.out.println(revolver.toString());
-              if(revolver.mojar()){
-                  System.out.println("Haz muerto, fin del juego...");
-                  juegoTerminado =true;
-                  break;
-              }else{
-                  System.out.println("Te haz salvado..");
-              }
-          }
-      }
-        
+
+    // metodos
+    public void llenarRevolver() {
+
+        int random = (int) (Math.random() * 6) + 1;
+        int random2 = (int) (Math.random() * 6) + 1;
+
+        this.posicionActual = random;
+        this.posicionAgua = random2;
+
     }
+
+    public boolean mojar() {
+
+        return posicionActual == posicionAgua;
+    }
+
+    public void siguienteChorro() {
+        if (posicionActual == 6) {
+            posicionActual = 1;
+        } else {
+            posicionActual++;
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "\nPosicion Actual: " + posicionActual + "\nPosicion Agua: " + posicionAgua;
+    }
+
+  
 }

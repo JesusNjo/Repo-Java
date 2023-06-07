@@ -35,22 +35,38 @@ Pensar la lógica necesaria para realizar esto, usando los atributos de la clase
  */
 package Ejercicio_2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author JesusNjo
  */
-public class RuletaRusa {
+public class Ruleta {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Juego juego = new Juego();
-       
-        juego.ronda();
+        Scanner input = new Scanner(System.in).useDelimiter("\n");
+        ArrayList<Jugador> jugadores = new ArrayList();
+        Revolver revolver = new Revolver();
+        String[] nombreJugadores = {"Juan Carlos", "Pedro Garcia", "Leon Lopez", "Cesar Gomez", "Litendo Joel", "John Wick"};
+        System.out.println("Ingrese la cantidad de jugadores que entrarán");
 
+        int cant = input.nextInt();
+        for (int i = 0; i < cant; i++) {
+            Jugador jugador = new Jugador(nombreJugadores[i],false);
+            
+            jugadores.add(jugador);
+        }
+        
+        Juego ne = new Juego();
+        ne.setJugadores(jugadores);
+        ne.setRevolver(revolver);
+        ne.llenarJuego(jugadores, revolver);
+
+        ne.ronda();
     }
+
 }

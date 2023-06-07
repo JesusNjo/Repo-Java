@@ -1,5 +1,5 @@
 /*
- 1. En un puerto se alquilan amarres para barcos de distinto tipo. Para cada Alquiler se guarda: el
+1. En un puerto se alquilan amarres para barcos de distinto tipo. Para cada Alquiler se guarda: el
 nombre, documento del cliente, la fecha de alquiler, fecha de devolución, la posición del
 amarre y el barco que lo ocupará.
 Un Barco se caracteriza por: su matrícula, su eslora en metros y año de fabricación.
@@ -18,63 +18,34 @@ Utilizando la herencia de forma apropiada, deberemos programar en Java, las clas
 métodos necesarios que permitan al usuario elegir el barco que quiera alquilar y mostrarle el
 precio final de su alquiler.
  */
-package Ejercicio_5;
+package Ejercicio_5_2;
 
 import java.time.LocalDate;
-import java.util.Random;
 
+/**
+ *
+ * @author JesusNjo
+ */
+class BarcoMotor extends Barcos {
 
-public class Barcos {
-   protected long matricula;
-   protected int eslora;
-   protected int aFabricacion;
+    protected int potenciaCV;
 
-    public Barcos(long matricula, int eslora, int aFabricacion) {
-        this.matricula = matricula;
-        this.eslora = eslora;
-        this.aFabricacion = aFabricacion;
+    public BarcoMotor() {
     }
 
-    public Barcos() {
+    public BarcoMotor(int potenciaCV, long matricula, int eslora, int aFabricacion) {
+        super(matricula, eslora, aFabricacion);
+        this.potenciaCV = potenciaCV;
     }
-
-    public long getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(long matricula) {
-        this.matricula = matricula;
-    }
-
-    public int getEslora() {
-        return eslora;
-    }
-
-    public void setEslora(int eslora) {
-        this.eslora = eslora;
-    }
-
-    public int getaFabricacion() {
-        return aFabricacion;
-    }
-
-    public void setaFabricacion(int aFabricacion) {
-        this.aFabricacion = aFabricacion;
+    
+    
+    @Override
+    public double moduloCal(){
+        
+        return super.moduloCal() + potenciaCV;
     }
    
-    
-    public double moduloCal(){
-      
-        
-        
-        
-        return eslora * 10;
-    }
-
-    @Override
     public String toString() {
-        return "Barco: " + matricula + ", eslora=" + eslora + ", aFabricacion :" + aFabricacion;
+        return "\nBarco: Barco Motor\nMatricula:  " + matricula + "\nEslora: " + eslora + "\naFabricacion :" + aFabricacion + "\nCV: "+potenciaCV;
     }
 }
-
-

@@ -18,7 +18,7 @@ Utilizando la herencia de forma apropiada, deberemos programar en Java, las clas
 métodos necesarios que permitan al usuario elegir el barco que quiera alquilar y mostrarle el
 precio final de su alquiler.
  */
-package Ejercicio_5;
+package Ejercicio_5_2;
 
 import java.time.LocalDate;
 
