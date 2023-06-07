@@ -1,5 +1,5 @@
 /*
- 1. En un puerto se alquilan amarres para barcos de distinto tipo. Para cada Alquiler se guarda: el
+1. En un puerto se alquilan amarres para barcos de distinto tipo. Para cada Alquiler se guarda: el
 nombre, documento del cliente, la fecha de alquiler, fecha de devolución, la posición del
 amarre y el barco que lo ocupará.
 Un Barco se caracteriza por: su matrícula, su eslora en metros y año de fabricación.
@@ -21,54 +21,10 @@ precio final de su alquiler.
 package Ejercicio_5;
 
 import java.time.LocalDate;
-import java.util.*;
 
-/**
- *
- * @author JesusNjo
- */
-public class Barcos extends Alquiler {
-    protected int matricula;
-    protected int eslora;
-    protected int anioF;
+class Veleros extends Barcos {
 
-    public Barcos() {
-    }
+    private int numMastiles;
 
-    public Barcos(int matricula, int eslora, int anioF, String nombre, long documentoC, LocalDate fechaA, LocalDate fechaD, int amarre, Barcos nombreBarco) {
-        super(nombre, documentoC, fechaA, fechaD, amarre, nombreBarco);
-        this.matricula = matricula;
-        this.eslora = eslora;
-        this.anioF = anioF;
-    }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
-
-    public int getEslora() {
-        return eslora;
-    }
-
-    public void setEslora(int eslora) {
-        this.eslora = eslora;
-    }
-
-    public int getAnioF() {
-        return anioF;
-    }
-
-    public void setAnioF(int anioF) {
-        this.anioF = anioF;
-    }
-    
-    public void Crearmodulo(){
-        
-        
-    }
-    
+  
 }

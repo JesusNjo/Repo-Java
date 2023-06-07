@@ -20,23 +20,13 @@ precio final de su alquiler.
  */
 package Ejercicio_5;
 
-
+import java.time.LocalDate;
 
 /**
  *
  * @author JesusNjo
  */
-class Yate extends BarcoAMotor {
+class BarcoMotor extends Barcos {
 
-    private int numCamarotes;
-
-    public Yate(String matricula, double eslora, int anioFabricacion, int potenciaCV, int numCamarotes) {
-        super(matricula, eslora, anioFabricacion, potenciaCV);
-        this.numCamarotes = numCamarotes;
-    }
-
-    @Override
-    public double getModulo() {
-        return super.getModulo() + numCamarotes;
-    }
+   
 }

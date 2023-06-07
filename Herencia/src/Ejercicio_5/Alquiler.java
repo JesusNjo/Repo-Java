@@ -25,98 +25,27 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-public class Alquiler {
+class Alquiler {
 
-    Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
-    protected String nombre;
-    protected long documentoC;
-    protected LocalDate fechaA;
-    protected LocalDate fechaD;
-    protected int amarre;
-    protected Barcos nombreBarco;
+    private String nombreCliente;
+    private String documentoCliente;
+    private LocalDate fechaAlquiler;
+    private LocalDate fechaDevolucion;
+    private int posicionAmarre;
+    private Barco barco;
 
-    public Alquiler(String nombre, long documentoC, LocalDate fechaA, LocalDate fechaD, int amarre, Barcos nombreBarco) {
-        this.nombre = nombre;
-        this.documentoC = documentoC;
-        this.fechaA = fechaA;
-        this.fechaD = fechaD;
-        this.amarre = amarre;
-        this.nombreBarco = nombreBarco;
+    public Alquiler(String nombreCliente, String documentoCliente, LocalDate fechaAlquiler,
+            LocalDate fechaDevolucion, int posicionAmarre, Barco barco) {
+        this.nombreCliente = nombreCliente;
+        this.documentoCliente = documentoCliente;
+        this.fechaAlquiler = fechaAlquiler;
+        this.fechaDevolucion = fechaDevolucion;
+        this.posicionAmarre = posicionAmarre;
+        this.barco = barco;
     }
 
-    public Alquiler() {
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public long getDocumentoC() {
-        return documentoC;
-    }
-
-    public void setDocumentoC(long documentoC) {
-        this.documentoC = documentoC;
-    }
-
-    public LocalDate getFechaA() {
-        return fechaA;
-    }
-
-    public void setFechaA(LocalDate fechaA) {
-        this.fechaA = fechaA;
-    }
-
-    public LocalDate getFechaD() {
-        return fechaD;
-    }
-
-    public void setFechaD(LocalDate fechaD) {
-        this.fechaD = fechaD;
-    }
-
-    public int getAmarre() {
-        return amarre;
-    }
-
-    public void setAmarre(int amarre) {
-        this.amarre = amarre;
-    }
-
-    public Barcos getNombreBarco() {
-        return nombreBarco;
-    }
-
-    public void setNombreBarco(Barcos nombreBarco) {
-        this.nombreBarco = nombreBarco;
-    }
-
-    public double calcularAlquiler() {
-        System.out.println("Indique la fecha de alquiler");
-        int dia = input.nextInt();
-        int mes = input.nextInt();
-        int anio = input.nextInt();
-        fechaA = LocalDate.of(anio, mes, dia);
-
-        System.out.println("Indique la fecha de retorno");
-        dia = input.nextInt();
-        mes = input.nextInt();
-        anio = input.nextInt();
-        fechaD = LocalDate.of(anio, mes, dia);
-
-        double cantD = ChronoUnit.DAYS.between(fechaA, fechaD);
-
-        double alquiler = cantD * nombreBarco.getEslora() * 10;
-        
-        return alquiler;
-    }
-
-    public void modulo() {
-
-        calcularAlquiler();
+    public double calcularPrecio() {
+        long diasOcupacion = ChronoUnit.DAYS.between(fechaAlquiler, fechaDevolucion);
+        return diasOcupacion * barco.getModulo();
     }
 }

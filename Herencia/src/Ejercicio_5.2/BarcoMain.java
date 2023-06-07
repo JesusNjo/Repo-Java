@@ -1,4 +1,5 @@
 /*
+
 1. En un puerto se alquilan amarres para barcos de distinto tipo. Para cada Alquiler se guarda: el
 nombre, documento del cliente, la fecha de alquiler, fecha de devolución, la posición del
 amarre y el barco que lo ocupará.
@@ -20,23 +21,12 @@ precio final de su alquiler.
  */
 package Ejercicio_5;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
+public class BarcoMain {
 
-/**
- *
- * @author JesusNjo
- */
-class Yate extends BarcoAMotor {
-
-    private int numCamarotes;
-
-    public Yate(String matricula, double eslora, int anioFabricacion, int potenciaCV, int numCamarotes) {
-        super(matricula, eslora, anioFabricacion, potenciaCV);
-        this.numCamarotes = numCamarotes;
-    }
-
-    @Override
-    public double getModulo() {
-        return super.getModulo() + numCamarotes;
-    }
+  
 }

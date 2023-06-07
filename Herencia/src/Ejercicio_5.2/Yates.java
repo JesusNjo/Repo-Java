@@ -20,32 +20,13 @@ precio final de su alquiler.
  */
 package Ejercicio_5;
 
-import java.time.LocalDate;
+
 
 /**
  *
  * @author JesusNjo
  */
-public class Veleros extends Barcos {
-    private int numMastil;
+class Yates extends BarcoMotor {
 
-    public Veleros(int numMastil, int matricula, int eslora, int anioF, String nombre, long documentoC, LocalDate fechaA, LocalDate fechaD, int amarre, Barcos nombreBarco) {
-        super(matricula, eslora, anioF, nombre, documentoC, fechaA, fechaD, amarre, nombreBarco);
-        this.numMastil = numMastil;
-    }
-
-    public Veleros() {
-    }
-    
-
-    public int getNumMastil() {
-        return numMastil;
-    }
-
-    public void setNumMastil(int numMastil) {
-        this.numMastil = numMastil;
-    }
-    
-    
-    
+ 
 }

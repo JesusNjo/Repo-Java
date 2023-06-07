@@ -21,17 +21,41 @@ precio final de su alquiler.
  */
 package Ejercicio_5;
 
-/**
- *
- * @author JesusNjo
- */
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class BarcosMain {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        List<Barco> barcos = new ArrayList();
+        barcos.add(new Velero("ABC123", 10, 2000, 2));
+        barcos.add(new BarcoAMotor("DEF456", 15, 2005, 500));
+        barcos.add(new Yate("GHI789", 20, 2010, 1000, 4));
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Elija un barco para alquilar:");
+        for (int i = 0; i < barcos.size(); i++) {
+            System.out.println(i + " - " + barcos.get(i).getClass().getSimpleName());
+        }
+        int opcionBarco = input.nextInt();
+
+        System.out.println("Indique la fecha de alquiler (AÑO/MES/DÍA)");
+        int anioAlquiler = input.nextInt();
+        int mesAlquiler = input.nextInt();
+        int diaAlquiler = input.nextInt();
+        LocalDate fechaAlquiler = LocalDate.of(anioAlquiler, mesAlquiler, diaAlquiler);
+
+        System.out.println("Indique la fecha de devolución (AÑO/MES/DÍA)");
+        int anioDevolucion = input.nextInt();
+        int mesDevolucion = input.nextInt();
+        int diaDevolucion = input.nextInt();
+        LocalDate fechaDevolucion = LocalDate.of(anioDevolucion, mesDevolucion, diaDevolucion);
+
+        Alquiler alquiler = new Alquiler("Juan Perez", "12345678", fechaAlquiler,
+                fechaDevolucion, 1, barcos.get(opcionBarco));
+        double precio =alquiler.calcularPrecio();
+        System.out.println("El precio del alquiler es: $" + precio);
     }
-    
 }

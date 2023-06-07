@@ -26,25 +26,17 @@ import java.time.LocalDate;
  *
  * @author JesusNjo
  */
-public class BarcosMotor extends Barcos{
-    
-    private int cv;
+class BarcoAMotor extends Barco {
 
-    public BarcosMotor() {
+    private int potenciaCV;
+
+    public BarcoAMotor(String matricula, double eslora, int anioFabricacion, int potenciaCV) {
+        super(matricula, eslora, anioFabricacion);
+        this.potenciaCV = potenciaCV;
     }
 
-    public BarcosMotor(int cv, int matricula, int eslora, int anioF, String nombre, long documentoC, LocalDate fechaA, LocalDate fechaD, int amarre, Barcos nombreBarco) {
-        super(matricula, eslora, anioF, nombre, documentoC, fechaA, fechaD, amarre, nombreBarco);
-        this.cv = cv;
+    @Override
+    public double getModulo() {
+        return super.getModulo() + potenciaCV;
     }
-
-    public int getCv() {
-        return cv;
-    }
-
-    public void setCv(int cv) {
-        this.cv = cv;
-    }
-    
-    
 }
