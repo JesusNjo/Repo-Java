@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio_7">
+  <ClassDiagramComponents>
+    <Class name="Alojamientos" package="Ejercicio_7" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="direccion" type="String" visibility="protected"/>
+        <Field name="localidad" type="String" visibility="protected"/>
+        <Field name="gerente" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Hoteles" package="Ejercicio_7" visibility="public" xPosition="216.0" yPosition="20.0">
+      <Fields>
+        <Field name="cantidadHabitacion" type="int" visibility="protected"/>
+        <Field name="numeroCamas" type="int" visibility="protected"/>
+        <Field name="precioHabitacion" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="cantidadHabitacion"/>
+          <Argument type="int" name="numeroCamas"/>
+          <Argument type="int" name="precioHabitacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCantidadHabitacion" returnType="int" visibility="public"/>
+        <Method name="setCantidadHabitacion" returnType="void" visibility="public">
+          <Argument type="int" name="cantidadHabitacion"/>
+        </Method>
+        <Method name="getNumeroCamas" returnType="int" visibility="public"/>
+        <Method name="setNumeroCamas" returnType="void" visibility="public">
+          <Argument type="int" name="numeroCamas"/>
+        </Method>
+        <Method name="getPrecioHabitacion" returnType="int" visibility="public"/>
+        <Method name="setPrecioHabitacion" returnType="void" visibility="public">
+          <Argument type="int" name="precioHabitacion"/>
+        </Method>
+        <Method name="precios" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Hotele_4S" package="Ejercicio_7" visibility="public" xPosition="264.0" yPosition="404.0">
+      <Fields>
+        <Field name="gym" type="boolean" visibility="private"/>
+        <Field name="nombreRestaurant" type="String" visibility="private"/>
+        <Field name="capacidadRest" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="gym"/>
+          <Argument type="String" name="nombreRestaurant"/>
+          <Argument type="int" name="capacidadRest"/>
+          <Argument type="int" name="cantidadHabitacion"/>
+          <Argument type="int" name="numeroCamas"/>
+          <Argument type="int" name="precioHabitacion"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isGym" returnType="boolean" visibility="public"/>
+        <Method name="setGym" returnType="void" visibility="public">
+          <Argument type="boolean" name="gym"/>
+        </Method>
+        <Method name="getNombreRestaurant" returnType="String" visibility="public"/>
+        <Method name="setNombreRestaurant" returnType="void" visibility="public">
+          <Argument type="String" name="nombreRestaurant"/>
+        </Method>
+        <Method name="getCapacidadRest" returnType="int" visibility="public"/>
+        <Method name="setCapacidadRest" returnType="void" visibility="public">
+          <Argument type="int" name="capacidadRest"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Hotele_5S" package="Ejercicio_7" visibility="public" xPosition="336.0" yPosition="333.0">
+      <Fields>
+        <Field name="cantidadSalones" type="int" visibility="private"/>
+        <Field name="cantidadSuites" type="int" visibility="private"/>
+        <Field name="cantidadLimosinas" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="cantidadSalones"/>
+          <Argument type="int" name="cantidadSuites"/>
+          <Argument type="int" name="cantidadLimosinas"/>
+          <Argument type="boolean" name="gym"/>
+          <Argument type="String" name="nombreRestaurant"/>
+          <Argument type="int" name="capacidadRest"/>
+          <Argument type="int" name="cantidadHabitacion"/>
+          <Argument type="int" name="numeroCamas"/>
+          <Argument type="int" name="precioHabitacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCantidadSalones" returnType="int" visibility="public"/>
+        <Method name="setCantidadSalones" returnType="void" visibility="public">
+          <Argument type="int" name="cantidadSalones"/>
+        </Method>
+        <Method name="getCantidadSuites" returnType="int" visibility="public"/>
+        <Method name="setCantidadSuites" returnType="void" visibility="public">
+          <Argument type="int" name="cantidadSuites"/>
+        </Method>
+        <Method name="getCantidadLimosinas" returnType="int" visibility="public"/>
+        <Method name="setCantidadLimosinas" returnType="void" visibility="public">
+          <Argument type="int" name="cantidadLimosinas"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Ejercicio_7.Hotele_4S" target="Ejercicio_7.Hoteles"/>
+    <IsRelation name="is" source="Ejercicio_7.Hotele_5S" target="Ejercicio_7.Hotele_4S"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
