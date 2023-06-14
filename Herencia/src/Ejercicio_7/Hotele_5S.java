@@ -14,18 +14,17 @@ package Ejercicio_7;
  * @author JesusNjo
  */
 public class Hotele_5S extends Hotele_4S {
+
     private int cantidadSalones;
     private int cantidadSuites;
     private int cantidadLimosinas;
 
-    public Hotele_5S(int cantidadSalones, int cantidadSuites, int cantidadLimosinas, boolean gym, String nombreRestaurant, int capacidadRest, char tipoGym, int cantidadHabitacion, int numeroCamas, int precioHabitacion) {
-        super(gym, nombreRestaurant, capacidadRest, tipoGym, cantidadHabitacion, numeroCamas, precioHabitacion);
+    public Hotele_5S(int cantidadSalones, int cantidadSuites, int cantidadLimosinas, boolean gym, String nombreRestaurant, int capacidadRest, Character tipoGym, int cantidadHabitacion, int numeroCamas, int precioHabitacion, int cantPisos, String nombre, String direccion, String localidad, String gerente) {
+        super(gym, nombreRestaurant, capacidadRest, tipoGym, cantidadHabitacion, numeroCamas, precioHabitacion, cantPisos, nombre, direccion, localidad, gerente);
         this.cantidadSalones = cantidadSalones;
         this.cantidadSuites = cantidadSuites;
         this.cantidadLimosinas = cantidadLimosinas;
     }
-
-   
 
     public int getCantidadSalones() {
         return cantidadSalones;
@@ -50,21 +49,20 @@ public class Hotele_5S extends Hotele_4S {
     public void setCantidadLimosinas(int cantidadLimosinas) {
         this.cantidadLimosinas = cantidadLimosinas;
     }
+
     @Override
-    public double precios(){
+    public double precios() {
         double precio = super.precios();
-        precio+= 15 * this.cantidadLimosinas;
-        
+        precio += 15 * this.cantidadLimosinas;
+
         return precio;
     }
 
-     public String toString() {
-        return "Hotel 5 estrellas: " + super.toString() +
-               "| Cantidad de salones de conferencia: " + cantidadSalones +
-               "| Cantidad de suites: " + cantidadSuites +
-               "| Cantidad de limosinas: " + cantidadLimosinas;
+    public String toString() {
+        return "Hotel 5 estrellas: " + super.toString()
+                + "| Cantidad de salones de conferencia: " + cantidadSalones
+                + "| Cantidad de suites: " + cantidadSuites
+                + "| Cantidad de limosinas: " + cantidadLimosinas;
     }
 
-   
-    
 }

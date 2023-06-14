@@ -59,19 +59,9 @@ public class VacionesMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        List<Hoteles> hoteles = new ArrayList();
-        hoteles.sort((h1, h2) -> Double.compare(h2.precios(), h1.precios()));
 
-        hoteles.add(new Hotele_4S(false, "Tykil U", 60, ' ', 20, 60, 12));
-        hoteles.add(new Hotele_4S(true, "Il coloniale", 80, 'B', 40, 80, 20));
-
-        hoteles.add(new Hotele_5S(4, 8, 10, true, "Bijou", 40, 'A', 60, 140, 25));
-        hoteles.add(new Hotele_5S(6, 10, 12, true, "Marcolino's", 80, 'A', 60, 140, 25));
-
-        System.out.println("Hoteles (de más caro a más barato):");
-        for (Hoteles hotel : hoteles) {
-            System.out.println(hotel.toString());
-        }
+        ServiceMain Main = new ServiceMain();
+        
+        Main.todoProceso();
     }
-
 }

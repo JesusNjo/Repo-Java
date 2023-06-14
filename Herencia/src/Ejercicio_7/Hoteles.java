@@ -49,21 +49,30 @@ package Ejercicio_7;
 
 /**
  *
- * @author JesusNjo
+ * @author Jesus
  */
-public class Hoteles {
+public class Hoteles extends Alojamientos {
     protected int cantidadHabitacion;
     protected int numeroCamas;
     protected int precioHabitacion;
+    protected int cantPisos;
 
-    public Hoteles() {
-    }
-
-    public Hoteles(int cantidadHabitacion, int numeroCamas, int precioHabitacion) {
+    public Hoteles(int cantidadHabitacion, int numeroCamas, int precioHabitacion, int cantPisos, String nombre, String direccion, String localidad, String gerente) {
+        super(nombre, direccion, localidad, gerente);
         this.cantidadHabitacion = cantidadHabitacion;
         this.numeroCamas = numeroCamas;
         this.precioHabitacion = precioHabitacion;
+        this.cantPisos = cantPisos;
     }
+
+    
+    public Hoteles() {
+    }
+
+   
+
+   
+    
 
     public int getCantidadHabitacion() {
         return cantidadHabitacion;

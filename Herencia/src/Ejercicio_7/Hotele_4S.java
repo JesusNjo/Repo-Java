@@ -41,13 +41,16 @@ public class Hotele_4S extends Hoteles {
     protected int capacidadRest;
     protected Character tipoGym;
 
-    public Hotele_4S(boolean gym, String nombreRestaurant, int capacidadRest, char tipoGym, int cantidadHabitacion, int numeroCamas, int precioHabitacion) {
-        super(cantidadHabitacion, numeroCamas, precioHabitacion);
+    public Hotele_4S(boolean gym, String nombreRestaurant, int capacidadRest, Character tipoGym, int cantidadHabitacion, int numeroCamas, int precioHabitacion, int cantPisos, String nombre, String direccion, String localidad, String gerente) {
+        super(cantidadHabitacion, numeroCamas, precioHabitacion, cantPisos, nombre, direccion, localidad, gerente);
         this.gym = gym;
         this.nombreRestaurant = nombreRestaurant;
         this.capacidadRest = capacidadRest;
         this.tipoGym = tipoGym;
     }
+
+    
+    
 
     public Hotele_4S() {
     }
