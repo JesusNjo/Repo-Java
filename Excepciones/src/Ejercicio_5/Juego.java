@@ -29,16 +29,19 @@ public class Juego {
 
     public static void capturarNum() throws Exception {
         Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
-        int numAleatorio = (int) ((Math.random() * 5) + 1);
+        int numAleatorio = (int) ((Math.random() * 500) + 1);
         int num = 0;
 
         do {
             try {
                 System.out.println("Indique un valor entre 1 y 500");
                 num = input.nextInt();
+                System.out.println(numAleatorio);
                 throw (numAleatorio > num) ? new Menor("El numero es menor") : (numAleatorio < num) ? new Mayor("El numero es mayor") : new Igual("Adivinaste");
             } catch (InputMismatchException e) {
+                System.out.println("No puedes ingresar letras");
                 System.out.println(e.toString());
+                break;
             } catch (Mayor | Menor | Igual a) {
                 System.out.println(a.getMessage());
                 
