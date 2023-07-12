@@ -5,8 +5,8 @@
  */
 package Tienda;
 
-import Tienda.Service.FabricanteService;
-import Tienda.Service.ProductoService;
+
+import Tienda.Service.Servicios;
 
 /**
  *
@@ -18,11 +18,8 @@ public class TiendaMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        FabricanteService x = new FabricanteService();
-        ProductoService y = new ProductoService();
-        
-        y.menu();
-        
+        Servicios y = new Servicios();
+        y.menu();  
     }
     
 }

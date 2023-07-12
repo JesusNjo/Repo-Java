@@ -58,7 +58,7 @@ public abstract class DAO {
          desconectarDB();
      }
  }
- protected void consula(String sql) throws Exception{
+ protected void consulta(String sql) throws Exception{
      try {
          conectarDB();
          sentencia = conexion.createStatement();
