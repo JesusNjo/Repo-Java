@@ -140,7 +140,7 @@ public class Dispositivo {
     public Dispositivo(int consumoDeEnergia) {
         this.consumoDeEnergia = consumoDeEnergia;
         this.danado = false;
-        this.random = ((Math.random()*100)+1);
+        this.random = ((Math.random()*40)+1);
     }
 
     public int getConsumoDeEnergia() {
@@ -155,6 +155,7 @@ public class Dispositivo {
         if (!danado) {
             int energiaConsumida = consumoDeEnergia * intensidad * tiempo;
             // informar al generador que se ha consumido energia consumida
+            System.out.println(energiaConsumida);
             if (random < 30) {
                 danado = true;
             }
@@ -168,4 +169,7 @@ public class Dispositivo {
             }
         }
     }
+
+    
 }
+

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio_Inte">
+  <ClassDiagramComponents>
+    <Class name="Armadura" package="Ejercicio_Inte" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="colorPrimario" type="String" visibility="private"/>
+        <Field name="colorSecundario" type="String" visibility="private"/>
+        <Field name="nivelDeResistencia" type="int" visibility="private"/>
+        <Field name="nivelDeSalud" type="int" visibility="private"/>
+        <Field name="generador" type="Generador" visibility="private"/>
+        <Field name="botas" type="Bota[]" visibility="private"/>
+        <Field name="guantes" type="Guante[]" visibility="private"/>
+        <Field name="consola" type="Consola" visibility="private"/>
+        <Field name="sintetizador" type="Sintetizador" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="colorPrimario"/>
+          <Argument type="String" name="colorSecundario"/>
+          <Argument type="int" name="nivelDeResistencia"/>
+          <Argument type="Generador" name="generador"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getColorPrimario" returnType="String" visibility="public"/>
+        <Method name="getColorSecundario" returnType="String" visibility="public"/>
+        <Method name="getNivelDeResistencia" returnType="int" visibility="public"/>
+        <Method name="getNivelDeSalud" returnType="int" visibility="public"/>
+        <Method name="getGenerador" returnType="Generador" visibility="public"/>
+        <Method name="getBotas" returnType="Bota[]" visibility="public"/>
+        <Method name="getGuantes" returnType="Guante[]" visibility="public"/>
+        <Method name="getConsola" returnType="Consola" visibility="public"/>
+        <Method name="getSintetizador" returnType="Sintetizador" visibility="public"/>
+        <Method name="caminar" returnType="void" visibility="public">
+          <Argument type="int" name="tiempo"/>
+        </Method>
+        <Method name="correr" returnType="void" visibility="public">
+          <Argument type="int" name="tiempoDeUso"/>
+        </Method>
+        <Method name="propulsar" returnType="void" visibility="public">
+          <Argument type="int" name="tiempoDeUso"/>
+        </Method>
+        <Method name="volar" returnType="void" visibility="public">
+          <Argument type="int" name="tiempoDeUso"/>
+        </Method>
+        <Method name="escribir" returnType="void" visibility="public">
+          <Argument type="String" name="texto"/>
+        </Method>
+        <Method name="hablar" returnType="void" visibility="public">
+          <Argument type="String" name="texto"/>
+        </Method>
+        <Method name="revisarDispositivos" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Bota" package="Ejercicio_Inte" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="consumoEnergia"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Consola" package="Ejercicio_Inte" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="consumoEnergia"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Dispositivo" package="Ejercicio_Inte" visibility="public" xPosition="709.0" yPosition="490.0">
+      <Fields>
+        <Field name="consumoDeEnergia" type="int" visibility="private"/>
+        <Field name="danado" type="boolean" visibility="private"/>
+        <Field name="random" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="consumoDeEnergia"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getConsumoDeEnergia" returnType="int" visibility="public"/>
+        <Method name="estaDanado" returnType="boolean" visibility="public"/>
+        <Method name="usar" returnType="void" visibility="public">
+          <Argument type="int" name="intensidad"/>
+          <Argument type="int" name="tiempo"/>
+        </Method>
+        <Method name="reparar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Generador" package="Ejercicio_Inte" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="cargaMaxima" type="float" visibility="private"/>
+        <Field name="cargaActual" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="consumirEnergia" returnType="void" visibility="public">
+          <Argument type="int" name="energiaConsumida"/>
+        </Method>
+        <Method name="getNivelDeBateria" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Guante" package="Ejercicio_Inte" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="consumoEnergia"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Jarvis" package="Ejercicio_Inte" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sintetizador" package="Ejercicio_Inte" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="consumoEnergia"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Ejercicio_Inte.Bota" target="Ejercicio_Inte.Dispositivo"/>
+    <UseRelation source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Consola" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Bota" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Guante" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sintetizador" source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Sintetizador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="consola" source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Consola" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Ejercicio_Inte.Consola" target="Ejercicio_Inte.Dispositivo"/>
+    <UseRelation source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Generador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Ejercicio_Inte.Sintetizador" target="Ejercicio_Inte.Dispositivo"/>
+    <IsRelation name="is" source="Ejercicio_Inte.Guante" target="Ejercicio_Inte.Dispositivo"/>
+    <HasRelation name="generador" source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Generador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Ejercicio_Inte.Armadura" target="Ejercicio_Inte.Sintetizador" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

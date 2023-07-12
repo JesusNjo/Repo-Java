@@ -164,80 +164,45 @@ public class Armadura {
         return colorPrimario;
     }
 
-    public void setColorPrimario(String colorPrimario) {
-        this.colorPrimario = colorPrimario;
-    }
-
     public String getColorSecundario() {
         return colorSecundario;
-    }
-
-    public void setColorSecundario(String colorSecundario) {
-        this.colorSecundario = colorSecundario;
     }
 
     public int getNivelDeResistencia() {
         return nivelDeResistencia;
     }
 
-    public void setNivelDeResistencia(int nivelDeResistencia) {
-        this.nivelDeResistencia = nivelDeResistencia;
-    }
-
     public int getNivelDeSalud() {
         return nivelDeSalud;
-    }
-
-    public void setNivelDeSalud(int nivelDeSalud) {
-        this.nivelDeSalud = nivelDeSalud;
     }
 
     public Generador getGenerador() {
         return generador;
     }
 
-    public void setGenerador(Generador generador) {
-        this.generador = generador;
-    }
-
     public Bota[] getBotas() {
         return botas;
-    }
-
-    public void setBotas(Bota[] botas) {
-        this.botas = botas;
     }
 
     public Guante[] getGuantes() {
         return guantes;
     }
 
-    public void setGuantes(Guante[] guantes) {
-        this.guantes = guantes;
-    }
-
     public Consola getConsola() {
         return consola;
-    }
-
-    public void setConsola(Consola consola) {
-        this.consola = consola;
     }
 
     public Sintetizador getSintetizador() {
         return sintetizador;
     }
 
-    public void setSintetizador(Sintetizador sintetizador) {
-        this.sintetizador = sintetizador;
-    }
 
-   
    public void caminar(int tiempo) {
        
         for (Bota bota : botas) {
             
             bota.usar(1, tiempo);
+       
         }
     }
 

@@ -150,4 +150,8 @@ public class Generador {
         return cargaActual / cargaMaxima * 100;
     }
 
+   
+    
+    
+
 }

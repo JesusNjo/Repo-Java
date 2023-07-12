@@ -59,7 +59,7 @@ public class Hotele_5S extends Hotele_4S {
     }
 
     public String toString() {
-        return "Hotel 5 estrellas: " + super.toString()
+        return   super.toString().replace("Hotel 4 estrellas:", "Hotel 5 estrellas:")
                 + "| Cantidad de salones de conferencia: " + cantidadSalones
                 + "| Cantidad de suites: " + cantidadSuites
                 + "| Cantidad de limosinas: " + cantidadLimosinas;
