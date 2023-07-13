@@ -7,6 +7,7 @@ package Estancias.entidades;
 
 
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -19,14 +20,14 @@ public class Casas {
     private String codigo_postal;
     private String ciudad;
     private String pais;
-    private Date fecha_desde;
-    private Date fecha_hasta;
+    private Calendar fecha_desde;
+    private Calendar fecha_hasta;
     private int tiempo_minimo;
     private int tiempo_maximo;
     private double precio_habitacion;
     private String tipo_vivienda;
 
-    public Casas(int id_casa, String calle, int numero, String codigo_postal, String ciudad, String pais, Date fecha_desde, Date fecha_hasta, int tiempo_minimo, int tiempo_maximo, double precio_habitacion, String tipo_vivienda) {
+    public Casas(int id_casa, String calle, int numero, String codigo_postal, String ciudad, String pais, Calendar fecha_desde, Calendar fecha_hasta, int tiempo_minimo, int tiempo_maximo, double precio_habitacion, String tipo_vivienda) {
         this.id_casa = id_casa;
         this.calle = calle;
         this.numero = numero;
@@ -40,6 +41,8 @@ public class Casas {
         this.precio_habitacion = precio_habitacion;
         this.tipo_vivienda = tipo_vivienda;
     }
+
+    
 
     public Casas() {
     }
@@ -94,21 +97,23 @@ public class Casas {
         this.pais = pais;
     }
 
-    public Date getFecha_desde() {
+    public Calendar getFecha_desde() {
         return fecha_desde;
     }
 
-    public void setFecha_desde(Date fecha_desde) {
+    public void setFecha_desde(Calendar fecha_desde) {
         this.fecha_desde = fecha_desde;
     }
 
-    public Date getFecha_hasta() {
+    public Calendar getFecha_hasta() {
         return fecha_hasta;
     }
 
-    public void setFecha_hasta(Date fecha_hasta) {
+    public void setFecha_hasta(Calendar fecha_hasta) {
         this.fecha_hasta = fecha_hasta;
     }
+
+ 
 
     public int getTiempo_minimo() {
         return tiempo_minimo;

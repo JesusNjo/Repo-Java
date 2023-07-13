@@ -23,7 +23,7 @@ public abstract class DAO {
 
     final String USER = "root";
     final String PASS = "root";
-    final String DB = "reservas";
+    final String DB = "estancias_exterior";
     final String Driver = "com.mysql.jdbc.Driver";
 
     public void conectarBD() throws ClassNotFoundException, SQLException {
@@ -31,8 +31,8 @@ public abstract class DAO {
         try {
 
             Class.forName(Driver);
-            String urlDB= "jdbc:mysql://localhost:3306/"+DB+"?useSSL=false";
-            conexion = DriverManager.getConnection(urlDB,USER,PASS);
+            String urlDB = "jdbc:mysql://localhost:3306/" + DB + "?useSSL=false";
+            conexion = DriverManager.getConnection(urlDB, USER, PASS);
         } catch (ClassNotFoundException | SQLException e) {
             throw e;
         }
@@ -49,7 +49,7 @@ public abstract class DAO {
                 resultado.close();
             }
             if (sentencia != null) {
-                resultado.close();
+                sentencia.close();
             }
         } catch (SQLException e) {
             throw e;
@@ -61,7 +61,6 @@ public abstract class DAO {
         try {
 
             conectarBD();
-
             sentencia = conexion.createStatement();
             sentencia.executeUpdate(sql);
 

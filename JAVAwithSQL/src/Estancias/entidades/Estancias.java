@@ -16,10 +16,10 @@ public class Estancias {
     private int id_cliente;
     private int id_casa;
     private String nombre_huesped;
-    private Date fecha_desde;
-    private Date fecha_hasta;
+    private String fecha_desde;
+    private String fecha_hasta;
 
-    public Estancias(int id_estancia, int id_cliente, int id_casa, String nombre_huesped, Date fecha_desde, Date fecha_hasta) {
+    public Estancias(int id_estancia, int id_cliente, int id_casa, String nombre_huesped, String fecha_desde, String fecha_hasta) {
         this.id_estancia = id_estancia;
         this.id_cliente = id_cliente;
         this.id_casa = id_casa;
@@ -27,6 +27,9 @@ public class Estancias {
         this.fecha_desde = fecha_desde;
         this.fecha_hasta = fecha_hasta;
     }
+
+   
+    
 
     public Estancias() {
     }
@@ -63,21 +66,24 @@ public class Estancias {
         this.nombre_huesped = nombre_huesped;
     }
 
-    public Date getFecha_desde() {
+    public String getFecha_desde() {
         return fecha_desde;
     }
 
-    public void setFecha_desde(Date fecha_desde) {
+    public void setFecha_desde(String fecha_desde) {
         this.fecha_desde = fecha_desde;
     }
 
-    public Date getFecha_hasta() {
+    public String getFecha_hasta() {
         return fecha_hasta;
     }
 
-    public void setFecha_hasta(Date fecha_hasta) {
+    public void setFecha_hasta(String fecha_hasta) {
         this.fecha_hasta = fecha_hasta;
     }
+
+   
+    
     
     
 }
