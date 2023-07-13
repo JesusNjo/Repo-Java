@@ -18,6 +18,8 @@ public class DAOProductivo extends DAO {
 
     public void listarTodosLosProductos(ArrayList<String> prodc) throws Exception {
         try {
+            
+            
             String sql = "SELECT DISTINCT nombre FROM producto";
             consulta(sql);
 
@@ -102,6 +104,10 @@ public class DAOProductivo extends DAO {
     public void ingresarProducto(Producto producto) throws Exception {
 
         try {
+            if(producto == null){
+                throw new Exception("No puede ingresar datos vacios");
+            }
+            
             String sql = "INSERT INTO producto (codigo,nombre,precio,codigo_fabricante)values('"
                     + producto.getCodigo() + "','" + producto.getNombre() + "','" + producto.getPrecio() + "','" + producto.getCodigo_fabricante() + "');";
             crud(sql);
@@ -116,6 +122,10 @@ public class DAOProductivo extends DAO {
     public void agregarFabricante(Fabricante fabricante) throws Exception {
 
         try {
+            
+            if(fabricante == null){
+                throw new Exception("No puede ingresar datos vacios");
+            }
             String sql = "INSERT INTO fabricante (codigo,nombre) values ('" + fabricante.getCodigo() + "','" + fabricante.getNombre() + "');";
             crud(sql);
         } catch (Exception e) {
@@ -127,6 +137,11 @@ public class DAOProductivo extends DAO {
     public void modificarProductoCF(String codigoF, String codigo) throws Exception {
 
         try {
+            
+            if(codigoF == null || codigo==null){
+                throw new Exception("No puede ingresar datos vacios");
+            }
+            
             String sql = "UPDATE producto SET codigo_fabricante = '" + codigoF + "'where codigo = '" + codigo + "';";
             crud(sql);
         } catch (Exception e) {
@@ -139,6 +154,9 @@ public class DAOProductivo extends DAO {
     public void eliminarF(Fabricante fabricante) throws Exception{
         
         try {
+            if(fabricante == null){
+                throw new Exception("No puede ingresar datos vacios");
+            }
             String sql = "DELETE FROM fabricante WHERE codigo = '"+fabricante.getCodigo()+"';";
 
             crud(sql);
