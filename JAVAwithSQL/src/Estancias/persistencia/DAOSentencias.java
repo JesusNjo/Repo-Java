@@ -19,7 +19,7 @@ public class DAOSentencias extends DAO {
     public void familiasMasTresH(ArrayList<String> familias) throws Exception {
         try {
 
-            String sql = "SELECT nombre,num_hijos FROM familias where num_hijos >= 3;";
+            String sql = "SELECT nombre,num_hijos FROM familias where num_hijos >= 3 and edad_maxima<10;";
             consultarBD(sql);
 
             while (resultado.next()) {
@@ -36,7 +36,7 @@ public class DAOSentencias extends DAO {
 
     // b) Buscar y listar las casas disponibles para el periodo comprendido entre el 
     //1 de agosto de 2020 y el 31 de agosto de 2020 en Reino Unido
-    public void casasDispFecha(ArrayList<String> fechas) {
+    public void casasDispFecha(ArrayList<String> fechas) throws Exception {
 
         try {
 
@@ -48,11 +48,12 @@ public class DAOSentencias extends DAO {
                 fechas.add(resultado.getString("calle") + " - " + resultado.getString("id_casa"));
             }
         } catch (Exception e) {
+            throw e;
         }
     }
     // c) Encuentra todas aquellas familias cuya dirección de mail sea de Hotmail.
 
-    public void familiasHotmail(ArrayList<String> hotmail) {
+    public void familiasHotmail(ArrayList<String> hotmail) throws Exception {
 
         try {
             String sql = "SELECT * from familias where email like '%hotmail%';";
@@ -63,6 +64,7 @@ public class DAOSentencias extends DAO {
                 hotmail.add(resultado.getString("nombre") + "- " + resultado.getString("email"));
             }
         } catch (Exception e) {
+            throw e;
         }
     }
 
@@ -104,7 +106,7 @@ public class DAOSentencias extends DAO {
     /*f) Listar todas las estancias que han sido reservadas por un cliente, mostrar el nombre, país y 
     ciudad del cliente y además la información de la casa que reservó. La que reemplazaría a 
     la anterior*/
-    public void listarInfoClienteYCasa(ArrayList<String> info) {
+    public void listarInfoClienteYCasa(ArrayList<String> info) throws Exception {
 
         try {
             String sql = "SELECT c.nombre,c.pais,c.ciudad,ca.* from estancias e join clientes c on c.id_cliente = e.id_cliente join casas ca on e.id_casa = ca.id_casa;";
@@ -116,7 +118,7 @@ public class DAOSentencias extends DAO {
 
             }
         } catch (Exception e) {
-
+            throw e;
         }
     }
 
@@ -138,7 +140,7 @@ public class DAOSentencias extends DAO {
     }
 
     // h) Obtener el número de casas que existen para cada uno de los países diferentes.
-    public void listaDeCasas(ArrayList<String> casasL) {
+    public void listaDeCasas(ArrayList<String> casasL) throws Exception {
 
         try {
             String sql = "SELECT pais,count(pais)as conteo from casas group by pais;";
@@ -148,12 +150,13 @@ public class DAOSentencias extends DAO {
                 casasL.add(resultado.getString("pais") + " - " + resultado.getString("conteo"));
             }
         } catch (Exception e) {
+            throw e;
         }
     }
 
     /*i) Busca y listar aquellas casas del Reino Unido de las que se ha dicho de ellas (comentarios) 
         que están ‘limpias’.*/
-    public void casaLimpiaRU(ArrayList<String> casaLimpia) {
+    public void casaLimpiaRU(ArrayList<String> casaLimpia) throws Exception {
 
         try {
             String sql = "SELECT * from casas c join comentarios co on c.id_casa = co.id_casa where c.pais = 'Reino unido' and co.comentario like '%limpia%';";
@@ -163,6 +166,7 @@ public class DAOSentencias extends DAO {
                 casaLimpia.add(resultado.getString("co.comentario"));
             }
         } catch (Exception e) {
+            throw e;
         }
     }
 
