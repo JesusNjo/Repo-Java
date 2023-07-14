@@ -1,4 +1,4 @@
-package Persistencia.exceptions;
+package Escuela.Persistence.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

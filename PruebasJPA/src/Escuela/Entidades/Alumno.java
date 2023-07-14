@@ -3,52 +3,60 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package Escuela.Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ *
+ * @author JesusNjo
+ */
 @Entity
-
 public class Alumno implements Serializable {
     @Id
-    private String dni;
-    
+    private int id;
     @Basic
     private String nombre;
     private String apellido;
     
     @Temporal(TemporalType.DATE)
-    private Date fechaNac;
+    private Date FechaNacimiento;
+    
+    @OneToOne
+    private Carrera carrera;
+
+    public Alumno(int id, String nombre, String apellido, Date FechaNacimiento, Carrera carrera) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.FechaNacimiento = FechaNacimiento;
+        this.carrera = carrera;
+    }
+
+    
+
+    
+    
 
     public Alumno() {
     }
 
-    public Alumno(String dni, String nombre, String apellido, Date fechaNac) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNac = fechaNac;
+    public int getId() {
+        return id;
     }
 
-    
-
-    
-    
-
-    public String getDni() {
-        return dni;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+  
 
     public String getNombre() {
         return nombre;
@@ -66,17 +74,22 @@ public class Alumno implements Serializable {
         this.apellido = apellido;
     }
 
-    public Date getFechaNac() {
-        return fechaNac;
+    public Date getFechaNacimiento() {
+        return FechaNacimiento;
     }
 
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
+    public void setFechaNacimiento(Date FechaNacimiento) {
+        this.FechaNacimiento = FechaNacimiento;
     }
 
-   
-    
-    
+  
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
     
     
 }

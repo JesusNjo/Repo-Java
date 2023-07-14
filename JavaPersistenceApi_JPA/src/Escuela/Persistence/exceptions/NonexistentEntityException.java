@@ -1,4 +1,4 @@
-package Persistencia.exceptions;
+package Escuela.Persistence.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

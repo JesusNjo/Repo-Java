@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica;
+package Escuela;
 
-import Persistencia.ControladoraPersistencia;
-import java.util.Date;
+
+import Escuela.Services.ServiceAcciones;
+
 
 /**
  *
@@ -16,15 +17,12 @@ public class EscuelaMain {
 
     /**
      * @param args the command line arguments
-     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-        
-        //Alumno alum = new Alumno("2848","Fernando","Gutierrez",new Date("1/7/1984"));
-        
-        ControladoraPersistencia control = new ControladoraPersistencia();
-        Alumno alum = new Alumno();
-        control.crearAlumno(alum);
+
+        ServiceAcciones menu = new ServiceAcciones();
+
+        menu.menu();
     }
-    
+
 }

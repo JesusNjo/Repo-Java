@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Persistencia;
+package Escuela.Persistence;
 
-import Logica.Alumno;
-import Persistencia.exceptions.NonexistentEntityException;
-import Persistencia.exceptions.PreexistingEntityException;
+import Escuela.Logic.Alumno;
+import Escuela.Persistence.exceptions.NonexistentEntityException;
+import Escuela.Persistence.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -29,14 +29,13 @@ public class AlumnoJpaController implements Serializable {
     }
     private EntityManagerFactory emf = null;
 
-    public AlumnoJpaController(){
-        emf = Persistence.createEntityManagerFactory("EscuelaPU");
-    }
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
 
+    public AlumnoJpaController(){
+        emf = Persistence.createEntityManagerFactory("EscuelaPU");
+    }
     public void create(Alumno alumno) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
@@ -45,7 +44,7 @@ public class AlumnoJpaController implements Serializable {
             em.persist(alumno);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findAlumno(alumno.getDni()) != null) {
+            if (findAlumno(alumno.getId_alumno()) != null) {
                 throw new PreexistingEntityException("Alumno " + alumno + " already exists.", ex);
             }
             throw ex;
@@ -66,7 +65,7 @@ public class AlumnoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = alumno.getDni();
+                String id = alumno.getId_alumno();
                 if (findAlumno(id) == null) {
                     throw new NonexistentEntityException("The alumno with id " + id + " no longer exists.");
                 }
@@ -87,7 +86,7 @@ public class AlumnoJpaController implements Serializable {
             Alumno alumno;
             try {
                 alumno = em.getReference(Alumno.class, id);
-                alumno.getDni();
+                alumno.getId_alumno();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The alumno with id " + id + " no longer exists.", enfe);
             }
