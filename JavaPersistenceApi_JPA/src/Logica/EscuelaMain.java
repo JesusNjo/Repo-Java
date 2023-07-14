@@ -20,10 +20,10 @@ public class EscuelaMain {
      */
     public static void main(String[] args) throws Exception {
         
-        Alumno alum = new Alumno("2848","Fernando","Gutierrez",new Date("1/7/1984"));
+        //Alumno alum = new Alumno("2848","Fernando","Gutierrez",new Date("1/7/1984"));
         
         ControladoraPersistencia control = new ControladoraPersistencia();
-        
+        Alumno alum = new Alumno();
         control.crearAlumno(alum);
     }
     
