@@ -8,16 +8,12 @@ package Escuela.Services;
 import Escuela.Logic.Alumno;
 import Escuela.Logic.Carrera;
 import Escuela.Logic.Profesor;
-import Escuela.Persistence.AlumnoJpaController;
-import Escuela.Persistence.CarreraJpaController;
-import Escuela.Persistence.ProfesorJpaController;
+import Escuela.Services.Entitys.AlumnoService;
+import Escuela.Services.Entitys.CarreraService;
+import Escuela.Services.Entitys.ProfesorService;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -25,76 +21,109 @@ import javax.persistence.TypedQuery;
  */
 public class ServiceAcciones {
 
+    // Services
+    AlumnoService modifAlum = new AlumnoService();
+    CarreraService modifCarr = new CarreraService();
+    ProfesorService modifProf = new ProfesorService();
+    //Entitys
+    Alumno alumno = new Alumno();
+    Profesor profesor = new Profesor();
+    Carrera carrera = new Carrera();
+    //Funcionalidades
     ArrayList<String> lista = new ArrayList();
-    Alumno alumno = null;
-    Carrera carrera = null;
-    Profesor profesor = null;
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
-    AlumnoJpaController alumnJpa = new AlumnoJpaController();
-    CarreraJpaController carreJpa = new CarreraJpaController();
-    ProfesorJpaController profJpa = new ProfesorJpaController();
+    int operacion = 0;
 
     public void menu() throws Exception {
         int op = 0;
 
         do {
             System.out.println("-----Seleccione una opción del menú-----");
-            System.out.println("1:Crear Alumno,Carrera o Profesor\n2:\n3:\n4:\n5:\n6:");
+            System.out.println("1:Crear Alumno,Carrera o Profesor\n2:Eliminar Alumno,Carrera o Profesor\n3:Mostrar un Alumno,Carrera o Profesor\n4:Mostrar Alumnos,Carreras o Profesores\n5:\n6:");
             op = input.nextInt();
-
             switch (op) {
                 case 1:
 
                     System.out.println("Elija que desea crea\n1:Alumno\n2:Carrera\n3:Profesor");
-                    int operacion = input.nextInt();
+                    operacion = input.nextInt();
                     if (operacion == 1) {
-                        alumno = new Alumno();
-                        System.out.println("Indique el ID del alumno");
-                        alumno.setId_alumno(input.next());
-                        System.out.println("Indique el nombre del alumno");
-                        alumno.setNombre_alumno(input.next());
-                        System.out.println("Indique el apellido del alumno");
-                        alumno.setApellido_alumno(input.next());
-                        System.out.println("Indique la fecha de nacimiento del alumno M/D/A");
-                        String fecha = input.next() + "/" + input.next() + "/" + input.next();
-                        alumno.setFechaNacimiento_alumno(new Date(fecha));
-                        System.out.println("Indique la carrera que desea cursar");
-                        int cr = input.nextInt();
-                        Carrera carrera = carreJpa.getEntityManager().find(Carrera.class, cr);
-                        alumno.setCarrera(carrera);
 
-                        alumnJpa.create(alumno);
-                        System.out.println("Alumno creado exitosamente!!\n");
+                        modifAlum.crearAlumno(alumno);
                     }
                     if (operacion == 2) {
-                        carrera = new Carrera();
-                        System.out.println("Indique el ID de la carrera");
-                        carrera.setId_carrera(input.nextInt());
-                        System.out.println("Indique el nombre de la carrera");
-                        carrera.setNombre_carrera(input.next());
 
-                        carreJpa.create(carrera);
-                        System.out.println("Carrera creada exitosamente!!\n");
+                        modifCarr.crearCarrera(carrera);
 
                     }
                     if (operacion == 3) {
-                        profesor = new Profesor();
-                        System.out.println("Indique el ID del profesor");
-                        profesor.setId_profesor(input.nextInt());
-                        System.out.println("Indique el DNI del profesor");
-                        profesor.setDni_profesor(input.nextLong());
-                        System.out.println("Indique el nombre del profesor");
-                        profesor.setNombre_profesor(input.next());
-                        System.out.println("Indique el apellido del profesor");
-                        profesor.setApellido_profesor(input.next());
-                        System.out.println("Indique la carrera que dará el profesor");
-                        int c = input.nextInt();
-                        Carrera carrera = carreJpa.getEntityManager().find(Carrera.class, c);
-
-                        profesor.setCarrera(carrera);
-                        profJpa.create(profesor);
-                        System.out.println("Profesor creado exitosamente!!\n");
+                        ProfesorService crearProf = new ProfesorService();
+                        crearProf.crearProfesor(profesor);
                     }
+                    break;
+
+                case 2:
+                    System.out.println("Elija que desea eliminar\n1:Alumno\n2:Carrera\n3:Profesor");
+
+                    operacion = input.nextInt();
+
+                    if (operacion == 1) {
+                        System.out.println("Indique el ID del alumno que desea eliminar");
+                        String id = input.next();
+                        modifAlum.eliminarAlumno(id);
+                        System.out.println("Alumno eliminado con exito!");
+                    }
+                    if (operacion == 2) {
+                        System.out.println("Indique el ID de la carrera que desea eliminar");
+                        int id = input.nextInt();
+                        modifCarr.eliminarCarrera(id);
+                        System.out.println("Carrera eliminada con exito!");
+                    }
+                    if (operacion == 3) {
+                        System.out.println("Indique el ID del profesor que desea eliminar");
+                        int id = input.nextInt();
+                        modifProf.eliminarProfesor(id);
+                        System.out.println("Profesor eliminado con exito!");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Elija que desea verificar\n1:Alumno\n2:Carrera\n3:Profesor");
+
+                    operacion = input.nextInt();
+                    if (operacion == 1) {
+
+                        System.out.println("Indique el id del alumno");
+                        String id = input.next();
+                        modifAlum.mostrarAlumno(id);
+                    }
+                    if (operacion == 2) {
+                        System.out.println("Indique el id de la carrera");
+                        int it = input.nextInt();
+                        modifCarr.mostrarCarrera(it);
+                    }
+                    if (operacion == 3) {
+                        System.out.println("Indique el id del profesor");
+                        int it = input.nextInt();
+                        modifProf.mostrarProfesor(it);
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Elija que lista desea verificar\n1:Alumnos\n2:Carreras\n3:Profesores");
+                    operacion = input.nextInt();
+                    if(operacion == 1){
+                        System.out.println("---Lista de Alumnos---");
+                    modifAlum.buscarTodosLosAlumnos();
+                    }
+                    if(operacion == 2){
+                        System.out.println("--Lista de Carreras---");
+                        modifCarr.mostrarCarreras();
+                    }
+                    if(operacion == 3){
+                        System.out.println("--Lista de Profesores---");
+                        modifProf.mostrarProfesores();
+                    }
+
                     break;
             }
 
