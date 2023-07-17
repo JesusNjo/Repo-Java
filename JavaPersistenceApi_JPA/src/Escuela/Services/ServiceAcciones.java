@@ -39,7 +39,7 @@ public class ServiceAcciones {
 
         do {
             System.out.println("-----Seleccione una opción del menú-----");
-            System.out.println("1:Crear Alumno,Carrera o Profesor\n2:Eliminar Alumno,Carrera o Profesor\n3:Mostrar un Alumno,Carrera o Profesor\n4:Mostrar Alumnos,Carreras o Profesores\n5:\n6:");
+            System.out.println("1:Crear Alumno,Carrera o Profesor\n2:Eliminar Alumno,Carrera o Profesor\n3:Mostrar un Alumno,Carrera o Profesor\n4:Mostrar Alumnos,Carreras o Profesores\n5:Modificar alumno\n6:");
             op = input.nextInt();
             switch (op) {
                 case 1:
@@ -56,8 +56,8 @@ public class ServiceAcciones {
 
                     }
                     if (operacion == 3) {
-                        ProfesorService crearProf = new ProfesorService();
-                        crearProf.crearProfesor(profesor);
+
+                        modifProf.crearProfesor(profesor);
                     }
                     break;
 
@@ -111,20 +111,24 @@ public class ServiceAcciones {
                 case 4:
                     System.out.println("Elija que lista desea verificar\n1:Alumnos\n2:Carreras\n3:Profesores");
                     operacion = input.nextInt();
-                    if(operacion == 1){
+                    if (operacion == 1) {
                         System.out.println("---Lista de Alumnos---");
-                    modifAlum.buscarTodosLosAlumnos();
+                        modifAlum.buscarTodosLosAlumnos();
                     }
-                    if(operacion == 2){
+                    if (operacion == 2) {
                         System.out.println("--Lista de Carreras---");
                         modifCarr.mostrarCarreras();
                     }
-                    if(operacion == 3){
+                    if (operacion == 3) {
                         System.out.println("--Lista de Profesores---");
                         modifProf.mostrarProfesores();
                     }
 
                     break;
+
+                case 5:
+
+                    modifAlum.modificarAlumno(alumno);
             }
 
         } while (op != 0);

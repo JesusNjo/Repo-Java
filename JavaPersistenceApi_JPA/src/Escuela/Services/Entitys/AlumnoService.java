@@ -99,4 +99,60 @@ public class AlumnoService {
         }
     }
 
+    public void modificarAlumno(Alumno alumno) throws Exception {
+
+        try {
+
+            ArrayList<Alumno> bus = buscarTodosLosAlumnos();
+            System.out.println("Indique el ID del alumno que desea modificar");
+            String idAlumno = input.next();
+
+            for (Alumno bu : bus) {
+                if (bu.getId_alumno().equals(idAlumno)) {
+                    alumno = bu;
+                }
+            }
+            System.out.println("--------------------------------------");
+            System.out.println(alumno.getNombre_alumno());
+            System.out.println(alumno.getApellido_alumno());
+            System.out.println(alumno.getFechaNacimiento_alumno());
+            System.out.println("--------------------------------------");
+
+            System.out.println("Indique el valor que desea modificar");
+            System.out.println("1:Nombre\n2:Apellido\n3:Fecha de nacimiento\n4:Carrera\n5:Todos los datos");
+            int op = input.nextInt();
+            switch (op) {
+                case 1:
+                    System.out.println("Indique el nuevo nombre");
+                    alumno.setNombre_alumno(input.next());
+                    break;
+                case 2:
+                    System.out.println("Indique el nuevo apellido");
+                    alumno.setApellido_alumno(input.next());
+                    break;
+                case 3:
+                    System.out.println("Indique la nueva fecha de nacimiento M/D/A");
+                    String nuevFecha = input.next() + "/" + input.next() + "/" + input.next();
+                    alumno.setFechaNacimiento_alumno(new Date(nuevFecha));
+                    break;
+                case 4:
+                    System.out.println("Indique la carrera que desea cursar");
+                    int cr = input.nextInt();
+                    Carrera carrera = carreJpa.getEntityManager().find(Carrera.class, cr);
+                    alumno.setCarrera(carrera);
+                    break;
+
+                case 5:
+                    eliminarAlumno(idAlumno);
+                    crearAlumno(alumno);
+                    break;
+
+            }
+            alumnJpa.edit(alumno);
+        } catch (Exception e) {
+            throw e;
+
+        }
+    }
+
 }
