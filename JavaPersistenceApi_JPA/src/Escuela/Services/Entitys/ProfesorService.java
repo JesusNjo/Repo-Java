@@ -92,4 +92,57 @@ public class ProfesorService {
             throw e;
         }
     }
+    
+    public void modificarProfesor(Profesor profesor) throws Exception {
+
+        try {
+
+            ArrayList<Profesor> bus = mostrarProfesores();
+            System.out.println("Indique el ID del alumno que desea modificar");
+           int idProf = input.nextInt();
+
+            for (Profesor prof : bus) {
+                if(prof.getId_profesor() == idProf){
+                    profesor = prof;
+                }
+            }
+         
+
+            System.out.println("Indique el valor que desea modificar");
+            System.out.println("1:Nombre\n2:Apellido\n3:DNI profesor\n4:Carrera\n5:Todos los datos");
+            int op = input.nextInt();
+            switch (op) {
+                case 1:
+                    System.out.println("Indique el nuevo nombre");
+                   profesor.setNombre_profesor(input.next());
+                    break;
+                case 2:
+                    System.out.println("Indique el nuevo apellido");
+                    profesor.setNombre_profesor(input.next());
+                    break;
+                case 3:
+                    System.out.println("Indique el nuevo DNI");
+                   
+                    profesor.setDni_profesor(input.nextLong());
+                    break;
+                case 4:
+                    System.out.println("Indique la carrera que desea cursar");
+                    int cr = input.nextInt();
+                    Carrera carrera = carreJpa.getEntityManager().find(Carrera.class, cr);
+                    profesor.setCarrera(carrera);
+                    break;
+
+                case 5:
+                    eliminarProfesor(idProf);
+                   
+                    crearProfesor(profesor);
+                    break;
+
+            }
+            profJpa.edit(profesor);
+        } catch (Exception e) {
+            throw e;
+
+        }
+    }
 }

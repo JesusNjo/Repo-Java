@@ -39,7 +39,7 @@ public class ServiceAcciones {
 
         do {
             System.out.println("-----Seleccione una opción del menú-----");
-            System.out.println("1:Crear Alumno,Carrera o Profesor\n2:Eliminar Alumno,Carrera o Profesor\n3:Mostrar un Alumno,Carrera o Profesor\n4:Mostrar Alumnos,Carreras o Profesores\n5:Modificar alumno\n6:");
+            System.out.println("1:Crear Alumno,Carrera o Profesor\n2:Eliminar Alumno,Carrera o Profesor\n3:Mostrar un Alumno,Carrera o Profesor\n4:Mostrar Alumnos,Carreras o Profesores\n5:Modificar alumno/carrera/profesor\n0:Salir");
             op = input.nextInt();
             switch (op) {
                 case 1:
@@ -127,8 +127,27 @@ public class ServiceAcciones {
                     break;
 
                 case 5:
-
-                    modifAlum.modificarAlumno(alumno);
+                    System.out.println("Elija que lista modificar\n1:Alumnos\n2:Carreras\n3:Profesores");
+                    operacion = input.nextInt();
+                    if (operacion == 1) {
+                        modifAlum.modificarAlumno(alumno);
+                        System.out.println("---Alumno modificado con exito!---");
+                    }
+                    if (operacion == 2) {
+                        modifCarr.modificarCarrera(carrera);
+                        System.out.println("--Carrera modificada con exito!---");
+                    }
+                    if (operacion == 3) {
+                        modifProf.modificarProfesor(profesor);
+                        System.out.println("--Profesor modificado con exito!---");
+                    }
+                    break;
+                    
+                case 0:
+                    System.out.println("Adios!!");
+                    break;
+                default:
+                    System.out.println("Opción no valida.");
             }
 
         } while (op != 0);
