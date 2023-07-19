@@ -123,6 +123,11 @@ public class Libro implements Serializable {
         this.editorial = editorial;
     }
 
+    @Override
+    public String toString() {
+        return "Libro:" + "\nISBN: " + isbn + "\nTitulo: " + titulo + "\nAño: " + anio + "\nEjemplares: " + ejemplares + "\nEjemplares prestados: " + ejemplares_prestados + "\nEjemplares restantes=" + ejemplares_restantes + "\nAlta: " + alta + "\nAutor: " + autor + "\nEditorial: " + editorial;
+    }
+
     
     
     

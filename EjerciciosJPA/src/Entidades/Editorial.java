@@ -17,7 +17,7 @@ import javax.persistence.Id;
 public class Editorial implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Integer id;
     @Basic
     private String nombre;
@@ -54,6 +54,11 @@ public class Editorial implements Serializable {
 
     public void setAlta(boolean alta) {
         this.alta = alta;
+    }
+
+    @Override
+    public String toString() {
+        return "Editorial[ ID: " + id + " Nombre: " + nombre + " Alta: " + alta + ']';
     }
     
     

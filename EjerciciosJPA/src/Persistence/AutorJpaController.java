@@ -17,7 +17,6 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import org.eclipse.persistence.internal.descriptors.PersistenceEntity;
 
 /**
  *

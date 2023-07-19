@@ -28,8 +28,6 @@ public class EditorialService {
             if (editorial == null) {
                 throw new Exception("No puede ir la editorial vacia");
             }
-            System.out.println("Ingrese el ID de la editorial");
-            editorial.setId(input.nextInt());
             System.out.println("Ingrese el nombre de la editorial");
             editorial.setNombre(input.next());
             editorial.setAlta(true);
