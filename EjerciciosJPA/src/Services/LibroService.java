@@ -21,74 +21,74 @@ import java.util.Scanner;
  * @author JesusNjo
  */
 public class LibroService {
+
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
     AutorJpaController autorJpa = new AutorJpaController();
-    LibroJpaController libroJpa = new  LibroJpaController();
-    EditorialJpaController editorialJpa = new  EditorialJpaController();
-    
-    
-    
-    
-    public void crearLibro(Libro libro) throws Exception{
-        
+    LibroJpaController libroJpa = new LibroJpaController();
+    EditorialJpaController editorialJpa = new EditorialJpaController();
+
+    public void crearLibro(Libro libro) throws Exception {
+
         try {
-            if(libro == null){
+            if (libro == null) {
                 throw new Exception("El libro no puede esta vacio");
             }
-            
-            System.out.println("Ingrese el ISBN del libro");
-            libro.setIsbn(input.nextLong());
-            System.out.println("Ingrese el titulo del libro");
-            libro.setTitulo(input.next());
-            System.out.println("Ingrese año del libro");
-            libro.setAnio(input.nextInt());
-            System.out.println("Ingrese la cantidad de ejemplares");
-            libro.setEjemplares(input.nextInt());
-            System.out.println("Ingrese la cantidad de ejemplares prestados");
-            libro.setEjemplares_prestados(input.nextInt());
-            
-            libro.setEjemplares_restantes(libro.getEjemplares()-libro.getEjemplares_prestados());
-            libro.setAlta(true);
-            System.out.println("Ingrese el ID del autor");
-            int cr = input.nextInt();
-            
-            Autor autor= autorJpa.getEntityManager().find(Autor.class, cr);
-            
-            libro.setAutor(autor);
-            System.out.println("Ingrese el ID de la editorial");
-            int cd = input.nextInt();
-            Editorial editorial= editorialJpa.getEntityManager().find(Editorial.class, cd);
-            libro.setEditorial(editorial);
-            
-            libroJpa.create(libro);
+            System.out.println("Indique la cantidad de libros que desea crear");
+            int cant = input.nextInt();
+            for (int i = 0; i < cant; i++) {
+                System.out.println("Ingrese el ISBN del libro");
+                libro.setIsbn(input.nextLong());
+                System.out.println("Ingrese el titulo del libro");
+                libro.setTitulo(input.next());
+                System.out.println("Ingrese año del libro");
+                libro.setAnio(input.nextInt());
+                System.out.println("Ingrese la cantidad de ejemplares");
+                libro.setEjemplares(input.nextInt());
+                System.out.println("Ingrese la cantidad de ejemplares prestados");
+                libro.setEjemplares_prestados(input.nextInt());
 
-             
+                libro.setEjemplares_restantes(libro.getEjemplares() - libro.getEjemplares_prestados());
+                libro.setAlta(true);
+                System.out.println("Ingrese el ID del autor");
+                int cr = input.nextInt();
+
+                Autor autor = autorJpa.getEntityManager().find(Autor.class, cr);
+
+                libro.setAutor(autor);
+                System.out.println("Ingrese el ID de la editorial");
+                int cd = input.nextInt();
+                Editorial editorial = editorialJpa.getEntityManager().find(Editorial.class, cd);
+                libro.setEditorial(editorial);
+
+                libroJpa.create(libro);
+            }
+
         } catch (Exception e) {
             throw e;
         }
     }
-    
-    public void eliminarLibro() throws Exception{
-        
+
+    public void eliminarLibro() throws Exception {
+
         try {
-            
+
             int firstResult = 0;
             boolean hayResultado = true;
             ArrayList<Libro> listaLibro = new ArrayList();
-            
-            while(hayResultado){
+
+            while (hayResultado) {
                 List<Libro> listLibro = libroJpa.findLibroEntities(0, firstResult);
-                if(listLibro.isEmpty()){
+                if (listLibro.isEmpty()) {
                     hayResultado = false;
-                }else{
+                } else {
                     listaLibro.addAll(listLibro);
                     firstResult += listLibro.size();
                 }
-                
+
             }
             System.out.println("Lista de libro");
             for (Libro libro : listaLibro) {
-                System.out.println(libro.getIsbn() + "/" +libro.getTitulo());
+                System.out.println(libro.getIsbn() + "/" + libro.getTitulo());
             }
             System.out.println("Indique el ISBN del libro que desea eliminar");
             Long elim = input.nextLong();
@@ -97,19 +97,69 @@ public class LibroService {
             throw e;
         }
     }
+
+    public void darBajaLibro() {
+        try {
+            List<Libro> listaLibros = libroJpa.findLibroEntities();
+            System.out.println("Lista de libros");
+            for (Libro listaLibro : listaLibros) {
+                System.out.println(listaLibro.getIsbn() + " - " + listaLibro.getTitulo());
+            }
+            System.out.println("Indique el ISBN del libro que desea dar de baja");
+            long libroB = input.nextInt();
+
+            for (Libro listaLibro : listaLibros) {
+                if (listaLibro.getIsbn() == libroB) {
+                    if (!listaLibro.isAlta()) {
+                        System.out.println("El libro ya esta de baja");
+                    }else{
+                        listaLibro.setAlta(false);
+                        libroJpa.edit(listaLibro);
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
     
-    
-    public void buscarLibroISBN(){
+    public void darAltaLibro(){
+        try {
+            List<Libro> libroList = libroJpa.findLibroEntities();
+            
+            System.out.println("Lista de libros");
+            for (Libro libro : libroList) {
+                System.out.println(libro.getIsbn() + " - "+libro.getTitulo());
+            }
+            System.out.println("Indique el ISBN del libro que desea dar de alta");
+            long isbnP = input.nextInt();
+            
+            for (Libro libro : libroList) {
+                if(libro.getIsbn() == isbnP){
+                    if(libro.isAlta()){
+                        System.out.println("Ya el libro esta de alta");
+                }else{
+                        libro.setAlta(true);
+                        libroJpa.edit(libro);
+                        System.out.println("El libro ha cambiado a alta");
+                    }
+                }
+            }
+            
+        } catch (Exception e) {
+        }
+    }
+
+    public void buscarLibroISBN() {
         try {
             int firstResult = 0;
             boolean hayResult = true;
             ArrayList<Libro> libroBusc = new ArrayList();
-            
-            while(hayResult){
+
+            while (hayResult) {
                 List<Libro> libroBuscador = libroJpa.findLibroEntities(0, firstResult);
-                if(libroBuscador.isEmpty()){
+                if (libroBuscador.isEmpty()) {
                     hayResult = false;
-                }else{
+                } else {
                     libroBusc.addAll(libroBuscador);
                     firstResult += libroBuscador.size();
                 }
@@ -119,9 +169,9 @@ public class LibroService {
                 System.out.println(libro.getIsbn() + "/" + libro.getTitulo());
             }
             System.out.println("Ingrese el ISBN del libro que desea ver");
-            int isbnP= input.nextInt();
+            int isbnP = input.nextInt();
             for (Libro libro : libroBusc) {
-                if(libro.getIsbn() == isbnP){
+                if (libro.getIsbn() == isbnP) {
                     System.out.println(libro.toString());
                 }
             }
@@ -134,12 +184,12 @@ public class LibroService {
         int firstResult = 0;
         boolean hayLibros = true;
         ArrayList<Libro> librosB = new ArrayList();
-        while(hayLibros){
+        while (hayLibros) {
             List<Libro> librosBusc = libroJpa.findLibroEntities(0, firstResult);
-            
-            if(librosBusc.isEmpty()){
+
+            if (librosBusc.isEmpty()) {
                 hayLibros = false;
-            }else{
+            } else {
                 librosB.addAll(librosBusc);
                 firstResult += librosBusc.size();
             }
@@ -151,61 +201,63 @@ public class LibroService {
         System.out.println("\nIngrese el nombre del libro que desea buscar");
         String nombreL = input.next();
         for (Libro libro : librosB) {
-            if(libro.getTitulo().equalsIgnoreCase(nombreL)){
+            if (libro.getTitulo().equalsIgnoreCase(nombreL)) {
                 System.out.println(libro.toString());
                 break;
             }
         }
     }
+
     public void buscarLibroAutor() {
         int firstResult = 0;
         boolean hayLibros = true;
         ArrayList<Libro> librosB = new ArrayList();
-        while(hayLibros){
+        while (hayLibros) {
             List<Libro> librosBusc = libroJpa.findLibroEntities(0, firstResult);
-            
-            if(librosBusc.isEmpty()){
+
+            if (librosBusc.isEmpty()) {
                 hayLibros = false;
-            }else{
+            } else {
                 librosB.addAll(librosBusc);
                 firstResult += librosBusc.size();
             }
         }
         System.out.println("Lista de libros");
         for (Libro libro : librosB) {
-            System.out.println(libro.getIsbn() + "/" + libro.getTitulo() + "/" +libro.getAutor().getNombre());
+            System.out.println(libro.getIsbn() + "/" + libro.getTitulo() + "/" + libro.getAutor().getNombre());
         }
         System.out.println("\nIngrese el autor del libro que desea buscar");
         String nombreA = input.next();
         for (Libro libro : librosB) {
-            if(libro.getAutor().getNombre().equalsIgnoreCase(nombreA)){
+            if (libro.getAutor().getNombre().equalsIgnoreCase(nombreA)) {
                 System.out.println(libro.toString());
                 break;
             }
         }
     }
+
     public void buscarLibroEditorial() {
         int firstResult = 0;
         boolean hayLibros = true;
         ArrayList<Libro> librosB = new ArrayList();
-        while(hayLibros){
+        while (hayLibros) {
             List<Libro> librosBusc = libroJpa.findLibroEntities(0, firstResult);
-            
-            if(librosBusc.isEmpty()){
+
+            if (librosBusc.isEmpty()) {
                 hayLibros = false;
-            }else{
+            } else {
                 librosB.addAll(librosBusc);
                 firstResult += librosBusc.size();
             }
         }
         System.out.println("Lista de libros");
         for (Libro libro : librosB) {
-            System.out.println(libro.getIsbn() + "/" + libro.getTitulo() + "/" +libro.getEditorial().getNombre());
+            System.out.println(libro.getIsbn() + "/" + libro.getTitulo() + "/" + libro.getEditorial().getNombre());
         }
         System.out.println("\nIngrese el editorial del libro que desea buscar");
         String nombreE = input.next();
         for (Libro libro : librosB) {
-            if(libro.getEditorial().getNombre().equalsIgnoreCase(nombreE)){
+            if (libro.getEditorial().getNombre().equalsIgnoreCase(nombreE)) {
                 System.out.println(libro.toString());
                 break;
             }

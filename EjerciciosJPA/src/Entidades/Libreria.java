@@ -22,7 +22,7 @@ import Services.ServiciosCompletos;
 10) Búsqueda de un libro por Título. 
 11) Búsqueda de un libro/s por nombre de Autor.
 12) Búsqueda de un libro/s por nombre de Editorial.
-13) Agregar las siguientes validaciones a todas las funcionalidades de la aplicación: 
+13) Agregar las siguientes validaciones a todas las funciona5lidades de la aplicación: 
 • Validar campos obligatorios.
 • No ingresar datos duplicados.
  */

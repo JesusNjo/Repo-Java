@@ -28,10 +28,14 @@ public class EditorialService {
             if (editorial == null) {
                 throw new Exception("No puede ir la editorial vacia");
             }
+            System.out.println("Indique la cantidad de editoriales que desea crear");
+            int cant = input.nextInt();
+            for (int i = 0; i <cant; i++) {
             System.out.println("Ingrese el nombre de la editorial");
             editorial.setNombre(input.next());
             editorial.setAlta(true);
             editoJpa.create(editorial);
+            }
         } catch (Exception e) {
             throw e;
         }
