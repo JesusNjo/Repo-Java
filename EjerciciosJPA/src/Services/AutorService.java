@@ -22,6 +22,18 @@ public class AutorService {
     AutorJpaController autorJpa = new AutorJpaController();
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
 
+    public void consultarAutor() {
+        try {
+            List<Autor> listaAutores = autorJpa.findAutorEntities();
+            System.out.println("Lista de autores");
+            for (Autor listaAutore : listaAutores) {
+                System.out.println(listaAutore.getId() + " - " + listaAutore.getNombre());
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public void crearAutor(Autor autor) throws Exception {
 
         try {

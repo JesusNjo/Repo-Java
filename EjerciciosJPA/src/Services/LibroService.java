@@ -27,6 +27,18 @@ public class LibroService {
     LibroJpaController libroJpa = new LibroJpaController();
     EditorialJpaController editorialJpa = new EditorialJpaController();
 
+    public void consultarLibro() {
+        try {
+            List<Libro> listaLibros = libroJpa.findLibroEntities();
+            System.out.println("Lista de libros");
+            for (Libro listaLibro : listaLibros) {
+                System.out.println(listaLibro.toString());
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public void crearLibro(Libro libro) throws Exception {
 
         try {
@@ -112,7 +124,7 @@ public class LibroService {
                 if (listaLibro.getIsbn() == libroB) {
                     if (!listaLibro.isAlta()) {
                         System.out.println("El libro ya esta de baja");
-                    }else{
+                    } else {
                         listaLibro.setAlta(false);
                         libroJpa.edit(listaLibro);
                     }
@@ -121,30 +133,55 @@ public class LibroService {
         } catch (Exception e) {
         }
     }
-    
-    public void darAltaLibro(){
+
+    public void editarLibro() throws Exception {
+        try {
+            List<Libro> listaLibr = libroJpa.findLibroEntities();
+            System.out.println("Lista libros");
+            for (Libro libro : listaLibr) {
+                System.out.println(libro.getIsbn() + " - " + libro.getTitulo());
+            }
+
+            System.out.println("Indique el ISBN del libro a editar");
+            int isbnP = input.nextInt();
+
+            for (Libro libro : listaLibr) {
+                if (libro.getIsbn() == isbnP) {
+                    System.out.println("Indique el nuevo titulo del libro");
+                    String titulo = input.next();
+                    libro.setTitulo(titulo);
+                    libroJpa.edit(libro);
+                }
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void darAltaLibro() {
         try {
             List<Libro> libroList = libroJpa.findLibroEntities();
-            
+
             System.out.println("Lista de libros");
             for (Libro libro : libroList) {
-                System.out.println(libro.getIsbn() + " - "+libro.getTitulo());
+                System.out.println(libro.getIsbn() + " - " + libro.getTitulo());
             }
             System.out.println("Indique el ISBN del libro que desea dar de alta");
             long isbnP = input.nextInt();
-            
+
             for (Libro libro : libroList) {
-                if(libro.getIsbn() == isbnP){
-                    if(libro.isAlta()){
+                if (libro.getIsbn() == isbnP) {
+                    if (libro.isAlta()) {
                         System.out.println("Ya el libro esta de alta");
-                }else{
+                    } else {
                         libro.setAlta(true);
                         libroJpa.edit(libro);
                         System.out.println("El libro ha cambiado a alta");
                     }
                 }
             }
-            
+
         } catch (Exception e) {
         }
     }

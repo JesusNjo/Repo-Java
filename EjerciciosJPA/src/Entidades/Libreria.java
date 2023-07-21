@@ -25,6 +25,21 @@ import Services.ServiciosCompletos;
 13) Agregar las siguientes validaciones a todas las funciona5lidades de la aplicación: 
 • Validar campos obligatorios.
 • No ingresar datos duplicados.
+* 
+* 
+* Tareas a realizar
+1) Al alumno le toca desarrollar, las siguientes funcionalidades: 
+2) Creación de un Cliente nuevo
+3) Crear entidad Préstamo
+4) Registrar el préstamo de un libro.
+5) Devolución de un libro
+6) Búsqueda de todos los préstamos de un Cliente.
+• Agregar validaciones a todas las funcionalidades de la aplicación:
+• Validar campos obligatorios.
+• No ingresar datos duplicados. 
+• No generar condiciones inválidas. Por ejemplo, no se debe permitir prestar más 
+ejemplares de los que hay, ni devolver más de los que se encuentran prestados. 
+No se podrán prestar libros con fecha anterior a la fecha actual, etc
  */
 public class Libreria {
 

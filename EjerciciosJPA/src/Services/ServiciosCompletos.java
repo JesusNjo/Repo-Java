@@ -18,6 +18,7 @@
 package Services;
 
 import Entidades.Autor;
+import Entidades.Cliente;
 import Entidades.Editorial;
 import Entidades.Libro;
 import java.util.Locale;
@@ -34,34 +35,58 @@ public class ServiciosCompletos {
     AutorService autorS = new AutorService();
     LibroService libroS = new LibroService();
     EditorialService editoS = new EditorialService();
-
+    ClienteService clienteS = new ClienteService();
+    PrestamoService prestamoS = new PrestamoService();
+    
     Autor autor = new Autor();
     Editorial editorial = new Editorial();
     Libro libro = new Libro();
-
+    Cliente cliente = new Cliente();
     public void menu() throws Exception {
         int ope = 0;
         int op = 0;
         do {
             System.out.println("\n-----------MENU----------");
-            System.out.println("1 - Crear AUTOR/LIBRO/EDITORIAL");
-            System.out.println("2 - Eliminar AUTOR/LIBRO/EDITORIAL");
-            System.out.println("3 - Editar AUTOR/LIBRO/EDITORIAL");
-            System.out.println("4 - Dar de alta AUTOR/LIBRO/EDITORIAL");
-            System.out.println("5 - Dar de baja AUTOR/LIBRO/EDITORIAL");
+            System.out.println("1 - Consultar AUTOR/LIBRO/EDITORIAL/CLIENTE");
+            System.out.println("2 - Crear AUTOR/LIBRO/EDITORIAL/CLIENTE");
+            System.out.println("3 - Eliminar AUTOR/LIBRO/EDITORIAL/CLIENTE");
+            System.out.println("4 - Editar AUTOR/LIBRO/EDITORIAL/CLIENTE");
+            System.out.println("5 - Dar de alta AUTOR/LIBRO/EDITORIAL");
+            System.out.println("6 - Dar de baja AUTOR/LIBRO/EDITORIAL");
 
-            System.out.println("6 - Busca Autor por nombre");
-            System.out.println("7 - Buscar un libro por ISBN");
-            System.out.println("8 - Buscar un libro por titulo");
-            System.out.println("9 - Buscar un libro por autor");
-            System.out.println("10 - Buscar un libro por editorial");
+            System.out.println("7 - Busca Autor por nombre");
+            System.out.println("8 - Buscar un libro por ISBN");
+            System.out.println("9 - Buscar un libro por titulo");
+            System.out.println("10 - Buscar un libro por autor");
+            System.out.println("11 - Buscar un libro por editorial");
+            System.out.println("12 - Devolver un libro");
             System.out.println("0 - Salir");
 
             op = input.nextInt();
 
             switch (op) {
+                
                 case 1:
-                    System.out.println("Indique que desea dar de alta \n1:Autor\n2:Editorial\n3:Libro");
+                    System.out.println("Indique la lista que desea consultar \n1:Autor\n2:Editorial\n3:Libro\n4:Cliente\n5:Prestamo");
+                    ope = input.nextInt();
+                    if (ope == 1) {
+                        autorS.consultarAutor();
+                    }
+                    if (ope == 2) {
+                        editoS.consultarEditorial();
+                    }
+                    if (ope == 3) {
+                        libroS.consultarLibro();
+                    }
+                    if (ope == 4) {
+                        clienteS.consultarCliente();
+                    }
+                    if(ope == 5){
+                        prestamoS.consultarPrestamo();
+                    }
+                    break;
+                case 2:
+                    System.out.println("Indique que desea crear \n1:Autor\n2:Editorial\n3:Libro\n4:Cliente\n5:Prestamo");
                     ope = input.nextInt();
                     if (ope == 1) {
                         autorS.crearAutor(autor);
@@ -72,10 +97,16 @@ public class ServiciosCompletos {
                     if (ope == 3) {
                         libroS.crearLibro(libro);
                     }
+                    if (ope == 4) {
+                        clienteS.crearCliente();
+                    }
+                    if(ope == 5){
+                        prestamoS.crearPrestamo();
+                    }
                     break;
 
-                case 2:
-                    System.out.println("Indique que desea dar de eliminar \n1:Autor\n2:Editorial\n3:Libro");
+                case 3:
+                    System.out.println("Indique que desea eliminar \n1:Autor\n2:Editorial\n3:Libro\n4:Cliente");
                     ope = input.nextInt();
 
                     if (ope == 1) {
@@ -88,13 +119,37 @@ public class ServiciosCompletos {
                     if (ope == 3) {
                         libroS.eliminarLibro();
                     }
-                    break;
-
-                case 3:
-                    autorS.editarAutor();
+                    if (ope == 4) {
+                        clienteS.eliminarCliente();
+                    }
+                    if(ope == 5){
+                        
+                    }
                     break;
 
                 case 4:
+                    System.out.println("Indique que desea editar \n1:Autor\n2:Editorial\n3:Libro\n4:Cliente");
+                    ope = input.nextInt();
+                    if(ope == 1){
+                        
+                    autorS.editarAutor();
+                    }
+                    if(ope == 2){
+                        
+                   editoS.editarEditorial();
+                    }
+                    if(ope ==3){
+                    libroS.editarLibro();
+                    }
+                    if(ope ==4){
+                    clienteS.editarCliente();
+                    }
+                    if(ope ==5){
+                        
+                    }
+                    break;
+
+                case 5:
                     System.out.println("Indique que desea dar de alta \n1:Autor\n2:Editorial\n3:Libro");
                     ope = input.nextInt();
 
@@ -109,7 +164,7 @@ public class ServiciosCompletos {
                         libroS.darAltaLibro();
                     }
                     break;
-                case 5:
+                case 6:
                     System.out.println("Indique que desea dar de baja \n1:Autor\n2:Editorial\n3:Libro");
                     ope = input.nextInt();
                     
@@ -124,22 +179,25 @@ public class ServiciosCompletos {
                         libroS.darBajaLibro();
                     }
                     break;
-                case 6:
+                case 7:
                     autorS.buscarAutor();
                     break;
-                case 7:
+                case 8:
                     libroS.buscarLibroISBN();
                     break;
 
-                case 8:
+                case 9:
                     libroS.buscarLibroTitulo();
                     break;
-                case 9:
+                case 10:
                     libroS.buscarLibroAutor();
                     break;
-                case 10:
+                case 11:
                     libroS.buscarLibroEditorial();
                     break;
+                    
+                case 12:
+                    prestamoS.devolPrestamo();
                 case 0:
                     System.out.println("Saliendo. . . .");
                     break;

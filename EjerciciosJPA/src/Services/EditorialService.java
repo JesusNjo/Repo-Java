@@ -22,6 +22,18 @@ public class EditorialService {
     EditorialJpaController editoJpa = new EditorialJpaController();
     Scanner input = new Scanner(System.in).useDelimiter("\n").useLocale(Locale.US);
 
+    public void consultarEditorial() {
+        try {
+            List<Editorial> editorialList = editoJpa.findEditorialEntities();
+            System.out.println("Lista de editoriales");
+            for (Editorial editorial : editorialList) {
+                System.out.println(editorial.getId() + " - " + editorial.getNombre());
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public void crearEditorial(Editorial editorial) throws Exception {
 
         try {
@@ -30,11 +42,11 @@ public class EditorialService {
             }
             System.out.println("Indique la cantidad de editoriales que desea crear");
             int cant = input.nextInt();
-            for (int i = 0; i <cant; i++) {
-            System.out.println("Ingrese el nombre de la editorial");
-            editorial.setNombre(input.next());
-            editorial.setAlta(true);
-            editoJpa.create(editorial);
+            for (int i = 0; i < cant; i++) {
+                System.out.println("Ingrese el nombre de la editorial");
+                editorial.setNombre(input.next());
+                editorial.setAlta(true);
+                editoJpa.create(editorial);
             }
         } catch (Exception e) {
             throw e;
@@ -68,6 +80,32 @@ public class EditorialService {
 
             editoJpa.destroy(editorial);
         } catch (NonexistentEntityException e) {
+            throw e;
+        }
+    }
+
+    public void editarEditorial() throws Exception {
+
+        try {
+
+            List<Editorial> editorialList = editoJpa.findEditorialEntities();
+            System.out.println("Lista de editoriales");
+            for (Editorial editorial : editorialList) {
+                System.out.println(editorial.getId() + " - " + editorial.getNombre());
+            }
+
+            System.out.println("Indique el ID del editorial que desea modificar");
+            int editoP = input.nextInt();
+
+            for (Editorial editorial : editorialList) {
+                if (editorial.getId() == editoP) {
+                    System.out.println("Indique el nuevo nombre de la editorial");
+                    editorial.setNombre(input.next());
+                    editoJpa.edit(editorial);
+                    System.out.println("Editorial modificada con exito !");
+                }
+            }
+        } catch (Exception e) {
             throw e;
         }
     }
