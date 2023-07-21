@@ -41,15 +41,33 @@ public class AutorService {
                 throw new Exception("El libro no puede esta vacio");
             }
 
+            List<Autor> autores = autorJpa.findAutorEntities();
+
             System.out.println("Ingrese el nombre");
-            autor.setNombre(input.next());
+            String nombre = input.next();
+            if (nombre.isEmpty()) {
+                System.out.println("El nombre no puede estar vacío");
+                return;
+            }
+            autor.setNombre(nombre);
             autor.setAlta(true);
-            autorJpa.create(autor);
+
+            boolean condi = true;
+            for (Autor autore : autores) {
+                if (autore.getNombre().equalsIgnoreCase(autor.getNombre())) {
+                    System.out.println("Ya existe este autor registrado...");
+                    condi = false;
+                }
+            }
+            if (condi) {
+                autorJpa.create(autor);
+            }
 
         } catch (Exception e) {
             throw e;
         }
     }
+
 
     public void darAlta() throws Exception {
 

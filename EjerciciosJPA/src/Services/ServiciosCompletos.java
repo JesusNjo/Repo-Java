@@ -47,9 +47,9 @@ public class ServiciosCompletos {
         int op = 0;
         do {
             System.out.println("\n-----------MENU----------");
-            System.out.println("1 - Consultar AUTOR/LIBRO/EDITORIAL/CLIENTE");
-            System.out.println("2 - Crear AUTOR/LIBRO/EDITORIAL/CLIENTE");
-            System.out.println("3 - Eliminar AUTOR/LIBRO/EDITORIAL/CLIENTE");
+            System.out.println("1 - Consultar AUTOR/LIBRO/EDITORIAL/CLIENTE/PRESTAMO");
+            System.out.println("2 - Crear AUTOR/LIBRO/EDITORIAL/CLIENTE/PRESTAMO");
+            System.out.println("3 - Eliminar AUTOR/LIBRO/EDITORIAL/CLIENTE/PRESTAMO");
             System.out.println("4 - Editar AUTOR/LIBRO/EDITORIAL/CLIENTE");
             System.out.println("5 - Dar de alta AUTOR/LIBRO/EDITORIAL");
             System.out.println("6 - Dar de baja AUTOR/LIBRO/EDITORIAL");
@@ -60,6 +60,7 @@ public class ServiciosCompletos {
             System.out.println("10 - Buscar un libro por autor");
             System.out.println("11 - Buscar un libro por editorial");
             System.out.println("12 - Devolver un libro");
+            System.out.println("13 - Buscar prestamo de un cliente");
             System.out.println("0 - Salir");
 
             op = input.nextInt();
@@ -198,6 +199,11 @@ public class ServiciosCompletos {
                     
                 case 12:
                     prestamoS.devolPrestamo();
+                    break;
+                    
+                case 13:
+                    prestamoS.buscarPrestamoCliente();
+                    break;
                 case 0:
                     System.out.println("Saliendo. . . .");
                     break;

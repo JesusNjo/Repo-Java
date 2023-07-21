@@ -40,35 +40,73 @@ public class LibroService {
     }
 
     public void crearLibro(Libro libro) throws Exception {
-
         try {
             if (libro == null) {
-                throw new Exception("El libro no puede esta vacio");
+                throw new Exception("El libro no puede estar vacío");
             }
+
             System.out.println("Indique la cantidad de libros que desea crear");
             int cant = input.nextInt();
+
             for (int i = 0; i < cant; i++) {
                 System.out.println("Ingrese el ISBN del libro");
-                libro.setIsbn(input.nextLong());
-                System.out.println("Ingrese el titulo del libro");
-                libro.setTitulo(input.next());
-                System.out.println("Ingrese año del libro");
-                libro.setAnio(input.nextInt());
+                Long isbn = input.nextLong();
+                if (isbn == null) {
+                    
+                   throw new Exception("El ISBN del libro es obligatorio");
+                    
+                }
+                libro.setIsbn(isbn);
+
+                System.out.println("Ingrese el título del libro");
+                String titulo = input.next();
+                if (titulo == null || titulo.isEmpty()) {
+                    throw new Exception("El titulo es obligatorio");
+                }
+                libro.setTitulo(titulo);
+
+                System.out.println("Ingrese el año del libro");
+                Integer anio = input.nextInt();
+                if (anio == null) {
+                    throw new Exception("El año del libro es obligatorio");
+                   
+                }
+                libro.setAnio(anio);
+
                 System.out.println("Ingrese la cantidad de ejemplares");
-                libro.setEjemplares(input.nextInt());
+                Integer ejemplares = input.nextInt();
+                if (ejemplares == null) {
+                    throw new Exception("La cantidad de ejemplares del libro es obligatoria");
+                    
+                }
+                libro.setEjemplares(ejemplares);
+
                 System.out.println("Ingrese la cantidad de ejemplares prestados");
-                libro.setEjemplares_prestados(input.nextInt());
+                Integer ejemplares_prestados = input.nextInt();
+                if (ejemplares_prestados == null) {
+                    throw new Exception("La cantidad de ejemplares prestados del libro es obligatoria");
+                   
+                }
+                libro.setEjemplares_prestados(ejemplares_prestados);
 
                 libro.setEjemplares_restantes(libro.getEjemplares() - libro.getEjemplares_prestados());
                 libro.setAlta(true);
+
                 System.out.println("Ingrese el ID del autor");
                 int cr = input.nextInt();
-
+                if(cr <= 0){
+                    System.out.println("No hay autor con ese ID");
+                    return;
+                }
                 Autor autor = autorJpa.getEntityManager().find(Autor.class, cr);
-
                 libro.setAutor(autor);
+
                 System.out.println("Ingrese el ID de la editorial");
                 int cd = input.nextInt();
+                if(cd <= 0){
+                    System.out.println("No hay editorial con ese ID");
+                    return;
+                }
                 Editorial editorial = editorialJpa.getEntityManager().find(Editorial.class, cd);
                 libro.setEditorial(editorial);
 

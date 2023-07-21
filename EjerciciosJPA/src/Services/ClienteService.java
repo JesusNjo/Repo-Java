@@ -26,9 +26,9 @@ public class ClienteService {
             List<Cliente> listaClientes = clienteJpa.findClienteEntities();
             System.out.println("Lista de clientes");
             for (Cliente listaCliente : listaClientes) {
-                
-                System.out.println(listaCliente.getId() + " - " + listaCliente.getDocumento() + " - "+ listaCliente.getNombre() + " " + listaCliente.getApellido());
-                System.out.println(listaCliente.getDocumento()+ " - "+ listaCliente.getTelefono());
+
+                System.out.println(listaCliente.getId() + " - " + listaCliente.getDocumento() + " - " + listaCliente.getNombre() + " " + listaCliente.getApellido());
+                System.out.println(listaCliente.getDocumento() + " - " + listaCliente.getTelefono());
             }
         } catch (Exception e) {
             throw e;
@@ -46,7 +46,23 @@ public class ClienteService {
             System.out.println("Indique el numero de telefono del cliente");
             cliente.setTelefono(input.next());
 
-            clienteJpa.create(cliente);
+            if (cliente.getDocumento() == null || cliente.getNombre().isEmpty() || cliente.getApellido().isEmpty() || cliente.getTelefono().isEmpty()) {
+                throw new Exception("Todos los campos son obligatorios");
+            }
+
+            boolean clientR = true;
+
+            List<Cliente> listaClient = clienteJpa.findClienteEntities();
+            for (Cliente cliente1 : listaClient) {
+                if (cliente1.getNombre().equalsIgnoreCase(cliente.getNombre())) {
+                    System.out.println("El cliente ya esta registrado");
+                    clientR = false;
+                }
+            }
+            if (clientR) {
+
+                clienteJpa.create(cliente);
+            }
 
         } catch (Exception e) {
             throw e;

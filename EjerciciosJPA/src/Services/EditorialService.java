@@ -40,14 +40,29 @@ public class EditorialService {
             if (editorial == null) {
                 throw new Exception("No puede ir la editorial vacia");
             }
-            System.out.println("Indique la cantidad de editoriales que desea crear");
-            int cant = input.nextInt();
-            for (int i = 0; i < cant; i++) {
-                System.out.println("Ingrese el nombre de la editorial");
-                editorial.setNombre(input.next());
-                editorial.setAlta(true);
-                editoJpa.create(editorial);
+
+            System.out.println("Ingrese el nombre de la editorial");
+            editorial.setNombre(input.next());
+            
+            editorial.setAlta(true);
+
+            List<Editorial> editoList = editoJpa.findEditorialEntities();
+            boolean editoT = true;
+            for (Editorial editorial1 : editoList) {
+                if (editorial1.getNombre().equalsIgnoreCase(editorial.getNombre())) {
+                    System.out.println("Este editorial ya existe!");
+                    editoT = false;
+                }
             }
+            if (editoT) {
+                if(editorial.getNombre().isEmpty() || editorial.getNombre() == null){
+                    throw new Exception("No puede ingresar datos vacios");
+                }else{
+                    
+                editoJpa.create(editorial);
+                }
+            }
+
         } catch (Exception e) {
             throw e;
         }
