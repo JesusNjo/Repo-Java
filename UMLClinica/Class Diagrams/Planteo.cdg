@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Planteo">
+  <ClassDiagramComponents>
+    <Class name="Persona" package="" visibility="public" xPosition="279.0" yPosition="124.0">
+      <Fields>
+        <Field name="id_persona" type="Integer" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="telefono" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="fecha_nac" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Odontologo" package="" visibility="public" xPosition="42.0" yPosition="303.0">
+      <Fields>
+        <Field name="id_odontologo" type="Integer" visibility="private"/>
+        <Field name="especialidad" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Paciente" package="" visibility="public" xPosition="232.0" yPosition="323.0">
+      <Fields>
+        <Field name="id_paciente" type="Integer" visibility="private"/>
+        <Field name="tiene_so" type="boolean" visibility="private"/>
+        <Field name="tipo_sangre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Secretaria" package="" visibility="public" xPosition="667.0" yPosition="323.0">
+      <Fields>
+        <Field name="id_secretaria" type="Integer" visibility="private"/>
+        <Field name="sector" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Responsable" package="" visibility="public" xPosition="456.0" yPosition="296.0">
+      <Fields>
+        <Field name="id_responsable" type="Integer" visibility="private"/>
+        <Field name="tipo_res" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Horario" package="" visibility="public" xPosition="28.0" yPosition="505.0">
+      <Fields>
+        <Field name="id_horario" type="Integer" visibility="private"/>
+        <Field name="horario_ini" type="String" visibility="private"/>
+        <Field name="horario_fin" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Turno" package="" visibility="public" xPosition="222.0" yPosition="505.0">
+      <Fields>
+        <Field name="id_turno" type="Integer" visibility="private"/>
+        <Field name="fecha_turno" type="Date" visibility="private"/>
+        <Field name="hora_turno" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Usuario" package="" visibility="public" xPosition="456.0" yPosition="427.0">
+      <Fields>
+        <Field name="id_usuario" type="Integer" visibility="private"/>
+        <Field name="nombre_usuario" type="String" visibility="private"/>
+        <Field name="contrasenia" type="String" visibility="private"/>
+        <Field name="tipo_usuario" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Respon" source="Paciente" target="Responsable" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Paciente" source="Turno" target="Paciente" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Secretaria" target="Persona"/>
+    <IsRelation name="is" source="Odontologo" target="Persona"/>
+    <IsRelation name="is" source="Horario" target="Odontologo"/>
+    <IsRelation name="is" source="Paciente" target="Persona"/>
+    <HasRelation name="Turno" source="Turno" target="Odontologo" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="User" source="Usuario" target="Odontologo" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="UserSe" source="Usuario" target="Secretaria" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
