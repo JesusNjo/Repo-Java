@@ -100,7 +100,7 @@ public class PrestamoService {
         }
     }
 
-    public void devolPrestamo() {
+    public void devolverPrestamo() throws Exception {
         try {
             System.out.println("Indique el ISBN del libro que desea retornar");
             List<Libro> libros = libroJpa.findLibroEntities();
@@ -108,6 +108,7 @@ public class PrestamoService {
             for (Libro libro : libros) {
                 System.out.println(libro.getIsbn() + " -- " + libro.getTitulo());
             }
+            
             System.out.println("-------");
             Libro libroD = libroJpa.findLibro(input.nextLong());
             System.out.println(libroD.getTitulo());
@@ -119,6 +120,7 @@ public class PrestamoService {
             }
 
         } catch (Exception e) {
+            throw e;
         }
     }
 

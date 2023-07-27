@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Planteo">
   <ClassDiagramComponents>
-    <Class name="Persona" package="" visibility="public" xPosition="279.0" yPosition="124.0">
+    <Class name="Persona" package="" visibility="public" xPosition="200.0" yPosition="59.0">
       <Fields>
         <Field name="id_persona" type="Integer" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -77,14 +77,14 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="Respon" source="Paciente" target="Responsable" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Paciente" source="Turno" target="Paciente" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Secretaria" target="Persona"/>
-    <IsRelation name="is" source="Odontologo" target="Persona"/>
-    <IsRelation name="is" source="Horario" target="Odontologo"/>
-    <IsRelation name="is" source="Paciente" target="Persona"/>
-    <HasRelation name="Turno" source="Turno" target="Odontologo" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="User" source="Usuario" target="Odontologo" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="UserSe" source="Usuario" target="Secretaria" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Paciente" target="Persona"/>
+    <IsRelation name="is" source="Odontologo" target="Persona"/>
+    <IsRelation name="is" source="Secretaria" target="Persona"/>
+    <HasRelation name="Paciente" source="Turno" target="Paciente" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="User" source="Usuario" target="Odontologo" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Horario" target="Odontologo"/>
+    <HasRelation name="Respon" source="Paciente" target="Responsable" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Turno" source="Turno" target="Odontologo" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
   </ClassDiagramRelations>
 </ClassDiagram>

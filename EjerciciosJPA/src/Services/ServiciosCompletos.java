@@ -198,7 +198,7 @@ public class ServiciosCompletos {
                     break;
                     
                 case 12:
-                    prestamoS.devolPrestamo();
+                    prestamoS.devolverPrestamo();
                     break;
                     
                 case 13:
