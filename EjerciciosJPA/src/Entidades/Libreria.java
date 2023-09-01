@@ -50,8 +50,9 @@ public class Libreria {
     public static void main(String[] args) throws Exception {
         
         ServiciosCompletos menu = new ServiciosCompletos();
+        ClienteJpaController crear = new ClienteJpaController();
         
-        menu.menu();
+        
         
     }
     
