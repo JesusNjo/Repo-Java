@@ -1,0 +1,87 @@
+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
+
+
+Basándome en el código que has proporcionado, te falta implementar el controlador y los endpoints correspondientes. A continuación, te mostraré cómo puedes hacerlo:
+
+Crea una clase de controlador llamada CotizacionController:
+
+package dolar.Controller;
+
+import dolar.Entities.Cotizacion;
+import dolar.Services.CotizacionServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/cotizaciones")
+public class CotizacionController {
+
+    @Autowired
+    private CotizacionServices cotizacionServices;
+
+    @PostMapping
+    public void registrarCotizacion(@RequestBody Cotizacion cotizacion) {
+        cotizacionServices.createCotizacion(cotizacion);
+    }
+
+    @PutMapping("/{id}")
+    public void editarCotizacion(@PathVariable Long id, @RequestBody Cotizacion cotizacion) {
+        cotizacion.setId(id);
+        cotizacionServices.editarCotizacion(cotizacion);
+    }
+
+    @GetMapping
+    public List<Cotizacion> obtenerCotizaciones(@RequestParam(value = "fecha_inicio", required = false) String fechaInicio,
+                                                @RequestParam(value = "fecha_fin", required = false) String fechaFin,
+                                                @RequestParam(value = "tipo_cambio", required = false) String tipoCambio,
+                                                @RequestParam(value = "orden", defaultValue = "fecha") String orden) {
+        return cotizacionServices.obtenerCotizaciones(fechaInicio, fechaFin, tipoCambio, orden);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarCotizacion(@PathVariable Long id) {
+        cotizacionServices.eliminarCotizacion(id);
+    }
+}
+Modifica la clase CotizacionServices para utilizar el CotizacionDAO:
+
+package dolar.Services;
+
+import dolar.Entities.Cotizacion;
+import dolar.Persistence.CotizacionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class CotizacionServices {
+
+    @Autowired
+    private CotizacionDAO cotizacionDAO;
+
+    public void createCotizacion(Cotizacion cotizacion) {
+        cotizacionDAO.create(cotizacion);
+    }
+
+    public void editarCotizacion(Cotizacion cotizacion) {
+        cotizacionDAO.modify(cotizacion);
+    }
+
+    public List<Cotizacion> obtenerCotizaciones(String fechaInicio, String fechaFin, String tipoCambio, String orden) {
+        // Implementa la lógica para filtrar y ordenar las cotizaciones usando el CotizacionDAO
+        // Utiliza los parámetros fechaInicio, fechaFin, tipoCambio y orden
+        // Retorna la lista de cotizaciones resultante
+    }
+
+    public void eliminarCotizacion(Long id) {
+        Cotizacion cotizacion = cotizacionDAO.lookForId(id);
+        cotizacionDAO.delete(cotizacion);
+    }
+}
+Con esto, ya tienes implementados los endpoints /cotizaciones, /cotizaciones/{id}, /cotizaciones y /cotizaciones/{id}. El controlador se encargará de recibir las solicitudes HTTP y llamar a los métodos correspondientes en la clase CotizacionServices, que a su vez utilizará el CotizacionDAO para interactuar con la base de datos.
+
+Recuerda que necesitarás agregar las dependencias necesarias de Spring y configurar la conexión a tu base de datos en el archivo application.properties (o similar) de tu proyecto.
+
+Espero que esto te ayude a completar tu implementación en Java con JPA. Si tienes alguna otra pregunta, no dudes en preguntar.

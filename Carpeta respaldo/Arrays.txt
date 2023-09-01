@@ -1,0 +1,11 @@
+Arrays.setAll(arrayGrande,(a) -> arrayGrande[a] = Math.random()*20; //Rellenar un vector con numeros aleatorios
+
+Arrays.toString(arrayGrande); // Imprimir un vector
+
+Arrays.sort(arrayGrande); // Ordenar un vector en orden ascendente
+
+Arrays.setAll(arrayPequeno, (i)->{i<10} ? arrayGrande[i]:0.5); //Rellenar otro vector con 10 valores del otro vector y 10 valores de 0.5
+
+Arrays.toString(arrayPequeno); // Imprimir otro vector
+
++573113521936 - Nagger

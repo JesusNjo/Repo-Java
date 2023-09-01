@@ -1,0 +1,133 @@
+// Inicializar repositorio local:
+git init
+
+// Vincular repositorio local al remoto:
+git remote add origin /urlremoto/
+
+// Verificar la vincualcion
+git remote -v
+
+// Configuraciones globales:
+git config --global user.name "nombreusuario"
+git config --global user.mail "mailusuario@mail.com"
+git config -code
+git config 
+git config -l
+
+// limpiar patalla:
+clear
+
+
+// Chequeamos que parte de nuestro proyecto (codigo nuevo o sin commit) no esta cargado al repositorio remoto
+
+git status
+git status -s
+
+// Integramos el cogido para subir
+
+git add "nombre-del-archivo"
+git add .
+
+// Commit
+
+git commit (para ingresar mediante el editor de codigo)
+git commit -m "mensajedelcommit"
+
+// Push (enviamos la info al repositorio remoto)
+
+git push origin master
+
+// Pull
+git pull origin master
+
+// cuando ingresamos a un apartado de git sobre la especificacion del commit:
+seleccionamos nombre del commit 
+escape
+:wq
+
+// Historial de hit commit
+git log
+
+-> salir con q
+
+// Clonar un repositorio
+
+git init
+git remote add origin /urlacloar/
+git remote -v
+git pull origin master
+
+// Informacion de ramas
+git fetch
+
+// Cambiar de rama de trabajo
+git cheackout /develop/
+
+// Help
+git --help
+
+// Verificar en que carpeta estás
+
+pdw
+
+//Ingresar a una carpeta
+
+cd "ubicacion-de-la-carpeta"
+cd .. (retroceder a una carpeta anterior)
+
+//Ver lo que hay en la carpeta
+
+ls
+
+// Eliminar un archivo
+
+rm "nombre-del-archivo"
+
+//Devolver cambios realizados en un archivo
+
+git re
+
+// Crear una nueva carpeta
+
+mkdir
+
+// Mover un articulo a otra carpeta
+
+mv "nombre-del-archivo" "nombre-carpeta-destino"
+
+// Renombrar un archivo
+
+git mv "nombre-del-archivo" "nombre-nuevo"
+
+// Restaurar archivos
+
+git restore "nombre-del-archivo"
+git restore --staged "nombre-del-archivo"
+
+// Ver diferencias en las modificaciones
+
+git diff
+git diff --staged
+
+// Ver historial
+
+git log
+git log --oneline
+
+// Git con branch
+
+git branch -- Muestra las ramas creadas
+git branch -a -- Muestra todas las ramas
+
+git branch rama1 -- Crea una nueva rama
+
+git checkout master -- Cambia de rama
+
+touch "txto.txt" -- Crea un nuevo archivo
+
+git diff master rama1 -- Muestra las diferencias entre ramas
+
+git mergue ramaOrigin ramaDestino -- Guarda los cambios en la rama principal
+
+git pull ramaOrigin ramaDestino -- Compara las diferencias y los cambios
+

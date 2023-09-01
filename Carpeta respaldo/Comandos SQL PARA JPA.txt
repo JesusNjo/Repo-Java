@@ -1,0 +1,2 @@
+ALTER TABLE editorial RENAME COLUMN nombre_autor TO nombre_editorial; -- Cambiar el nombre de una columna
+ALTER TABLE autor auto_increment = 1; -- Para reiniciar el auto incremento a 1

@@ -1,0 +1,27 @@
+
+- @Entity: Especifica que la clase es una entidad. Esta anotación se aplica a la clase de entidad.
+
+- @Id: Especifica la clave primaria de una entidad. Esta anotación se aplica a un campo o propiedad que representa la clave primaria o un campo o propiedad que se mapea en una clave primaria compuesta.
+ @GeneratedValue(strategy= GenerationType.AUTO) 
+
+- @Basic: Especifica que un campo o propiedad es básico y se debe incluir en las operaciones de persistencia por defecto. Esta anotación se aplica a un campo o propiedad.
+- @Override: Indica que un método sobrescribe un método en una superclase.
+- @Deprecated: Indica que una clase, método o campo está obsoleto y debe dejarse de usar.
+- @SuppressWarnings: Indica que el compilador debe suprimir las advertencias especificadas en la anotación.
+- @FunctionalInterface: Indica que la interfaz es una interfaz funcional.
+- @SafeVarargs: Anotación que se utiliza para suprimir las advertencias de seguridad de varargs.
+- @Retention: Especifica cuánto tiempo se conserva una anotación. Esta anotación se aplica a una definición de anotación.
+- @Documented: Indica que los elementos anotados deben documentarse mediante la herramienta javadoc. Esta anotación se aplica a cualquier otra anotación.
+
+-@Temporal: Se utiliza para especificar el tipo temporal de un campo o propiedad @Temporal(TemporalType.TIMESTAMP) - (TemporalType.DATE)
+
+-@OneToMany: Se utiliza para especificar una relación uno-a-muchos entre dos entidades.
+-@OneToOne : Indica la relacion de uno a uno
+-@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS): Se utiliza para Herencia, para poder utilizar valores del padre pero no crear tabla
+-@DiscriminatorColumn(name= "tipo") : Para que la herencia pueda pasar atributos y no pase como entidad
+-@DiscrimnatorValue("Tabla") : Para la tabla poder heredar 
+@AttributeOverride(name = "id", column = @Column(name = "id_cliente")) -- Para heredar el ID de la clase padre y ponerle el nombre a la columna
+
+ALTER TABLE nombre_tabla auto_increment = 1;
+?useSSL=false
+
